@@ -1,6 +1,12 @@
 Ticket to ride 
 ===============
 
+Presentaion of the project
+-----------------------------
+
+This project is a simulation of a ticket to ride game between some AI which have different strategies.<br/>
+The game has been implemented with a relation host-server, the server had to check there were no cheat possible.
+
 Compilation
 -------------
 
