@@ -1,16 +1,16 @@
 Les casaniers du rail
 =====================
 
-** Compilation projet **
+**Compilation projet**
 
 aller dans trunk/build et effectuer la commande make
 pour ajouter des options comme gdb et valgrind faire la commande cmake .. -DCMAKE_BUILD_TYPE=DEBUG puis recompiler avec make
 
-** Exécution **
+**Exécution**
 
 lancer la commande ./src/game ../tests/France.txt depuis trunk/build
 
-** Test **
+**Test**
 
 lancer la commande make test depuis trunk/build
 lancer également les exécutables présents dans le dossier trunk/tests
@@ -18,7 +18,7 @@ lancer également les exécutables présents dans le dossier trunk/tests
 ./test_winner
 ./test_play_turn
 
-** Documentation **
+**Documentation**
 
 pour générer la doc aller dans trunk/doc et lancer la commande doxygen
 
