@@ -1,0 +1,19 @@
+add_library (link link.c)
+add_library (interface interface.c)
+add_library (init init.c server.h player.h)
+add_library (play play_turn.c)
+add_library (cards cards_gestion.c)
+add_library (AI_0 AI_0.c)
+add_library (AI_1 AI_1.c link.h cards_gestion.h)
+
+#add_library(AI_1 AI_1.c)
+#add_library(AI_2 AI_2.c)
+#add_library(AI_3 AI_3.c)
+
+
+
+target_include_directories (link PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (interface PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (init PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (play PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (cards PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

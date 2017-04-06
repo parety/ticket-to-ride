@@ -1,0 +1,87 @@
+\hypertarget{server_8c}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/server.c File Reference}
+\label{server_8c}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/server.\-c@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/server.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}server.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}link.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}concat.\-h\char`\"{}}\\*
+Include dependency graph for server.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{server_8c_a063165e36f1905a19e98c412ee181878}{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S}~1
+\item 
+\#define \hyperlink{server_8c_ace8a77cde8a80fb5299458c57f68e2ba}{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S\-\_\-\-M\-A\-X}~2
+\item 
+\#define \hyperlink{server_8c_a13c4b5f82757d8a5c7fe0250f0ea8547}{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-C\-A\-R\-D\-S}~4
+\item 
+\#define \hyperlink{server_8c_a67cd6d05e7f3cb1a583bd1c2ee96d88e}{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-O\-B\-J\-S}~3
+\item 
+\#define \hyperlink{server_8c_ad1b911d5e10e950806c86ba4ea7b7c83}{N\-B\-\_\-\-O\-B\-J\-\_\-\-D\-R\-A\-W\-N\-\_\-\-M\-A\-X}~3
+\item 
+\#define \hyperlink{server_8c_a4878c9ff1e1f8c9290b7d3236907dfb5}{M\-I\-N\-\_\-\-O\-B\-J\-S\-\_\-\-T\-O\-\_\-\-P\-I\-C\-K}~1
+\item 
+\#define \hyperlink{server_8c_a2c9bf5f9fd20afce0c58742ebb761b56}{C\-O\-L\-O\-R\-E\-D\-\_\-\-G\-A\-M\-E}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{server_8c_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{server_8c_a2c9bf5f9fd20afce0c58742ebb761b56}{\index{server.\-c@{server.\-c}!C\-O\-L\-O\-R\-E\-D\-\_\-\-G\-A\-M\-E@{C\-O\-L\-O\-R\-E\-D\-\_\-\-G\-A\-M\-E}}
+\index{C\-O\-L\-O\-R\-E\-D\-\_\-\-G\-A\-M\-E@{C\-O\-L\-O\-R\-E\-D\-\_\-\-G\-A\-M\-E}!server.c@{server.\-c}}
+\subsubsection[{C\-O\-L\-O\-R\-E\-D\-\_\-\-G\-A\-M\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-L\-O\-R\-E\-D\-\_\-\-G\-A\-M\-E~0}}\label{server_8c_a2c9bf5f9fd20afce0c58742ebb761b56}
+\hypertarget{server_8c_a4878c9ff1e1f8c9290b7d3236907dfb5}{\index{server.\-c@{server.\-c}!M\-I\-N\-\_\-\-O\-B\-J\-S\-\_\-\-T\-O\-\_\-\-P\-I\-C\-K@{M\-I\-N\-\_\-\-O\-B\-J\-S\-\_\-\-T\-O\-\_\-\-P\-I\-C\-K}}
+\index{M\-I\-N\-\_\-\-O\-B\-J\-S\-\_\-\-T\-O\-\_\-\-P\-I\-C\-K@{M\-I\-N\-\_\-\-O\-B\-J\-S\-\_\-\-T\-O\-\_\-\-P\-I\-C\-K}!server.c@{server.\-c}}
+\subsubsection[{M\-I\-N\-\_\-\-O\-B\-J\-S\-\_\-\-T\-O\-\_\-\-P\-I\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-I\-N\-\_\-\-O\-B\-J\-S\-\_\-\-T\-O\-\_\-\-P\-I\-C\-K~1}}\label{server_8c_a4878c9ff1e1f8c9290b7d3236907dfb5}
+\hypertarget{server_8c_ad1b911d5e10e950806c86ba4ea7b7c83}{\index{server.\-c@{server.\-c}!N\-B\-\_\-\-O\-B\-J\-\_\-\-D\-R\-A\-W\-N\-\_\-\-M\-A\-X@{N\-B\-\_\-\-O\-B\-J\-\_\-\-D\-R\-A\-W\-N\-\_\-\-M\-A\-X}}
+\index{N\-B\-\_\-\-O\-B\-J\-\_\-\-D\-R\-A\-W\-N\-\_\-\-M\-A\-X@{N\-B\-\_\-\-O\-B\-J\-\_\-\-D\-R\-A\-W\-N\-\_\-\-M\-A\-X}!server.c@{server.\-c}}
+\subsubsection[{N\-B\-\_\-\-O\-B\-J\-\_\-\-D\-R\-A\-W\-N\-\_\-\-M\-A\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-B\-\_\-\-O\-B\-J\-\_\-\-D\-R\-A\-W\-N\-\_\-\-M\-A\-X~3}}\label{server_8c_ad1b911d5e10e950806c86ba4ea7b7c83}
+\hypertarget{server_8c_a063165e36f1905a19e98c412ee181878}{\index{server.\-c@{server.\-c}!N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S@{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S}}
+\index{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S@{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S}!server.c@{server.\-c}}
+\subsubsection[{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S~1}}\label{server_8c_a063165e36f1905a19e98c412ee181878}
+\hypertarget{server_8c_ace8a77cde8a80fb5299458c57f68e2ba}{\index{server.\-c@{server.\-c}!N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S\-\_\-\-M\-A\-X@{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S\-\_\-\-M\-A\-X}}
+\index{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S\-\_\-\-M\-A\-X@{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S\-\_\-\-M\-A\-X}!server.c@{server.\-c}}
+\subsubsection[{N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S\-\_\-\-M\-A\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-B\-\_\-\-P\-L\-A\-Y\-E\-R\-S\-\_\-\-M\-A\-X~2}}\label{server_8c_ace8a77cde8a80fb5299458c57f68e2ba}
+\hypertarget{server_8c_a13c4b5f82757d8a5c7fe0250f0ea8547}{\index{server.\-c@{server.\-c}!N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-C\-A\-R\-D\-S@{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-C\-A\-R\-D\-S}}
+\index{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-C\-A\-R\-D\-S@{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-C\-A\-R\-D\-S}!server.c@{server.\-c}}
+\subsubsection[{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-C\-A\-R\-D\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-C\-A\-R\-D\-S~4}}\label{server_8c_a13c4b5f82757d8a5c7fe0250f0ea8547}
+\hypertarget{server_8c_a67cd6d05e7f3cb1a583bd1c2ee96d88e}{\index{server.\-c@{server.\-c}!N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-O\-B\-J\-S@{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-O\-B\-J\-S}}
+\index{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-O\-B\-J\-S@{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-O\-B\-J\-S}!server.c@{server.\-c}}
+\subsubsection[{N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-O\-B\-J\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-B\-\_\-\-S\-T\-A\-R\-T\-I\-N\-G\-\_\-\-O\-B\-J\-S~3}}\label{server_8c_a67cd6d05e7f3cb1a583bd1c2ee96d88e}
+
+
+\subsection{Function Documentation}
+\hypertarget{server_8c_a0ddf1224851353fc92bfbff6f499fa97}{\index{server.\-c@{server.\-c}!main@{main}}
+\index{main@{main}!server.c@{server.\-c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{server_8c_a0ddf1224851353fc92bfbff6f499fa97}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8c_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libinit_info.a  CMakeFiles/init_info.dir/init_info.c.o
+/usr/bin/ranlib libinit_info.a

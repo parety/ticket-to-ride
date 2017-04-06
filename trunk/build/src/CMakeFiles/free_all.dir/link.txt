@@ -1,0 +1,2 @@
+/usr/bin/ar cr libfree_all.a  CMakeFiles/free_all.dir/free.c.o
+/usr/bin/ranlib libfree_all.a

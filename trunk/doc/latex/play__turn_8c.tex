@@ -1,0 +1,310 @@
+\hypertarget{play__turn_8c}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/play\-\_\-turn.c File Reference}
+\label{play__turn_8c}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/play\-\_\-turn.\-c@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/play\-\_\-turn.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}server.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}link.\-h\char`\"{}}\\*
+Include dependency graph for play\-\_\-turn.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{play__turn_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{play__turn_8c_aaa888be4170e398de74e3b123d0c194b}{is\-\_\-last\-\_\-turn} (int $\ast$wagons\-\_\-remaining, int nb\-\_\-players)
+\begin{DoxyCompactList}\small\item\em game\-\_\-end \end{DoxyCompactList}\item 
+int \hyperlink{play__turn_8c_aa51d57181d4ae1b13ba31dd55181f6eb}{are\-\_\-objs\-\_\-valid} (int $\ast$T\-\_\-chosen\-\_\-objs, int min\-\_\-objs\-\_\-to\-\_\-pick, int nb\-\_\-objs\-\_\-given)
+\begin{DoxyCompactList}\small\item\em are\-\_\-objs\-\_\-valid tests if the number of chosen objectives is between the minimum and the number of objectives initially given \end{DoxyCompactList}\item 
+int \hyperlink{play__turn_8c_a091e5087dae440aa98617aa831fecd28}{cheat} (struct \hyperlink{structAction}{Action} action, int nb\-\_\-players, int player, int nb\-\_\-objs\-\_\-tot, int $\ast$nb\-\_\-objs, struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-rails, int $\ast$wagons\-\_\-remaining, int $\ast$$\ast$card\-\_\-hands, int $\ast$nb\-\_\-cards, struct \hyperlink{structLink}{Link} $\ast$$\ast$map, int nb\-\_\-town)
+\item 
+void \hyperlink{play__turn_8c_ad1f55ecdce64f0b9fc7e10aeb0275029}{apply} (int player, struct \hyperlink{structAction}{Action} action, int nb\-\_\-players, int $\ast$$\ast$card\-\_\-hand, int $\ast$nb\-\_\-cards, int $\ast$wagon\-\_\-cards\-\_\-modif, int $\ast$$\ast$cards, int nb\-\_\-colors, int $\ast$col, struct \hyperlink{structLink}{Link} $\ast$$\ast$map, struct \hyperlink{structRail}{Rail} $\ast$rails, int $\ast$wagons\-\_\-remaining, int $\ast$used\-\_\-wagons, int $\ast$$\ast$obj\-\_\-hands, int nb\-\_\-objs\-\_\-total, int $\ast$objs\-\_\-cond, int $\ast$$\ast$new\-\_\-objs, int nb\-\_\-objs\-\_\-drawn\-\_\-max, int min\-\_\-objs\-\_\-to\-\_\-pick, struct \hyperlink{structf__player}{f\-\_\-player} $\ast$player\-\_\-fonctions, int $\ast$nb\-\_\-objs, int $\ast$nb\-\_\-new\-\_\-objs, int colored\-\_\-game)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{play__turn_8c_ad1f55ecdce64f0b9fc7e10aeb0275029}{\index{play\-\_\-turn.\-c@{play\-\_\-turn.\-c}!apply@{apply}}
+\index{apply@{apply}!play_turn.c@{play\-\_\-turn.\-c}}
+\subsubsection[{apply}]{\setlength{\rightskip}{0pt plus 5cm}void apply (
+\begin{DoxyParamCaption}
+\item[{int}]{player, }
+\item[{struct {\bf Action}}]{action, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int $\ast$$\ast$}]{card\-\_\-hand, }
+\item[{int $\ast$}]{nb\-\_\-cards, }
+\item[{int $\ast$}]{wagon\-\_\-cards\-\_\-modif, }
+\item[{int $\ast$$\ast$}]{cards, }
+\item[{int}]{nb\-\_\-colors, }
+\item[{int $\ast$}]{col, }
+\item[{struct {\bf Link} $\ast$$\ast$}]{map, }
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int $\ast$}]{wagons\-\_\-remaining, }
+\item[{int $\ast$}]{used\-\_\-wagons, }
+\item[{int $\ast$$\ast$}]{obj\-\_\-hands, }
+\item[{int}]{nb\-\_\-objs\-\_\-total, }
+\item[{int $\ast$}]{objs\-\_\-cond, }
+\item[{int $\ast$$\ast$}]{new\-\_\-objs, }
+\item[{int}]{nb\-\_\-objs\-\_\-drawn\-\_\-max, }
+\item[{int}]{min\-\_\-objs\-\_\-to\-\_\-pick, }
+\item[{struct {\bf f\-\_\-player} $\ast$}]{player\-\_\-fonctions, }
+\item[{int $\ast$}]{nb\-\_\-objs, }
+\item[{int $\ast$}]{nb\-\_\-new\-\_\-objs, }
+\item[{int}]{colored\-\_\-game}
+\end{DoxyParamCaption}
+)}}\label{play__turn_8c_ad1f55ecdce64f0b9fc7e10aeb0275029}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{play__turn_8c_ad1f55ecdce64f0b9fc7e10aeb0275029_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{play__turn_8c_ad1f55ecdce64f0b9fc7e10aeb0275029_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{play__turn_8c_aa51d57181d4ae1b13ba31dd55181f6eb}{\index{play\-\_\-turn.\-c@{play\-\_\-turn.\-c}!are\-\_\-objs\-\_\-valid@{are\-\_\-objs\-\_\-valid}}
+\index{are\-\_\-objs\-\_\-valid@{are\-\_\-objs\-\_\-valid}!play_turn.c@{play\-\_\-turn.\-c}}
+\subsubsection[{are\-\_\-objs\-\_\-valid}]{\setlength{\rightskip}{0pt plus 5cm}int are\-\_\-objs\-\_\-valid (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{T\-\_\-chosen\-\_\-objs, }
+\item[{int}]{min\-\_\-objs\-\_\-to\-\_\-pick, }
+\item[{int}]{nb\-\_\-objs\-\_\-given}
+\end{DoxyParamCaption}
+)}}\label{play__turn_8c_aa51d57181d4ae1b13ba31dd55181f6eb}
+
+
+are\-\_\-objs\-\_\-valid tests if the number of chosen objectives is between the minimum and the number of objectives initially given 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\-\_\-chosen\-\_\-objs} & array of boolean representing the choice of the player for each objective (picked or not) \\
+\hline
+{\em min\-\_\-objs\-\_\-to\-\_\-pick} & minimum of objective the player has to pick \\
+\hline
+{\em nb\-\_\-objs\-\_\-given} & the number of objectives initially given to the player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{play__turn_8c_aa51d57181d4ae1b13ba31dd55181f6eb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{play__turn_8c_a091e5087dae440aa98617aa831fecd28}{\index{play\-\_\-turn.\-c@{play\-\_\-turn.\-c}!cheat@{cheat}}
+\index{cheat@{cheat}!play_turn.c@{play\-\_\-turn.\-c}}
+\subsubsection[{cheat}]{\setlength{\rightskip}{0pt plus 5cm}int cheat (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Action}}]{action, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{player, }
+\item[{int}]{nb\-\_\-objs\-\_\-tot, }
+\item[{int $\ast$}]{nb\-\_\-objs, }
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-rails, }
+\item[{int $\ast$}]{wagons\-\_\-remaining, }
+\item[{int $\ast$$\ast$}]{card\-\_\-hands, }
+\item[{int $\ast$}]{nb\-\_\-cards, }
+\item[{struct {\bf Link} $\ast$$\ast$}]{map, }
+\item[{int}]{nb\-\_\-town}
+\end{DoxyParamCaption}
+)}}\label{play__turn_8c_a091e5087dae440aa98617aa831fecd28}
+apply apply in the server and for the players the modifications caused by the action of a player 
+\begin{DoxyParams}{Parameters}
+{\em player} & id of the player who is playing \\
+\hline
+{\em action} & action chose by the player \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em card\-\_\-hand} & \\
+\hline
+{\em nb\-\_\-cards} & \\
+\hline
+{\em wagon\-\_\-cards\-\_\-modif} & \\
+\hline
+{\em cards} & \\
+\hline
+{\em nb\-\_\-colors} & \\
+\hline
+{\em col} & \\
+\hline
+{\em map} & \\
+\hline
+{\em rails} & \\
+\hline
+{\em wagons\-\_\-remaining} & \\
+\hline
+{\em used\-\_\-wagons} & \\
+\hline
+{\em obj\-\_\-hands} & \\
+\hline
+{\em nb\-\_\-objs\-\_\-total} & \\
+\hline
+{\em objs\-\_\-cond} & \\
+\hline
+{\em new\-\_\-objs} & \\
+\hline
+{\em nb\-\_\-objs\-\_\-drawn\-\_\-max} & \\
+\hline
+{\em min\-\_\-objs\-\_\-to\-\_\-pick} & \\
+\hline
+{\em player\-\_\-fonctions} & \\
+\hline
+{\em nb\-\_\-objs} & \\
+\hline
+{\em nb\-\_\-new\-\_\-objs} & \\
+\hline
+{\em colored\-\_\-game} & \\
+\hline
+\end{DoxyParams}
+winner determined who is the winner (by counting rails points and objectives points) 
+\begin{DoxyParams}{Parameters}
+{\em map} & \\
+\hline
+{\em nb\-\_\-towns} & \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em all\-\_\-objectives} & \\
+\hline
+{\em obj\-\_\-hands} & \\
+\hline
+{\em nb\-\_\-objs} & \\
+\hline
+{\em nb\-\_\-rails} & \\
+\hline
+{\em rails} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the id of the winner
+\end{DoxyReturn}
+points\-\_\-rails add rails points of each player, in the array points 
+\begin{DoxyParams}{Parameters}
+{\em map} & \\
+\hline
+{\em nb\-\_\-towns} & \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em points} & \\
+\hline
+\end{DoxyParams}
+points\-\_\-objs add points of objectives which have been done points of each player, in the array points 
+\begin{DoxyParams}{Parameters}
+{\em map} & \\
+\hline
+{\em nb\-\_\-towns} & \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em all\-\_\-objectives} & \\
+\hline
+{\em obj\-\_\-hands} & \\
+\hline
+{\em nb\-\_\-objs} & \\
+\hline
+{\em points} & \\
+\hline
+{\em nb\-\_\-rails} & \\
+\hline
+{\em rails} & \\
+\hline
+\end{DoxyParams}
+free\-\_\-all free all the memory which have been used for the game 
+\begin{DoxyParams}{Parameters}
+{\em col} & \\
+\hline
+{\em nb\-\_\-towns} & \\
+\hline
+{\em map} & \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em card\-\_\-hands} & \\
+\hline
+{\em obj\-\_\-hands} & \\
+\hline
+{\em player\-\_\-functions} & \\
+\hline
+{\em new\-\_\-obj} & \\
+\hline
+{\em cards} & \\
+\hline
+{\em T\-\_\-chosen\-\_\-objs} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{play__turn_8c_a091e5087dae440aa98617aa831fecd28_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{play__turn_8c_aaa888be4170e398de74e3b123d0c194b}{\index{play\-\_\-turn.\-c@{play\-\_\-turn.\-c}!is\-\_\-last\-\_\-turn@{is\-\_\-last\-\_\-turn}}
+\index{is\-\_\-last\-\_\-turn@{is\-\_\-last\-\_\-turn}!play_turn.c@{play\-\_\-turn.\-c}}
+\subsubsection[{is\-\_\-last\-\_\-turn}]{\setlength{\rightskip}{0pt plus 5cm}int is\-\_\-last\-\_\-turn (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{wagons\-\_\-remaining, }
+\item[{int}]{nb\-\_\-players}
+\end{DoxyParamCaption}
+)}}\label{play__turn_8c_aaa888be4170e398de74e3b123d0c194b}
+
+
+game\-\_\-end 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wagons\-\_\-remaining} & array with nb\-\_\-players cases which correspond to the nb of wagon of each player \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if all players have more than 2 wagons and the show must go on ! else 1 this this the last turn 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{play__turn_8c_aaa888be4170e398de74e3b123d0c194b_icgraph}
+\end{center}
+\end{figure}
+
+

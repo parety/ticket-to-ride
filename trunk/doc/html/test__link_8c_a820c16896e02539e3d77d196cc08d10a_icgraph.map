@@ -1,0 +1,7 @@
+<map id="init_rail" name="init_rail">
+<area shape="rect" id="node2" href="$test__link_8c.html#acb76aa558c22032f144ff52c3b1e7f8b" title="test_rail_size" alt="" coords="133,5,232,32"/>
+<area shape="rect" id="node4" href="$test__link_8c.html#a8eb513d982d21096e671c7a1df37d8a2" title="test_player_on_rail" alt="" coords="117,56,248,83"/>
+<area shape="rect" id="node5" href="$test__link_8c.html#a0b4f0b1cea48b0ff74e58990cc4d6509" title="test_rail_free" alt="" coords="134,107,231,133"/>
+<area shape="rect" id="node6" href="$test__link_8c.html#a60e118c3ad6c5320ae2db462c08826ec" title="test_who_on_rail" alt="" coords="123,157,243,184"/>
+<area shape="rect" id="node3" href="$test__link_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="296,81,347,108"/>
+</map>

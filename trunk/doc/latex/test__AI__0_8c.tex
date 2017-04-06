@@ -1,0 +1,414 @@
+\hypertarget{test__AI__0_8c}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/tests/test\-\_\-\-A\-I\-\_\-0.c File Reference}
+\label{test__AI__0_8c}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/tests/test\-\_\-\-A\-I\-\_\-0.\-c@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/tests/test\-\_\-\-A\-I\-\_\-0.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$assert.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}../src/interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../src/server.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../src/link.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../src/player.\-h\char`\"{}}\\*
+Include dependency graph for test\-\_\-\-A\-I\-\_\-0.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{test__AI__0_8c_acfc7dee91ec1b48616ab4fbb41ed7333}{objective\-\_\-realised} (int town1, int town2, int id)
+\item 
+void \hyperlink{test__AI__0_8c_a92802f74b65e84424f35ca23a6a84910}{fill\-\_\-tab\-\_\-accessible} (int $\ast$tab\-\_\-to\-\_\-fill, int current\-\_\-town, int id)
+\item 
+int \hyperlink{test__AI__0_8c_a4ed15e4ae5472f5bf9b586526318fcf3}{A\-I\-\_\-0\-\_\-init\-\_\-player} (int id, int nb\-\_\-players, int nb\-\_\-towns, int nb\-\_\-rails, struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-initial\-\_\-wagons, int nb\-\_\-obj, struct \hyperlink{structObjective}{Objective} $\ast$objs)
+\item 
+struct \hyperlink{structAction}{Action} \hyperlink{test__AI__0_8c_af51c2bc8672ee161b102e06843c3a045}{A\-I\-\_\-0\-\_\-play\-\_\-turn} (int $\ast$used\-\_\-wagons, int $\ast$cards\-\_\-in\-\_\-hand, int $\ast$objectives, int nb\-\_\-new\-\_\-rails, struct \hyperlink{structNew__rail}{New\-\_\-rail} $\ast$changes, int $\ast$new\-\_\-obj, int $\ast$cards)
+\item 
+int $\ast$ \hyperlink{test__AI__0_8c_af9d3a1d546bdb3fa1e98d4ae8c6b2afa}{A\-I\-\_\-0\-\_\-choose\-\_\-objective} (int nb, int $\ast$objs, int min)
+\item 
+int \hyperlink{test__AI__0_8c_aee5609d0a03a97567e6a828fbff34a7e}{A\-I\-\_\-0\-\_\-free\-\_\-player} ()
+\item 
+void \hyperlink{test__AI__0_8c_a7a3be6f5fc9534823762c87146219d8d}{test\-\_\-initialisation} ()
+\item 
+void \hyperlink{test__AI__0_8c_a498000655653e4aecdb8b93ce6152fc6}{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-objective} ()
+\item 
+void \hyperlink{test__AI__0_8c_ab07668eb63fa739f6e899c68e098dde1}{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-build} ()
+\item 
+void \hyperlink{test__AI__0_8c_aeb0e31ce728fa40bb0f774fe9f97620d}{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-draw} ()
+\item 
+void \hyperlink{test__AI__0_8c_a276fb482d84a86075c77931ed6692b9c}{test\-\_\-actualise\-\_\-nb\-\_\-objs\-\_\-completed} ()
+\item 
+int \hyperlink{test__AI__0_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\item 
+void \hyperlink{test__AI__0_8c_ae6a5a9fb92d4c61bff427f6d8964b1ce}{A\-I\-\_\-0\-\_\-fill\-\_\-tab\-\_\-accessible} (int $\ast$tab\-\_\-to\-\_\-fill, int current\-\_\-town, int id)
+\item 
+int \hyperlink{test__AI__0_8c_aca091cff3a4de4b7399735d192d204fc}{A\-I\-\_\-0\-\_\-objective\-\_\-realised} (int town1, int town2, int id)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{test__AI__0_8c_af9d3a1d546bdb3fa1e98d4ae8c6b2afa}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!A\-I\-\_\-0\-\_\-choose\-\_\-objective@{A\-I\-\_\-0\-\_\-choose\-\_\-objective}}
+\index{A\-I\-\_\-0\-\_\-choose\-\_\-objective@{A\-I\-\_\-0\-\_\-choose\-\_\-objective}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{A\-I\-\_\-0\-\_\-choose\-\_\-objective}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ A\-I\-\_\-0\-\_\-choose\-\_\-objective (
+\begin{DoxyParamCaption}
+\item[{int}]{nb, }
+\item[{int $\ast$}]{objs, }
+\item[{int}]{min}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_af9d3a1d546bdb3fa1e98d4ae8c6b2afa}
+\hypertarget{test__AI__0_8c_ae6a5a9fb92d4c61bff427f6d8964b1ce}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!A\-I\-\_\-0\-\_\-fill\-\_\-tab\-\_\-accessible@{A\-I\-\_\-0\-\_\-fill\-\_\-tab\-\_\-accessible}}
+\index{A\-I\-\_\-0\-\_\-fill\-\_\-tab\-\_\-accessible@{A\-I\-\_\-0\-\_\-fill\-\_\-tab\-\_\-accessible}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{A\-I\-\_\-0\-\_\-fill\-\_\-tab\-\_\-accessible}]{\setlength{\rightskip}{0pt plus 5cm}void A\-I\-\_\-0\-\_\-fill\-\_\-tab\-\_\-accessible (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{tab\-\_\-to\-\_\-fill, }
+\item[{int}]{current\-\_\-town, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_ae6a5a9fb92d4c61bff427f6d8964b1ce}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{test__AI__0_8c_ae6a5a9fb92d4c61bff427f6d8964b1ce_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_ae6a5a9fb92d4c61bff427f6d8964b1ce_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_aee5609d0a03a97567e6a828fbff34a7e}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!A\-I\-\_\-0\-\_\-free\-\_\-player@{A\-I\-\_\-0\-\_\-free\-\_\-player}}
+\index{A\-I\-\_\-0\-\_\-free\-\_\-player@{A\-I\-\_\-0\-\_\-free\-\_\-player}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{A\-I\-\_\-0\-\_\-free\-\_\-player}]{\setlength{\rightskip}{0pt plus 5cm}int A\-I\-\_\-0\-\_\-free\-\_\-player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_aee5609d0a03a97567e6a828fbff34a7e}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{test__AI__0_8c_aee5609d0a03a97567e6a828fbff34a7e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_a4ed15e4ae5472f5bf9b586526318fcf3}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!A\-I\-\_\-0\-\_\-init\-\_\-player@{A\-I\-\_\-0\-\_\-init\-\_\-player}}
+\index{A\-I\-\_\-0\-\_\-init\-\_\-player@{A\-I\-\_\-0\-\_\-init\-\_\-player}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{A\-I\-\_\-0\-\_\-init\-\_\-player}]{\setlength{\rightskip}{0pt plus 5cm}int A\-I\-\_\-0\-\_\-init\-\_\-player (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-towns, }
+\item[{int}]{nb\-\_\-rails, }
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-initial\-\_\-wagons, }
+\item[{int}]{nb\-\_\-obj, }
+\item[{struct {\bf Objective} $\ast$}]{objs}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_a4ed15e4ae5472f5bf9b586526318fcf3}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_a4ed15e4ae5472f5bf9b586526318fcf3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_a4ed15e4ae5472f5bf9b586526318fcf3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_aca091cff3a4de4b7399735d192d204fc}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!A\-I\-\_\-0\-\_\-objective\-\_\-realised@{A\-I\-\_\-0\-\_\-objective\-\_\-realised}}
+\index{A\-I\-\_\-0\-\_\-objective\-\_\-realised@{A\-I\-\_\-0\-\_\-objective\-\_\-realised}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{A\-I\-\_\-0\-\_\-objective\-\_\-realised}]{\setlength{\rightskip}{0pt plus 5cm}int A\-I\-\_\-0\-\_\-objective\-\_\-realised (
+\begin{DoxyParamCaption}
+\item[{int}]{town1, }
+\item[{int}]{town2, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_aca091cff3a4de4b7399735d192d204fc}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_aca091cff3a4de4b7399735d192d204fc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_aca091cff3a4de4b7399735d192d204fc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_af51c2bc8672ee161b102e06843c3a045}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!A\-I\-\_\-0\-\_\-play\-\_\-turn@{A\-I\-\_\-0\-\_\-play\-\_\-turn}}
+\index{A\-I\-\_\-0\-\_\-play\-\_\-turn@{A\-I\-\_\-0\-\_\-play\-\_\-turn}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{A\-I\-\_\-0\-\_\-play\-\_\-turn}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Action} A\-I\-\_\-0\-\_\-play\-\_\-turn (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{used\-\_\-wagons, }
+\item[{int $\ast$}]{cards\-\_\-in\-\_\-hand, }
+\item[{int $\ast$}]{objectives, }
+\item[{int}]{nb\-\_\-new\-\_\-rails, }
+\item[{struct {\bf New\-\_\-rail} $\ast$}]{changes, }
+\item[{int $\ast$}]{new\-\_\-obj, }
+\item[{int $\ast$}]{cards}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_af51c2bc8672ee161b102e06843c3a045}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_af51c2bc8672ee161b102e06843c3a045_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_af51c2bc8672ee161b102e06843c3a045_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_a92802f74b65e84424f35ca23a6a84910}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!fill\-\_\-tab\-\_\-accessible@{fill\-\_\-tab\-\_\-accessible}}
+\index{fill\-\_\-tab\-\_\-accessible@{fill\-\_\-tab\-\_\-accessible}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{fill\-\_\-tab\-\_\-accessible}]{\setlength{\rightskip}{0pt plus 5cm}void fill\-\_\-tab\-\_\-accessible (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{tab\-\_\-to\-\_\-fill, }
+\item[{int}]{current\-\_\-town, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_a92802f74b65e84424f35ca23a6a84910}
+\hypertarget{test__AI__0_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!main@{main}}
+\index{main@{main}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_acfc7dee91ec1b48616ab4fbb41ed7333}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!objective\-\_\-realised@{objective\-\_\-realised}}
+\index{objective\-\_\-realised@{objective\-\_\-realised}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{objective\-\_\-realised}]{\setlength{\rightskip}{0pt plus 5cm}int objective\-\_\-realised (
+\begin{DoxyParamCaption}
+\item[{int}]{town1, }
+\item[{int}]{town2, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_acfc7dee91ec1b48616ab4fbb41ed7333}
+\hypertarget{test__AI__0_8c_a276fb482d84a86075c77931ed6692b9c}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!test\-\_\-actualise\-\_\-nb\-\_\-objs\-\_\-completed@{test\-\_\-actualise\-\_\-nb\-\_\-objs\-\_\-completed}}
+\index{test\-\_\-actualise\-\_\-nb\-\_\-objs\-\_\-completed@{test\-\_\-actualise\-\_\-nb\-\_\-objs\-\_\-completed}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{test\-\_\-actualise\-\_\-nb\-\_\-objs\-\_\-completed}]{\setlength{\rightskip}{0pt plus 5cm}void test\-\_\-actualise\-\_\-nb\-\_\-objs\-\_\-completed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_a276fb482d84a86075c77931ed6692b9c}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_a276fb482d84a86075c77931ed6692b9c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{test__AI__0_8c_a276fb482d84a86075c77931ed6692b9c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_ab07668eb63fa739f6e899c68e098dde1}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-build@{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-build}}
+\index{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-build@{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-build}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-build}]{\setlength{\rightskip}{0pt plus 5cm}void test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-build (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_ab07668eb63fa739f6e899c68e098dde1}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_ab07668eb63fa739f6e899c68e098dde1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{test__AI__0_8c_ab07668eb63fa739f6e899c68e098dde1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_aeb0e31ce728fa40bb0f774fe9f97620d}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-draw@{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-draw}}
+\index{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-draw@{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-draw}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-draw}]{\setlength{\rightskip}{0pt plus 5cm}void test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_aeb0e31ce728fa40bb0f774fe9f97620d}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_aeb0e31ce728fa40bb0f774fe9f97620d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{test__AI__0_8c_aeb0e31ce728fa40bb0f774fe9f97620d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_a498000655653e4aecdb8b93ce6152fc6}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-objective@{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-objective}}
+\index{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-objective@{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-objective}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-objective}]{\setlength{\rightskip}{0pt plus 5cm}void test\-\_\-game\-\_\-actualisation\-\_\-case\-\_\-objective (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_a498000655653e4aecdb8b93ce6152fc6}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_a498000655653e4aecdb8b93ce6152fc6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{test__AI__0_8c_a498000655653e4aecdb8b93ce6152fc6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{test__AI__0_8c_a7a3be6f5fc9534823762c87146219d8d}{\index{test\-\_\-\-A\-I\-\_\-0.\-c@{test\-\_\-\-A\-I\-\_\-0.\-c}!test\-\_\-initialisation@{test\-\_\-initialisation}}
+\index{test\-\_\-initialisation@{test\-\_\-initialisation}!test_AI_0.c@{test\-\_\-\-A\-I\-\_\-0.\-c}}
+\subsubsection[{test\-\_\-initialisation}]{\setlength{\rightskip}{0pt plus 5cm}void test\-\_\-initialisation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{test__AI__0_8c_a7a3be6f5fc9534823762c87146219d8d}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__AI__0_8c_a7a3be6f5fc9534823762c87146219d8d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{test__AI__0_8c_a7a3be6f5fc9534823762c87146219d8d_icgraph}
+\end{center}
+\end{figure}
+
+

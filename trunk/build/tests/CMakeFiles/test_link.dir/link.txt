@@ -1,0 +1,1 @@
+/usr/bin/cc  -std=c99 -fPIC -O0 -g    CMakeFiles/test_link.dir/test_link.c.o  -o test_link -rdynamic ../src/libinterface.a ../src/liblink.a 

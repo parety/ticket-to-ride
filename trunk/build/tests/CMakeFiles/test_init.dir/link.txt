@@ -1,0 +1,1 @@
+/usr/bin/cc  -std=c99 -fPIC -O0 -g    CMakeFiles/test_init.dir/test_init.c.o  -o test_init -rdynamic ../src/libinit.a 

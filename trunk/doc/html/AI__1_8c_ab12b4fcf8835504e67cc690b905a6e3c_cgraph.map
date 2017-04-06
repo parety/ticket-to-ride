@@ -1,0 +1,6 @@
+<map id="rail_free_in_ACM" name="rail_free_in_ACM">
+<area shape="rect" id="node2" href="$AI__1_8c.html#a570906173de0ecea152cada5a76f8a44" title="fill_tab_rail_free_in_ACM " alt="" coords="177,49,290,90"/>
+<area shape="rect" id="node3" href="$link_8c.html#a6ccd449d6f68b97d9b90fd006bdd6108" title="give_my_rail " alt="" coords="339,5,434,32"/>
+<area shape="rect" id="node4" href="$link_8c.html#aa411a7aab379ecada4b140fd00078bca" title="is_rail_free " alt="" coords="344,56,429,83"/>
+<area shape="rect" id="node5" href="$link_8c.html#aad404b1a4dc11e07cd7361e27106fe7a" title="who_on_rail " alt="" coords="341,107,432,133"/>
+</map>

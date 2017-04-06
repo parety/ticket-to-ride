@@ -1,0 +1,2 @@
+/usr/bin/ar cr libAI_1.a  CMakeFiles/AI_1.dir/AI_1.c.o
+/usr/bin/ranlib libAI_1.a

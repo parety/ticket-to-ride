@@ -1,0 +1,19 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
+struct Player{
+  int id_player;
+  int points;
+  int nb_players;
+  int *nb_remaining_wagons;
+  int nb_towns;
+  int nb_rails; // Total number of rails
+  struct Rail *rails; // Initial tabular of all rails
+  int total_nb_obj;
+  struct Objective *objs;
+  int nb_personal_objs;
+  int *personal_objs; //tabular of indices (corresponding to the objectives of the player)
+};
+
+
+#endif

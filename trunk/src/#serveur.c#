@@ -1,0 +1,16 @@
+#include <stdlib.h>
+#include <stdio.o>
+#include "interface.h"
+
+
+int main(){
+
+  struct Map map = init_map();
+  //
+  /*for (int id = 0; id < NB_PLAYERS; id++){
+    int init_player(id, NB_PLAYERS, map.nb_towns, map.nb_rails, &rails, nb_wagons, nb_obj, &objs);
+  */
+
+  return 0;
+
+}

@@ -1,0 +1,30 @@
+add_library (link link.c)
+add_library (interface interface.c)
+add_library (init init.c server.h)
+add_library (play play_turn.c build_rail.c interface.h server.h )
+add_library (cards cards_gestion.c server.h)
+add_library (init_info init_info.c server.h interface.h)
+add_library (winner winner.c server.h interface.h)
+add_library (AI_0 AI_0.c server.h player.h)
+add_library (AI_1 AI_1.c server.h player.h)
+add_library (free_all free.c server.h interface.h)
+
+#add_library(AI_1 AI_1.c)
+#add_library(AI_2 AI_2.c)
+#add_library(AI_3 AI_3.c)
+
+
+
+target_include_directories (link PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (interface PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (init PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (play PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (cards PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (init_info PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (winner PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (AI_0 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (AI_1 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (free_all PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_executable(game server.c)
+target_link_libraries(game LINK_PUBLIC link interface init play cards init_info winner free_all AI_0 AI_1)

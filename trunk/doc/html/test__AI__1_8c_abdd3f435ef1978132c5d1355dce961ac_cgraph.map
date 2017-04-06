@@ -1,0 +1,10 @@
+<map id="test_choose_objective" name="test_choose_objective">
+<area shape="rect" id="node2" href="$test__AI__1_8c.html#a4b129a9daa97da56708afe7568021aa1" title="AI_0_init_player Initialises all the parameters of a struct Player (composed of the general game para..." alt="" coords="227,56,341,83"/>
+<area shape="rect" id="node7" href="$test__AI__1_8c.html#a3b3cdc3b68514774f2865c636d0f3418" title="AI_0_choose_objective. " alt="" coords="205,107,363,133"/>
+<area shape="rect" id="node9" href="$test__AI__1_8c.html#a064e38e8072edd14b0bef80985ddd412" title="AI_0_free_player Frees the struct Player of the player. " alt="" coords="224,157,344,184"/>
+<area shape="rect" id="node3" href="$cards__gestion_8c.html#a6476a83be99f343b2baff69567b03280" title="colors Complete the array with the colors used in the game and return the number of colors ..." alt="" coords="437,5,494,32"/>
+<area shape="rect" id="node4" href="$link_8c.html#aa356dd1a6ef6b845619ba56fa563d0f5" title="init_map Initialises the matrix of all the Link(s) composed of all the My_Rail(s) corresponding to al..." alt="" coords="430,56,501,83"/>
+<area shape="rect" id="node5" href="$link_8c.html#a425217f6f8098b1637ec3f27d905830c" title="init_link " alt="" coords="579,31,645,57"/>
+<area shape="rect" id="node6" href="$link_8c.html#aca0a177bc91fb070f332b263da3b0153" title="modify_link " alt="" coords="568,81,656,108"/>
+<area shape="rect" id="node8" href="$test__AI__1_8c.html#aa14010606b2c569bd491a7101a020023" title="min_point_objs " alt="" coords="411,107,520,133"/>
+</map>

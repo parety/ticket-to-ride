@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "interface.h"
+#include "server.h"
+#include "link.h"
+#include "concat.h"
+
+#define NB_PLAYERS 2
+#define NB_STARTING_CARDS 5
+
+
+
+int main(int argc,char * argv[]){
+  //need 1 file
+  if (argc != 2){
+    printf("error : expected 1 argument, given %d\n",argc-1);
+    return EXIT_FAILURE;
+  }
+  //initialisation of general informations
+  struct Map_info map_info = get_map_info(argv[1]);
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  struct Town towns[map_info.nb_towns];
+  file2rails(rails, map_info.nb_rails, objectives, map_info.nb_objs, argv[1]);
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,col);
+
+
+
+
+  //initialisation of server informations
+  struct Link ** map = init_map(map_info.nb_towns, rails, map_info.nb_links); //matrix of link structures
+
+  int ** card_hands = malloc(NB_PLAYERS*sizeof(int *));
+  init_card_hands(NB_PLAYERS, NB_STARTING_CARDS, card_hands, col, nb_colors); //array with the the starting card colors of the first player, then those of the second ...
+
+  //init_nb_cards(NB_PLAYERS, NB_STARTING_CARDS, card_hands, col, nb_colors); //array with nb_players cases which correspond to the nb of cards of each player
+  int nb_cards[NB_PLAYERS];
+  for (int i = 0; i < NB_PLAYERS){
+    nb_cards[i] = NB_STARTING_CARDS;
+  }
+
+  struct Objective * obj_hands = init_obj_hands(NB_PLAYERS, NB_STARTING_OBJS); //array of nb_starting_objs * player (ex : the 5 player1 objs, then the 5 player2 objs ...)
+  int * nb_objs = init_nb_objs(NB_PLAYERS, NB_STARTING_OBJS);//array with nb_players cases which correspond to the nb of objs of each player
+
+
+
+  
+  //initialisation of player fonctions
+  struct Player_fonctions * player_fonctions = malloc(NB_PLAYERS_MAX * sizeof(struct Player_fonctions));
+  for (int i=0, i<NB_PLAYERS_MAX ; i++){
+    player_fonctions[i].init_player = CONCAT(CONCAT(AI_ , i) , _init_player);
+    player_fonctions[i].play_turn = CONCAT(CONCAT(AI_ , i) , _play_turn);
+    player_fonctions[i].choose_objective = CONCAT(CONCAT(AI_ , i) , _choose_objective);
+    player_fonctions[i].free_player = CONCAT(CONCAT(AI_ , i) , _free_player);
+  }
+
+  //initialisation of player informations
+  for (int i=0; i<NB_PLAYERS ; i++){
+    T[i].init_player(i, NB_PLAYERS, map_info.nb_towns, map_info.nb_links, rails, map_info.nb_w_player, map_info.nb_objs, objectives);
+  }
+    
+  //game start
+  struct Action action;
+  int * wagons_remaining[NB_PLAYERS] = init_wagons(NB_PLAYERS, map_info.nb_w_player);//array of the wagons remaining for each player TO DO
+  int *used_wagons[NB_PLAYERS];
+  int * cards_in_hand[NB_PLAYERS];
+  int * objectives[NB_PLAYERS];
+  int nb_new_rails = 0;
+  struct New_rail *changes[NB_PLAYERS];
+  int *new_obj[5];
+  int *cards[max_rail_length(rails)]; //TO DO
+  
+  init_turn_informations(used_wagons, cards_in_hand, objectives, changes, new_obj, cards); //TO DO
+  
+  while ( ! game_end(wagons_remaining)){//GAME END TO DO
+      for (int j=0 ; j<NB_PLAYERS ; j++){
+	action = player_fonctions[j].play_turn(used_wagons, cards_in_hand, objectives, nb_new_rails, changes, new_obj, cards);
+	if (! cheat(action)) //pass turn if the client cheated
+	  apply(action); //modify the server informations and the turn informations TO DO
+	
+      }
+    }
+
+  //game end
+  //the winner is ...
+
+  //free the memory
+  free(player_fonctions);
+  
+  return EXIT_SUCCESS;
+}

@@ -1,0 +1,45 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "../src/interface.h"
+#include "../src/server.h"
+#include "../src/link.h"
+
+
+
+
+int test_points_rails(){
+
+  // Initialisation of arguments
+  struct Map_info map_info = get_map_info("tests_file.txt");
+  struct Rail rails[map_info.nb_links];
+  struct Objective all_objectives[map_info.nb_objs];
+
+  file2rails(rails, map_info.nb_links, all_objectives, map_info.nb_objs, "tests_file.txt");
+  struct Link ** map = init_map(map_info.nb_towns, rails, map_info.nb_links); //matrix of link structures
+
+
+  return 1;
+
+}
+
+
+
+
+
+
+
+
+int main(){
+
+
+  printf("Test of test_points_rails ... ");
+  if (test_points_rails())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+
+
+
+  return 0;
+}
+

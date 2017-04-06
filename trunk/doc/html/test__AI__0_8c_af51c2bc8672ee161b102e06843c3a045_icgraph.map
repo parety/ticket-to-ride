@@ -1,0 +1,7 @@
+<map id="AI_0_play_turn" name="AI_0_play_turn">
+<area shape="rect" id="node2" href="$test__AI__0_8c.html#a498000655653e4aecdb8b93ce6152fc6" title="test_game_actualisation\l_case_objective" alt="" coords="163,5,325,46"/>
+<area shape="rect" id="node4" href="$test__AI__0_8c.html#ab07668eb63fa739f6e899c68e098dde1" title="test_game_actualisation\l_case_build" alt="" coords="163,70,325,111"/>
+<area shape="rect" id="node5" href="$test__AI__0_8c.html#aeb0e31ce728fa40bb0f774fe9f97620d" title="test_game_actualisation\l_case_draw" alt="" coords="163,135,325,177"/>
+<area shape="rect" id="node6" href="$test__AI__0_8c.html#a276fb482d84a86075c77931ed6692b9c" title="test_actualise_nb_objs\l_completed" alt="" coords="167,201,321,242"/>
+<area shape="rect" id="node3" href="$test__AI__0_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="373,111,424,137"/>
+</map>

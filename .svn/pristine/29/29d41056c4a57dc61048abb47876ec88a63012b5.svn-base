@@ -1,0 +1,2 @@
+#add_executable(testbatal testbatal.c)
+#target_link_libraries(testbatal LINK_PUBLIC grille batals display)

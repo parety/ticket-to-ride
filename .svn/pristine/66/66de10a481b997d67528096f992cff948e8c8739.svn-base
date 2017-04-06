@@ -1,0 +1,35 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "../src/interface.h"
+#include "../src/server.h"
+
+
+int test_max_rail_length(){
+  struct Map_info map_info = get_map_info("tests_file.txt");
+
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"tests_file.txt");
+
+  int max = max_rail_length(rails, map_info.nb_links);
+
+  if (max == 6)
+    return 1;
+  else
+    return 0;
+}
+
+
+
+
+
+int main(){
+
+  printf("Test of max_rail_length ... ");
+  if (test_max_rail_length())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+
+  return 0;
+}

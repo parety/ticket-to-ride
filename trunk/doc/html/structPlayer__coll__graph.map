@@ -1,0 +1,4 @@
+<map id="Player" name="Player">
+<area shape="rect" id="node2" href="$structRail.html" title="The Rail struct. " alt="" coords="5,5,51,32"/>
+<area shape="rect" id="node3" href="$structObjective.html" title="The Objective struct. " alt="" coords="75,5,152,32"/>
+</map>

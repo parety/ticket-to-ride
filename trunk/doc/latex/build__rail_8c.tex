@@ -1,0 +1,83 @@
+\hypertarget{build__rail_8c}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/build\-\_\-rail.c File Reference}
+\label{build__rail_8c}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/build\-\_\-rail.\-c@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/build\-\_\-rail.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}server.\-h\char`\"{}}\\*
+Include dependency graph for build\-\_\-rail.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{build__rail_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{build__rail_8c_ada2781c3fc6ea007f3426d76fbcb8082}{build\-\_\-rail} (int player, int nb\-\_\-players, int rail, int $\ast$$\ast$card\-\_\-hands, int $\ast$nb\-\_\-cards, int $\ast$wagon\-\_\-cards\-\_\-modif, int $\ast$$\ast$cards, struct \hyperlink{structLink}{Link} $\ast$$\ast$map, struct \hyperlink{structRail}{Rail} $\ast$rails, int $\ast$wagons\-\_\-remaining, int $\ast$used\-\_\-wagons)
+\begin{DoxyCompactList}\small\item\em build\-\_\-rail Applies modification in the map and the player when a player builds a rail \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{build__rail_8c_ada2781c3fc6ea007f3426d76fbcb8082}{\index{build\-\_\-rail.\-c@{build\-\_\-rail.\-c}!build\-\_\-rail@{build\-\_\-rail}}
+\index{build\-\_\-rail@{build\-\_\-rail}!build_rail.c@{build\-\_\-rail.\-c}}
+\subsubsection[{build\-\_\-rail}]{\setlength{\rightskip}{0pt plus 5cm}void build\-\_\-rail (
+\begin{DoxyParamCaption}
+\item[{int}]{player, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{rail, }
+\item[{int $\ast$$\ast$}]{card\-\_\-hand, }
+\item[{int $\ast$}]{nb\-\_\-cards, }
+\item[{int $\ast$}]{wagon\-\_\-cards\-\_\-modif, }
+\item[{int $\ast$$\ast$}]{cards, }
+\item[{struct {\bf Link} $\ast$$\ast$}]{map, }
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int $\ast$}]{wagons\-\_\-remaining, }
+\item[{int $\ast$}]{used\-\_\-wagons}
+\end{DoxyParamCaption}
+)}}\label{build__rail_8c_ada2781c3fc6ea007f3426d76fbcb8082}
+
+
+build\-\_\-rail Applies modification in the map and the player when a player builds a rail 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & id of the player who is playing \\
+\hline
+{\em nb\-\_\-players} & total number of player in the game \\
+\hline
+{\em rail} & id of the rail that the player want to build \\
+\hline
+{\em card\-\_\-hand} & colors of cards of each player \\
+\hline
+{\em nb\-\_\-cards} & array of number of color cards of each player \\
+\hline
+{\em wagon\-\_\-cards\-\_\-modif} & array of number of more (+) or less (-\/) cards of each player \\
+\hline
+{\em cards} & array of colors of changed cards of each player \\
+\hline
+{\em map} & \\
+\hline
+{\em rails} & Array with all the rails \\
+\hline
+{\em nb\-\_\-rails} & \\
+\hline
+{\em wagons\-\_\-remaining} & array of number of wagons remaining for each player \\
+\hline
+{\em used\-\_\-wagons} & array of number of wagons used during this turn \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{build__rail_8c_ada2781c3fc6ea007f3426d76fbcb8082_icgraph}
+\end{center}
+\end{figure}
+
+

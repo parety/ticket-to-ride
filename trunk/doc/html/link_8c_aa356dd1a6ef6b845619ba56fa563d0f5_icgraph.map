@@ -1,0 +1,15 @@
+<map id="init_map" name="init_map">
+<area shape="rect" id="node2" href="$AI__0_8c.html#a4ed15e4ae5472f5bf9b586526318fcf3" title="AI_0_init_player Initialises all the parameters of a struct Player (composed of the general game para..." alt="" coords="153,5,268,32"/>
+<area shape="rect" id="node4" href="$AI__1_8c.html#a4b129a9daa97da56708afe7568021aa1" title="AI_0_init_player Initialises all the parameters of a struct Player (composed of the general game para..." alt="" coords="153,56,268,83"/>
+<area shape="rect" id="node5" href="$server_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="185,107,236,133"/>
+<area shape="rect" id="node6" href="$test__build__rail_8c.html#ab6d5816eb886fb6553eade85226e8831" title="test_build_rail" alt="" coords="159,157,262,184"/>
+<area shape="rect" id="node8" href="$test__link_8c.html#a549e2c56ccdcf6fad27aa3990e68a487" title="test_init_map" alt="" coords="161,208,261,235"/>
+<area shape="rect" id="node10" href="$test__play__turn_8c.html#a97637e1896aa0df5c0d532dd69273f8f" title="test_cheat" alt="" coords="169,259,252,285"/>
+<area shape="rect" id="node12" href="$test__winner_8c.html#ad67d2f367a1d7a0bb6a453b6eef7769d" title="test_points_rails_test_file" alt="" coords="125,309,296,336"/>
+<area shape="rect" id="node14" href="$test__winner_8c.html#a7dce7de86e6d667e52f06c33832a3068" title="test_points_rails_France" alt="" coords="129,360,293,387"/>
+<area shape="rect" id="node3" href="$server_8h.html#a091e5087dae440aa98617aa831fecd28" title="cheat " alt="" coords="345,31,399,57"/>
+<area shape="rect" id="node7" href="$test__build__rail_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="347,157,397,184"/>
+<area shape="rect" id="node9" href="$test__link_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="347,208,397,235"/>
+<area shape="rect" id="node11" href="$test__play__turn_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="347,259,397,285"/>
+<area shape="rect" id="node13" href="$test__winner_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="347,335,397,361"/>
+</map>

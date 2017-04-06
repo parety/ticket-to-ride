@@ -1,0 +1,2 @@
+/usr/bin/ar cr liblink.a  CMakeFiles/link.dir/link.c.o
+/usr/bin/ranlib liblink.a

@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include "link.h"
+#include "interface.h"
+
+
+/*
+int free_link(struct Link * link){
+    free(link);
+    return 0;
+}
+
+
+
+struct Link * init_link(int town1, int town2, int color, int length){
+
+    struct Link * link = malloc(sizeof(struct Link));
+}
+*/
+
+
+void set_player_on_rail(struct MyRail * rail, int id){
+    rail->id = id;
+}
+
+
+int is_rail_free(struct MyRail * rail){
+    return rail->id==0;
+}
+
+
+int who_on_rail(struct MyRail * rail){
+    return rail->id;
+}
+
+
+int rail_size(struct MyRail * rail){
+    return rail->length;
+}
+

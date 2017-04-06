@@ -1,0 +1,6 @@
+<map id="apply" name="apply">
+<area shape="rect" id="node2" href="$cards__gestion_8c.html#a29db272fe208ef85ffd21981b50dbe23" title="draw_color_card applies modif if the player draw color cards " alt="" coords="107,5,224,32"/>
+<area shape="rect" id="node3" href="$build__rail_8c.html#ada2781c3fc6ea007f3426d76fbcb8082" title="build_rail Applies modification in the map and the player when a player builds a rail ..." alt="" coords="129,56,202,83"/>
+<area shape="rect" id="node4" href="$cards__gestion_8c.html#a87da09cde6e4fc0c6d8d8280bd4863d9" title="draw_objectives Applies modification in the server and the player when a player draws objectives ..." alt="" coords="107,107,223,133"/>
+<area shape="rect" id="node5" href="$play__turn_8c.html#aa51d57181d4ae1b13ba31dd55181f6eb" title="are_objs_valid tests if the number of chosen objectives is between the minimum and the number of obje..." alt="" coords="273,107,378,133"/>
+</map>

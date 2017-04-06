@@ -1,0 +1,128 @@
+Projet rail:
+
+-serveur de jeu
+	 gérer un ensemble de client, l'état global du jeu
+	       transmet cet état à chaque client et répond au requête
+	 vérifie la bonne application des règles.
+
+-client (joueur)
+	différentes actions avec les cartes: piocher wagon/objectif, poser wagon
+	choix de stratégie
+
+**********************************************************************************
+
+Calcul du score:
+       n longueur du rail
+       	 score= 1 + ( n * (n-1) ) / 2
++ point bonus en fonction des objectifs
+**********************************************************************************
+
+serveur de jeu
+
+représentation graphe:
+
+	       structure graphe:
+	       		 matrice d'adjacente (tableau de structure liaison)
+			 nbr sommet
+		structure liaison:
+			  sommet depart, sommet fin, nbre_liaison, tab_chemin[nre_liaison](tableau structure chemin)
+		structure chemin:
+			champ occupant, couleur, longueur
+
+struct score:
+       tab_score[nbr_joueur]
+
+struct carte_wagon:
+       couleur
+
+struct carte_objectif:
+       ville a
+       ville b
+       bonus
+
+*********************************************************************************************************************************
+
+fonction necessaire entre serveur et client:
+	 poser_wagon (champ occupant)
+	 piocher carte_objectif
+	 piocher carte_wagon
+	 chemin possible?
+	 recup objectif (en fin de partie serveur demande objectif des joueurs)
+	 obtenir score
+
+fonction privée au serveur:
+ 	 changer score
+	 fin_partie
+	 calcul_score
+
+
+fonction privée au client:
+	 defausser carte_wagon
+	 choix chemin
+	       
+
+*********************************************************************************************************************************
+
+client
+
+struct joueur:
+       identifiant, points, nombre_wagons, liste objectifs, liste chemins occupés, stratégie 
+
+********************************************************************************************************************************
+
+
+Mise en commun avec le groupe:
+
+
+Informations (serveur -> client)
+	     nbr villes
+	     liaisons (id liaison, ville 1, ville 2, longueur, couleur, occupants)
+	     cartes en main (nbr, couleurs)
+	     id joueur
+	     nbr wagons restants
+	     objectifs (ville 1, ville 2, points)
+	     état pioche
+	     nbr joueurs
+
+Pour éviter de transmettre toutes ces informations à chaque fois, chaque client va avoir une variable statique contenant certaines informations (fixes)
+(nbr villes, tout ce qu'il y a dans "liaisons" sauf "occupants", id joueur, nbr joueurs)
+---> Le client a donc une mémoire
+
+
+Au lieu de transmettre l'état du jeu, le serveur peut aussi transmettre seulement ce qui a changé depuis le dernier appel
+
+
+
+Action (client -> serveur)
+       type (piocher carte, piocher objectif, construire liaison)
+       cas construire liaison -----> liaison (id, liste cartes, couleur)
+       cas piocher carte ----------> choix couleur
+       
+
+
+serveur = main 
+	{init ---------------------------------------graphe----------------> client (static mémoire)
+	while (!fin):
+	    play(diff depuis le dernier appel)-----------difference------------> client
+	                                      <----------action----------------- client
+            verif_pas_priche(action): si triche, passe tour
+	    modif
+	calcul_points
+	free}
+
+
+Pour se rapprocher du jeu réel: choix entre 3 objectifs
+Si action=obj ---> fonc_client() ---liste_obj---> static mémoire ---choix---> serveur
+
+*******************************************************************************************************************
+
+
+Pour les AI:
+     - dans chaque AI_truc, include AI_truc.h et player.h
+     - définir "struct Player AI_truc"
+     - la fonction "AI_truc_init_player" va initialiser AI_truc
+     - la definition de "struct Player" est dans "player.h" qui est inclue dans "server.h"
+     - chaque AI_truc.h est inclu dans "server.h"
+
+Reste à faire:
+      - écrire chaque AI_truc (3)

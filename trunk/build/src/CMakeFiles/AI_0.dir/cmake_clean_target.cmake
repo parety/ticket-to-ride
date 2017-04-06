@@ -1,0 +1,3 @@
+FILE(REMOVE_RECURSE
+  "libAI_0.a"
+)

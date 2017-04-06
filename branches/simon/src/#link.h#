@@ -1,0 +1,54 @@
+#ifndef LIAISON_H
+#define LIAISON_H
+
+/*!
+ * \brief The Way struct
+ */
+struct Way{
+  int id; // player identifier // 0 if no player
+  int color;
+  int length;
+};
+
+/*!
+ * \brief The Link struct
+ */
+struct Link{
+  int town1;
+  int town2;
+  int nbr_way;
+  struct Way tab_way[nbr_way];
+};
+
+/*!
+ * \brief way_size
+ * \param way
+ * \return
+ */
+int way_size(struct Way *way);
+/*!
+ * \brief set_player_on_way
+ * \param way
+ * \param id
+ */
+void set_player_on_way(struct Way *way, int id);
+/*!
+ * \brief is_way_free
+ * \param way
+ * \return
+ */
+int is_way_free(struct Way *way);
+/*!
+ * \brief who_on_way
+ * \param way
+ * \return
+ */
+int who_on_way(struct Way *way); 
+
+
+//struct Link *init_link(); 
+//int free_link(struct Link *link);
+
+
+
+#endif 

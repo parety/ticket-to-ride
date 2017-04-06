@@ -1,0 +1,352 @@
+\hypertarget{cards__gestion_8c}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/cards\-\_\-gestion.c File Reference}
+\label{cards__gestion_8c}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/cards\-\_\-gestion.\-c@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/cards\-\_\-gestion.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}server.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}link.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}concat.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+Include dependency graph for cards\-\_\-gestion.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cards__gestion_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{cards__gestion_8c_a6476a83be99f343b2baff69567b03280}{colors} (struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-rails, int $\ast$$\ast$col)
+\begin{DoxyCompactList}\small\item\em colors Complete the array with the colors used in the game and return the number of colors \end{DoxyCompactList}\item 
+void \hyperlink{cards__gestion_8c_a10839b86959ad4336606d439d85cf2ac}{init\-\_\-card\-\_\-hands} (int nb\-\_\-players, int nb\-\_\-starting\-\_\-cards, int $\ast$$\ast$card\-\_\-hands, int $\ast$\hyperlink{server_8h_a6476a83be99f343b2baff69567b03280}{colors}, int nb\-\_\-colors)
+\begin{DoxyCompactList}\small\item\em init\-\_\-card\-\_\-hands initialisation of the cards in possession of each player at the beginning of the game \end{DoxyCompactList}\item 
+void \hyperlink{cards__gestion_8c_abbbcd18606eb6dc90250f2d7814c17a8}{init\-\_\-obj\-\_\-hands} (int nb\-\_\-players, int nb\-\_\-starting\-\_\-objs, int $\ast$$\ast$obj\-\_\-hands, struct \hyperlink{structObjective}{Objective} $\ast$objectives, int nb\-\_\-objs, int $\ast$objectives\-\_\-condition)
+\begin{DoxyCompactList}\small\item\em init\-\_\-obj\-\_\-hands \end{DoxyCompactList}\item 
+void \hyperlink{cards__gestion_8c_a87f6a92801d41d1ea98ee373cb4932b8}{init\-\_\-nb\-\_\-objs} (int nb\-\_\-players, int nb\-\_\-starting\-\_\-objs, int $\ast$nb\-\_\-objs)
+\begin{DoxyCompactList}\small\item\em init\-\_\-nb\-\_\-objs \end{DoxyCompactList}\item 
+void \hyperlink{cards__gestion_8c_a29db272fe208ef85ffd21981b50dbe23}{draw\-\_\-color\-\_\-card} (int player, int nb\-\_\-players, int $\ast$$\ast$card\-\_\-hand, int $\ast$nb\-\_\-cards, int $\ast$wagon\-\_\-cards\-\_\-modif, int $\ast$$\ast$cards, int nb\-\_\-colors, int $\ast$\hyperlink{server_8h_a6476a83be99f343b2baff69567b03280}{colors}, int colored\-\_\-game)
+\begin{DoxyCompactList}\small\item\em draw\-\_\-color\-\_\-card applies modif if the player draw color cards \end{DoxyCompactList}\item 
+void \hyperlink{cards__gestion_8c_a87da09cde6e4fc0c6d8d8280bd4863d9}{draw\-\_\-objectives} (int player, int nb\-\_\-players, int $\ast$$\ast$obj\-\_\-hands, int nb\-\_\-objs\-\_\-total, int $\ast$objs\-\_\-cond, int $\ast$$\ast$new\-\_\-objs, int nb\-\_\-objs\-\_\-drawn\-\_\-max, int min\-\_\-objs\-\_\-to\-\_\-pick, struct \hyperlink{structf__player}{f\-\_\-player} $\ast$player\-\_\-fonctions, int $\ast$nb\-\_\-objs, int $\ast$nb\-\_\-new\-\_\-objs)
+\begin{DoxyCompactList}\small\item\em draw\-\_\-objectives Applies modification in the server and the player when a player draws objectives \end{DoxyCompactList}\item 
+void \hyperlink{cards__gestion_8c_a720d4a54fde8ac30d82ea055669dfc6c}{init\-\_\-first\-\_\-chosen\-\_\-objs} (int $\ast$T\-\_\-chosen\-\_\-objs, int nb\-\_\-objs\-\_\-given, int $\ast$all\-\_\-objective\-\_\-conditions, int all\-\_\-objs\-\_\-conditions\-\_\-size, int $\ast$obj\-\_\-player\-\_\-hand, int $\ast$nb\-\_\-objs, int $\ast$objectives, int $\ast$new\-\_\-obj, int player)
+\begin{DoxyCompactList}\small\item\em init\-\_\-first\-\_\-chosen\-\_\-objs modifies the initial hand of objectives of a player, the informations about objectives in function of his choice \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{cards__gestion_8c_a6476a83be99f343b2baff69567b03280}{\index{cards\-\_\-gestion.\-c@{cards\-\_\-gestion.\-c}!colors@{colors}}
+\index{colors@{colors}!cards_gestion.c@{cards\-\_\-gestion.\-c}}
+\subsubsection[{colors}]{\setlength{\rightskip}{0pt plus 5cm}int colors (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-rails, }
+\item[{int $\ast$$\ast$}]{col}
+\end{DoxyParamCaption}
+)}}\label{cards__gestion_8c_a6476a83be99f343b2baff69567b03280}
+
+
+colors Complete the array with the colors used in the game and return the number of colors 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rails} & Array with all the rails, where there are the colors \\
+\hline
+{\em nb\-\_\-rails} & The number of rails, length of rails \\
+\hline
+{\em col} & Array to be completed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of colors in the game = length of colors 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{cards__gestion_8c_a6476a83be99f343b2baff69567b03280_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cards__gestion_8c_a29db272fe208ef85ffd21981b50dbe23}{\index{cards\-\_\-gestion.\-c@{cards\-\_\-gestion.\-c}!draw\-\_\-color\-\_\-card@{draw\-\_\-color\-\_\-card}}
+\index{draw\-\_\-color\-\_\-card@{draw\-\_\-color\-\_\-card}!cards_gestion.c@{cards\-\_\-gestion.\-c}}
+\subsubsection[{draw\-\_\-color\-\_\-card}]{\setlength{\rightskip}{0pt plus 5cm}void draw\-\_\-color\-\_\-card (
+\begin{DoxyParamCaption}
+\item[{int}]{player, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int $\ast$$\ast$}]{card\-\_\-hand, }
+\item[{int $\ast$}]{nb\-\_\-cards, }
+\item[{int $\ast$}]{wagon\-\_\-cards\-\_\-modif, }
+\item[{int $\ast$$\ast$}]{cards, }
+\item[{int}]{nb\-\_\-colors, }
+\item[{int $\ast$}]{col, }
+\item[{int}]{colored\-\_\-game}
+\end{DoxyParamCaption}
+)}}\label{cards__gestion_8c_a29db272fe208ef85ffd21981b50dbe23}
+
+
+draw\-\_\-color\-\_\-card applies modif if the player draw color cards 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & player who is playing \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em card\-\_\-hand} & colors of cards of each player \\
+\hline
+{\em nb\-\_\-cards} & array of number of color cards of each player \\
+\hline
+{\em wagon\-\_\-cards\-\_\-modif} & array of number of more (+) or less (-\/) cards of each player \\
+\hline
+{\em cards} & array of colors of changed cards of each player \\
+\hline
+{\em nb\-\_\-colors} & nb of different colors in the game \\
+\hline
+{\em col} & array of all the colors in the game \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cards__gestion_8c_a29db272fe208ef85ffd21981b50dbe23_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cards__gestion_8c_a87da09cde6e4fc0c6d8d8280bd4863d9}{\index{cards\-\_\-gestion.\-c@{cards\-\_\-gestion.\-c}!draw\-\_\-objectives@{draw\-\_\-objectives}}
+\index{draw\-\_\-objectives@{draw\-\_\-objectives}!cards_gestion.c@{cards\-\_\-gestion.\-c}}
+\subsubsection[{draw\-\_\-objectives}]{\setlength{\rightskip}{0pt plus 5cm}void draw\-\_\-objectives (
+\begin{DoxyParamCaption}
+\item[{int}]{player, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int $\ast$$\ast$}]{obj\-\_\-hands, }
+\item[{int}]{nb\-\_\-objs\-\_\-total, }
+\item[{int $\ast$}]{objs\-\_\-cond, }
+\item[{int $\ast$$\ast$}]{new\-\_\-objs, }
+\item[{int}]{nb\-\_\-objs\-\_\-drawn\-\_\-max, }
+\item[{int}]{min\-\_\-objs\-\_\-to\-\_\-pick, }
+\item[{struct {\bf f\-\_\-player} $\ast$}]{player\-\_\-fonctions, }
+\item[{int $\ast$}]{nb\-\_\-objs, }
+\item[{int $\ast$}]{nb\-\_\-new\-\_\-objs}
+\end{DoxyParamCaption}
+)}}\label{cards__gestion_8c_a87da09cde6e4fc0c6d8d8280bd4863d9}
+
+
+draw\-\_\-objectives Applies modification in the server and the player when a player draws objectives 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & id of the player who is playing \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em obj\-\_\-hands} & matrix whith all objs of each player \\
+\hline
+{\em nb\-\_\-objs\-\_\-total} & number of total objectives in the game \\
+\hline
+{\em objs\-\_\-cond} & array of boleans 1=player draws this onjective, 0=he doesn't \\
+\hline
+{\em new\-\_\-objs} & array of new objs for each player \\
+\hline
+{\em nb\-\_\-objs\-\_\-drawn\-\_\-max} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{cards__gestion_8c_a87da09cde6e4fc0c6d8d8280bd4863d9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{cards__gestion_8c_a87da09cde6e4fc0c6d8d8280bd4863d9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cards__gestion_8c_a10839b86959ad4336606d439d85cf2ac}{\index{cards\-\_\-gestion.\-c@{cards\-\_\-gestion.\-c}!init\-\_\-card\-\_\-hands@{init\-\_\-card\-\_\-hands}}
+\index{init\-\_\-card\-\_\-hands@{init\-\_\-card\-\_\-hands}!cards_gestion.c@{cards\-\_\-gestion.\-c}}
+\subsubsection[{init\-\_\-card\-\_\-hands}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-card\-\_\-hands (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-starting\-\_\-objs, }
+\item[{int $\ast$$\ast$}]{card\-\_\-hands, }
+\item[{int $\ast$}]{colors, }
+\item[{int}]{nb\-\_\-colors}
+\end{DoxyParamCaption}
+)}}\label{cards__gestion_8c_a10839b86959ad4336606d439d85cf2ac}
+
+
+init\-\_\-card\-\_\-hands initialisation of the cards in possession of each player at the beginning of the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em card\-\_\-hands} & array to be completed \\
+\hline
+{\em colors} & array of all colors \\
+\hline
+{\em nb\-\_\-colors} & nomber of colors = length of color \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cards__gestion_8c_a10839b86959ad4336606d439d85cf2ac_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cards__gestion_8c_a720d4a54fde8ac30d82ea055669dfc6c}{\index{cards\-\_\-gestion.\-c@{cards\-\_\-gestion.\-c}!init\-\_\-first\-\_\-chosen\-\_\-objs@{init\-\_\-first\-\_\-chosen\-\_\-objs}}
+\index{init\-\_\-first\-\_\-chosen\-\_\-objs@{init\-\_\-first\-\_\-chosen\-\_\-objs}!cards_gestion.c@{cards\-\_\-gestion.\-c}}
+\subsubsection[{init\-\_\-first\-\_\-chosen\-\_\-objs}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-first\-\_\-chosen\-\_\-objs (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{T\-\_\-chosen\-\_\-objs, }
+\item[{int}]{nb\-\_\-objs\-\_\-given, }
+\item[{int $\ast$}]{all\-\_\-objective\-\_\-conditions, }
+\item[{int}]{all\-\_\-objs\-\_\-conditions\-\_\-size, }
+\item[{int $\ast$}]{obj\-\_\-player\-\_\-hand, }
+\item[{int $\ast$}]{nb\-\_\-objs, }
+\item[{int $\ast$}]{objectives, }
+\item[{int $\ast$}]{new\-\_\-obj, }
+\item[{int}]{player}
+\end{DoxyParamCaption}
+)}}\label{cards__gestion_8c_a720d4a54fde8ac30d82ea055669dfc6c}
+
+
+init\-\_\-first\-\_\-chosen\-\_\-objs modifies the initial hand of objectives of a player, the informations about objectives in function of his choice 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\-\_\-chosen\-\_\-objs} & array of boolean representing the choice of the player for each objective (picked or not) \\
+\hline
+{\em nb\-\_\-objs\-\_\-given} & the number of objectives initially given to the player \\
+\hline
+{\em all\-\_\-objective\-\_\-conditions} & array of the objective conditions (1 \-: drawn and 0 \-: not) \\
+\hline
+{\em all\-\_\-objs\-\_\-size} & size of the array all\-\_\-objective\-\_\-conditions \\
+\hline
+{\em obj\-\_\-player\-\_\-hand} & array of the index of the objectives the player has \\
+\hline
+{\em nb\-\_\-\-\_\-player\-\_\-objs} & array the number of objectives of each player \\
+\hline
+{\em objectives} & array of the number of objectives drawn last turn by each player \\
+\hline
+{\em new\-\_\-obj} & array of the index of the objectives drawn last turn by the player \\
+\hline
+{\em player} & the number of the player \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cards__gestion_8c_a720d4a54fde8ac30d82ea055669dfc6c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cards__gestion_8c_a87f6a92801d41d1ea98ee373cb4932b8}{\index{cards\-\_\-gestion.\-c@{cards\-\_\-gestion.\-c}!init\-\_\-nb\-\_\-objs@{init\-\_\-nb\-\_\-objs}}
+\index{init\-\_\-nb\-\_\-objs@{init\-\_\-nb\-\_\-objs}!cards_gestion.c@{cards\-\_\-gestion.\-c}}
+\subsubsection[{init\-\_\-nb\-\_\-objs}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-nb\-\_\-objs (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-starting\-\_\-objs, }
+\item[{int $\ast$}]{nb\-\_\-objs}
+\end{DoxyParamCaption}
+)}}\label{cards__gestion_8c_a87f6a92801d41d1ea98ee373cb4932b8}
+
+
+init\-\_\-nb\-\_\-objs 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\-\_\-players} & \\
+\hline
+{\em nb\-\_\-starting\-\_\-objs} & \\
+\hline
+{\em nb\-\_\-objs} & array with nb\-\_\-players cases which correspond to the nb of objs of each player \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{cards__gestion_8c_a87f6a92801d41d1ea98ee373cb4932b8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cards__gestion_8c_abbbcd18606eb6dc90250f2d7814c17a8}{\index{cards\-\_\-gestion.\-c@{cards\-\_\-gestion.\-c}!init\-\_\-obj\-\_\-hands@{init\-\_\-obj\-\_\-hands}}
+\index{init\-\_\-obj\-\_\-hands@{init\-\_\-obj\-\_\-hands}!cards_gestion.c@{cards\-\_\-gestion.\-c}}
+\subsubsection[{init\-\_\-obj\-\_\-hands}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-obj\-\_\-hands (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-starting\-\_\-objs, }
+\item[{int $\ast$$\ast$}]{obj\-\_\-hands, }
+\item[{struct {\bf Objective} $\ast$}]{all\-\_\-objectives, }
+\item[{int}]{nb\-\_\-objs, }
+\item[{int $\ast$}]{all\-\_\-objective\-\_\-conditions}
+\end{DoxyParamCaption}
+)}}\label{cards__gestion_8c_abbbcd18606eb6dc90250f2d7814c17a8}
+
+
+init\-\_\-obj\-\_\-hands 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\-\_\-players} & number of players toatal in the game \\
+\hline
+{\em nb\-\_\-starting\-\_\-objs} & number of objectives in the hand of each player in the beginning of the game \\
+\hline
+{\em obj\-\_\-hands} & array to be completed, each case is an array for each player of size nb\-\_\-starting objs, the int is the index in the array objectives \\
+\hline
+{\em all\-\_\-objectives} & array of all the objectives of the game \\
+\hline
+{\em nb\-\_\-objs} & number total of objectives in the game \\
+\hline
+{\em all\-\_\-objectives\-\_\-conditions} & array of booleans \-: 0 = free 1 = already drawn \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{cards__gestion_8c_abbbcd18606eb6dc90250f2d7814c17a8_icgraph}
+\end{center}
+\end{figure}
+
+

@@ -1,0 +1,103 @@
+#ifndef LIAISON_H
+#define LIAISON_H
+#include "interface.h"
+
+
+
+
+/*!
+ * \brief The My_Rail struct
+ */
+struct My_Rail{
+  struct Rail const * rail;
+  int id_player; // -1 if no player 
+  int id_rail; 
+};
+
+/*!
+ * \brief The Link struct
+ */
+struct Link{
+  int nbr_way;
+  struct My_Rail *tab_rails;
+};
+
+
+
+
+
+/*!
+ * \brief give_my_rail
+ * \param id_rail
+ * \param matrix
+ * \param tab_rails
+ * \return
+ */
+struct My_Rail *give_my_rail(int id_rail, struct Link **matrix, struct Rail *tab_rails);
+
+/*!
+ * \brief rail_size
+ * \param rail
+ * \return
+ */
+int rail_size(struct My_Rail *rail);
+
+/*!
+ * \brief set_player_on_rail
+ * \param rail
+ * \param id
+ */
+void set_player_on_rail(struct My_Rail *rail, int id);
+
+/*!
+ * \brief is_rail_free
+ * \param rail
+ * \return
+ */
+int is_rail_free(struct My_Rail *rail);
+
+/*!
+ * \brief who_on_rail
+ * \param rail
+ * \return
+ */
+int who_on_rail(struct My_Rail *rail); 
+
+/*!
+ * \brief init_link
+ * \return
+ */
+struct Link *init_link();
+
+/*!
+ * \brief modify_link
+ * \param link
+ * \param rail
+ */
+void modify_link(struct Link *link, struct Rail *rail, int); 
+
+/*!
+ * \brief free_link
+ * \param link
+ */
+void free_link(struct Link *link);
+
+/*!
+ * \brief init_map
+ * \param nbr_towns
+ * \param tab_rails
+ * \param size_tab_rails
+ * \return
+ */
+struct Link **init_map(int nbr_towns, struct Rail *tab_rails, int size_tab_rails);
+
+/*!
+ * \brief free_map
+ * \param matrix
+ * \param nbr_towns
+ */
+void free_map(struct Link ** matrix, int nbr_towns);
+
+
+
+#endif 

@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/link.c
+stdlib.h
+-
+stdio.h
+-
+link.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/link.h
+interface.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/link.h
+interface.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+

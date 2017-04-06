@@ -1,0 +1,6 @@
+<map id="test_init_card_hands" name="test_init_card_hands">
+<area shape="rect" id="node2" href="$init_8c.html#a58328afc943f169a939734e4f698718e" title="get_map_info " alt="" coords="205,5,305,32"/>
+<area shape="rect" id="node3" href="$init_8c.html#a9bddd065021bc892861112c69dc641df" title="file2rails " alt="" coords="219,56,290,83"/>
+<area shape="rect" id="node4" href="$cards__gestion_8c.html#a6476a83be99f343b2baff69567b03280" title="colors Complete the array with the colors used in the game and return the number of colors ..." alt="" coords="226,107,283,133"/>
+<area shape="rect" id="node5" href="$cards__gestion_8c.html#a10839b86959ad4336606d439d85cf2ac" title="init_card_hands initialisation of the cards in possession of each player at the beginning of the game..." alt="" coords="198,157,311,184"/>
+</map>

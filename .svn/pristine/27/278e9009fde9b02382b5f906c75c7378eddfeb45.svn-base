@@ -1,0 +1,63 @@
+Projet rail:
+
+-serveur de jeu
+	 gérer un ensemble de client, l'état global du jeu
+	       transmet cet état à chaque client et répond au requête
+	 vérifie la bonne application des règles.
+
+-client (joueur)
+	différentes actions avec les cartes: piocher wagon/objectif, poser wagon
+	choix de stratégie
+
+**********************************************************************************
+
+Calcul du score:
+       n longueur du rail
+       	 score= 1 + ( n * (n-1) ) / 2
++ point bonus en fonction des objectifs
+**********************************************************************************
+
+serveur de jeu
+
+représentation graphe:
+
+	       structure graphe:
+	       		 matrice d'adjacente (tableau de structure liaison)
+			 nbr sommet
+		structure liaison:
+			  sommet depart, sommet fin, nbre_liaison, tab_chemin[nre_liaison](tableau se structure chemin)
+		structure chemin:
+			champ occupant, couleur, longueur
+
+struct score:
+       tab_score[nbr_joueur]
+
+struct carte_wagon:
+       couleur
+
+struct carte_objectif:
+       ville a
+       ville b
+       bonus
+
+*********************************************************************************************************************************
+
+fonction necessaire entre serveur et client:
+	 poser_wagon (champ occupant)
+	 piocher carte_objectif
+	 piocher carte_wagon
+	 chemin possible?
+	 recup objectif (en fin de partie serveur demande objectif des joueurs)
+	 obtenir score
+
+fonction privée au serveur:
+ 	 changer score
+	 fin_partie
+	 calcul_score
+
+
+fonction privée au client:
+	 defausser carte_wagon
+	 choix chemin
+	       
+

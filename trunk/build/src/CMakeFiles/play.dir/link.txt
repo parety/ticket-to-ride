@@ -1,0 +1,2 @@
+/usr/bin/ar cr libplay.a  CMakeFiles/play.dir/play_turn.c.o CMakeFiles/play.dir/build_rail.c.o
+/usr/bin/ranlib libplay.a

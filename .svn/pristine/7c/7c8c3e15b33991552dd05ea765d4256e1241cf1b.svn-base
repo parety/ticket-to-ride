@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "interface.h"
+#include "server.h"
+#include "link.h"
+
+
+
+int is_last_turn(int * wagons_remaining, int nb_players){
+  for (int i = 0; i <nb_players; i++){
+    if (wagon_remaining[i] <=2)
+      return 1;
+  }
+  return 0;
+}

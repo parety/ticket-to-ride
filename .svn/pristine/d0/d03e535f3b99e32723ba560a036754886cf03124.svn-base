@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "interface.h"
+#include "server.h"
+#include "link.h"
+
+int main(int argc,char * argv[]){
+  if (argc != 2){
+    printf("error : expected 1 argument, given %d\n",argc-1);
+    return EXIT_FAILURE;
+  }
+  //initialisation of genearl informations
+  struct Map_info map_info = get_map_info(argv[1]);
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  file2rails(rails, map_info.nb_rails, objectives, map_info.nb_objs, argv[1]);
+
+  //initialisation of server informations
+  map = init_map(map_info.nb_towns, rails, map_info.nb_links); //matrix of link structures
+  
+  
+  
+  //initialisation of player informations
+
+  
+  //game start
+
+
+
+  //game end
+  //the winner is ...
+
+  //free the memory
+  
+  
+  return EXIT_SUCCESS;
+}

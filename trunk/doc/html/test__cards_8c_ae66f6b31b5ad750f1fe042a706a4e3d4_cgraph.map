@@ -1,0 +1,12 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$test__cards_8c.html#af63d1c298ba97e59d5a3826f710ac592" title="test_colors" alt="" coords="150,56,237,83"/>
+<area shape="rect" id="node6" href="$test__cards_8c.html#a7a937aa0d3109e4325c24be7b5189b36" title="test_init_card_hands" alt="" coords="122,107,265,133"/>
+<area shape="rect" id="node8" href="$test__cards_8c.html#a1ade96a97dfadc4d7d0bc9a521230cea" title="test_draw_color_card" alt="" coords="120,157,267,184"/>
+<area shape="rect" id="node10" href="$test__cards_8c.html#aef83894dc76da368d757f4bcf36120e9" title="test_init_first_chosen_objs" alt="" coords="105,233,282,260"/>
+<area shape="rect" id="node3" href="$init_8c.html#a58328afc943f169a939734e4f698718e" title="get_map_info " alt="" coords="355,5,455,32"/>
+<area shape="rect" id="node4" href="$init_8c.html#a9bddd065021bc892861112c69dc641df" title="file2rails " alt="" coords="370,56,441,83"/>
+<area shape="rect" id="node5" href="$cards__gestion_8c.html#a6476a83be99f343b2baff69567b03280" title="colors Complete the array with the colors used in the game and return the number of colors ..." alt="" coords="377,107,434,133"/>
+<area shape="rect" id="node7" href="$cards__gestion_8c.html#a10839b86959ad4336606d439d85cf2ac" title="init_card_hands initialisation of the cards in possession of each player at the beginning of the game..." alt="" coords="349,157,462,184"/>
+<area shape="rect" id="node9" href="$cards__gestion_8c.html#a29db272fe208ef85ffd21981b50dbe23" title="draw_color_card applies modif if the player draw color cards " alt="" coords="347,208,464,235"/>
+<area shape="rect" id="node11" href="$cards__gestion_8c.html#a720d4a54fde8ac30d82ea055669dfc6c" title="init_first_chosen_objs modifies the initial hand of objectives of a player, the informations about ob..." alt="" coords="331,259,479,285"/>
+</map>

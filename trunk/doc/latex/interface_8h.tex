@@ -1,0 +1,152 @@
+\hypertarget{interface_8h}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/interface.h File Reference}
+\label{interface_8h}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/interface.\-h@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/interface.\-h}}
+}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interface_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structRail}{Rail}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{structRail}{Rail} struct. \end{DoxyCompactList}\item 
+struct \hyperlink{structObjective}{Objective}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{structObjective}{Objective} struct. \end{DoxyCompactList}\item 
+struct \hyperlink{structNew__rail}{New\-\_\-rail}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{structNew__rail}{New\-\_\-rail} struct. \end{DoxyCompactList}\item 
+struct \hyperlink{structAction}{Action}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{structAction}{Action} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{interface_8h_ac56b2b299ec0026d58e59d4a8c3807ba}{init\-\_\-player} (int id, int nb\-\_\-player, int nb\-\_\-towns, int nb\-\_\-rails, struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-wagons, int nb\-\_\-obj, struct \hyperlink{structObjective}{Objective} $\ast$objs)
+\begin{DoxyCompactList}\small\item\em init\-\_\-player Communication functions (between the server and the clients) \end{DoxyCompactList}\item 
+struct \hyperlink{structAction}{Action} \hyperlink{interface_8h_ac37ce8ffe10134c6721ce92826b7997d}{play\-\_\-turn} (int $\ast$used\-\_\-wagons, int $\ast$cards\-\_\-in\-\_\-hand, int $\ast$objectives, int nb\-\_\-new\-\_\-rails, struct \hyperlink{structNew__rail}{New\-\_\-rail} $\ast$changes, int $\ast$new\-\_\-obj, int $\ast$cards)
+\begin{DoxyCompactList}\small\item\em play\-\_\-turn \end{DoxyCompactList}\item 
+int $\ast$ \hyperlink{interface_8h_aea85dd39bf4641aa9d55cc143dadd4e8}{choose\-\_\-objective} (int nb, int $\ast$objs, int min)
+\begin{DoxyCompactList}\small\item\em choose\-\_\-objective \end{DoxyCompactList}\item 
+int \hyperlink{interface_8h_a044fc4ef29d5cf46be230bc6502577a1}{free\-\_\-player} ()
+\begin{DoxyCompactList}\small\item\em free\-\_\-player \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{interface_8h_aea85dd39bf4641aa9d55cc143dadd4e8}{\index{interface.\-h@{interface.\-h}!choose\-\_\-objective@{choose\-\_\-objective}}
+\index{choose\-\_\-objective@{choose\-\_\-objective}!interface.h@{interface.\-h}}
+\subsubsection[{choose\-\_\-objective}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ choose\-\_\-objective (
+\begin{DoxyParamCaption}
+\item[{int}]{nb, }
+\item[{int $\ast$}]{objs, }
+\item[{int}]{min}
+\end{DoxyParamCaption}
+)}}\label{interface_8h_aea85dd39bf4641aa9d55cc143dadd4e8}
+
+
+choose\-\_\-objective 
+
+min=minimum number of objectives that a player has to keep at the beginning; nb=number of objectives proposed; objs=tabular of \char`\"{}nb\char`\"{} objectives if the player doesn't choose at least \char`\"{}min\char`\"{} objectives, the server gives him all the objectives of the tabular \char`\"{}objs\char`\"{} 
+\begin{DoxyParams}{Parameters}
+{\em nb} & \\
+\hline
+{\em objs} & \\
+\hline
+{\em min} & Returns a boolean tab of size nb (to say which objectives are chosen in the tabular \char`\"{}objs\char`\"{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_8h_a044fc4ef29d5cf46be230bc6502577a1}{\index{interface.\-h@{interface.\-h}!free\-\_\-player@{free\-\_\-player}}
+\index{free\-\_\-player@{free\-\_\-player}!interface.h@{interface.\-h}}
+\subsubsection[{free\-\_\-player}]{\setlength{\rightskip}{0pt plus 5cm}int free\-\_\-player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{interface_8h_a044fc4ef29d5cf46be230bc6502577a1}
+
+
+free\-\_\-player 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_8h_ac56b2b299ec0026d58e59d4a8c3807ba}{\index{interface.\-h@{interface.\-h}!init\-\_\-player@{init\-\_\-player}}
+\index{init\-\_\-player@{init\-\_\-player}!interface.h@{interface.\-h}}
+\subsubsection[{init\-\_\-player}]{\setlength{\rightskip}{0pt plus 5cm}int init\-\_\-player (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{int}]{nb\-\_\-player, }
+\item[{int}]{nb\-\_\-towns, }
+\item[{int}]{nb\-\_\-rails, }
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-wagons, }
+\item[{int}]{nb\-\_\-obj, }
+\item[{struct {\bf Objective} $\ast$}]{objs}
+\end{DoxyParamCaption}
+)}}\label{interface_8h_ac56b2b299ec0026d58e59d4a8c3807ba}
+
+
+init\-\_\-player Communication functions (between the server and the clients) 
+
+objs=tabular of all the objectives existing indices of each element in the tabular \char`\"{}objs\char`\"{} are the identifiers of each objective rails=tabular of all the rails existing indices of each element in the tabuler \char`\"{}rails\char`\"{} are the identifiers of each rail 
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em nb\-\_\-player} & \\
+\hline
+{\em nb\-\_\-towns} & \\
+\hline
+{\em nb\-\_\-rails} & \\
+\hline
+{\em rails} & \\
+\hline
+{\em nb\-\_\-wagons} & \\
+\hline
+{\em nb\-\_\-obj} & \\
+\hline
+{\em objs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{interface_8h_ac37ce8ffe10134c6721ce92826b7997d}{\index{interface.\-h@{interface.\-h}!play\-\_\-turn@{play\-\_\-turn}}
+\index{play\-\_\-turn@{play\-\_\-turn}!interface.h@{interface.\-h}}
+\subsubsection[{play\-\_\-turn}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Action} play\-\_\-turn (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{used\-\_\-wagons, }
+\item[{int $\ast$}]{cards\-\_\-in\-\_\-hand, }
+\item[{int $\ast$}]{objectives, }
+\item[{int}]{nb\-\_\-new\-\_\-rails, }
+\item[{struct {\bf New\-\_\-rail} $\ast$}]{changes, }
+\item[{int $\ast$}]{new\-\_\-obj, }
+\item[{int $\ast$}]{cards}
+\end{DoxyParamCaption}
+)}}\label{interface_8h_ac37ce8ffe10134c6721ce92826b7997d}
+
+
+play\-\_\-turn 
+
+used\-\_\-wagons$>$=0 ; cards\-\_\-in\-\_\-hand$>$=0 if D\-R\-A\-W, $<$=0 if B\-U\-I\-L\-D ; objectives$>$=0 ; cards pointing to the array of colors 
+\begin{DoxyParams}{Parameters}
+{\em used\-\_\-wagons} & \\
+\hline
+{\em cards\-\_\-in\-\_\-hand} & \\
+\hline
+{\em objectives} & \\
+\hline
+{\em nb\-\_\-new\-\_\-rails} & \\
+\hline
+{\em changes} & \\
+\hline
+{\em new\-\_\-obj} & \\
+\hline
+{\em cards} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}

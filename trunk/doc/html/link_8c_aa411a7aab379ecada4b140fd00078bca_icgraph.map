@@ -1,0 +1,7 @@
+<map id="is_rail_free" name="is_rail_free">
+<area shape="rect" id="node2" href="$AI__1_8c.html#a570906173de0ecea152cada5a76f8a44" title="fill_tab_rail_free_in_ACM " alt="" coords="139,5,253,46"/>
+<area shape="rect" id="node4" href="$AI__1_8c.html#a8f776e760f32f938ce3203363f807f35" title="AI_0_play_turn Calls the player, actualises all the changes that occured since the last time the play..." alt="" coords="472,44,581,71"/>
+<area shape="rect" id="node5" href="$test__link_8c.html#a0b4f0b1cea48b0ff74e58990cc4d6509" title="test_rail_free" alt="" coords="147,121,245,148"/>
+<area shape="rect" id="node3" href="$AI__1_8c.html#ab12b4fcf8835504e67cc690b905a6e3c" title="rail_free_in_ACM " alt="" coords="301,16,424,43"/>
+<area shape="rect" id="node6" href="$test__link_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="337,121,388,148"/>
+</map>

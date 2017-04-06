@@ -1,0 +1,8 @@
+add_library (link link.c)
+add_library (interface interface.c)
+
+
+
+
+target_include_directories (link PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (interface PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

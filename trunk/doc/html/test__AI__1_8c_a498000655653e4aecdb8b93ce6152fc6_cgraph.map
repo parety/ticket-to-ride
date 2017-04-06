@@ -1,0 +1,23 @@
+<map id="test_game_actualisation_case_objective" name="test_game_actualisation_case_objective">
+<area shape="rect" id="node2" href="$test__AI__1_8c.html#a4b129a9daa97da56708afe7568021aa1" title="AI_0_init_player Initialises all the parameters of a struct Player (composed of the general game para..." alt="" coords="219,56,333,83"/>
+<area shape="rect" id="node7" href="$test__AI__1_8c.html#a8f776e760f32f938ce3203363f807f35" title="AI_0_play_turn Calls the player, actualises all the changes that occured since the last time the play..." alt="" coords="221,360,331,387"/>
+<area shape="rect" id="node22" href="$test__AI__1_8c.html#a064e38e8072edd14b0bef80985ddd412" title="AI_0_free_player Frees the struct Player of the player. " alt="" coords="216,411,336,437"/>
+<area shape="rect" id="node3" href="$cards__gestion_8c.html#a6476a83be99f343b2baff69567b03280" title="colors Complete the array with the colors used in the game and return the number of colors ..." alt="" coords="439,5,497,32"/>
+<area shape="rect" id="node4" href="$link_8c.html#aa356dd1a6ef6b845619ba56fa563d0f5" title="init_map Initialises the matrix of all the Link(s) composed of all the My_Rail(s) corresponding to al..." alt="" coords="433,56,503,83"/>
+<area shape="rect" id="node5" href="$link_8c.html#a425217f6f8098b1637ec3f27d905830c" title="init_link " alt="" coords="647,5,713,32"/>
+<area shape="rect" id="node6" href="$link_8c.html#aca0a177bc91fb070f332b263da3b0153" title="modify_link " alt="" coords="636,56,724,83"/>
+<area shape="rect" id="node8" href="$test__AI__1_8c.html#a44afa06d0ad3e478f1046db37fffb663" title="actualise_all_parameters_received Actualises all the changes that occured since the last time the pla..." alt="" coords="385,171,551,213"/>
+<area shape="rect" id="node9" href="$link_8c.html#a6ccd449d6f68b97d9b90fd006bdd6108" title="give_my_rail " alt="" coords="1019,288,1114,315"/>
+<area shape="rect" id="node13" href="$test__AI__1_8c.html#a1795878e593a98deac75d49b176d5591" title="give_size_accessible_rails " alt="" coords="816,310,963,351"/>
+<area shape="rect" id="node14" href="$test__AI__1_8c.html#ac8b1940d56dd92a1ec206747bd3846c6" title="accessible_rails " alt="" coords="832,376,947,403"/>
+<area shape="rect" id="node15" href="$test__AI__1_8c.html#ac3468cbfd5d55ca81b2d1f65c77263c3" title="sort_length " alt="" coords="425,411,511,437"/>
+<area shape="rect" id="node16" href="$test__AI__1_8c.html#a44c081878b0293e9b15eca36357a9731" title="acyclic " alt="" coords="437,461,499,488"/>
+<area shape="rect" id="node18" href="$test__AI__1_8c.html#ab12b4fcf8835504e67cc690b905a6e3c" title="rail_free_in_ACM " alt="" coords="407,512,529,539"/>
+<area shape="rect" id="node20" href="$link_8c.html#aa411a7aab379ecada4b140fd00078bca" title="is_rail_free " alt="" coords="847,563,932,589"/>
+<area shape="rect" id="node10" href="$link_8c.html#af9b110cbe33aa6495ae1315f48392a57" title="set_player_on_rail " alt="" coords="617,157,743,184"/>
+<area shape="rect" id="node11" href="$test__AI__1_8c.html#ad92748bc33ab88fa6ea22a4da3ac71fc" title="AI_1_objective_realised. " alt="" coords="600,208,760,235"/>
+<area shape="rect" id="node12" href="$test__AI__1_8c.html#a059af6cb848a8b0392218ef6d97a0a87" title="AI_1_fill_tab_accessible (auxiliary function of the function &quot;objective_realised&quot;) ..." alt="" coords="808,208,971,235"/>
+<area shape="rect" id="node17" href="$test__AI__1_8c.html#a72603999060857e266eeb57fe4651028" title="fill_tab_acyclic Is a recursive function which fills the tabular &quot;tab_to_fill&quot; (set the indice &quot;i&quot; at..." alt="" coords="626,449,734,476"/>
+<area shape="rect" id="node19" href="$test__AI__1_8c.html#a570906173de0ecea152cada5a76f8a44" title="fill_tab_rail_free_in_ACM " alt="" coords="623,501,737,542"/>
+<area shape="rect" id="node21" href="$link_8c.html#aad404b1a4dc11e07cd7361e27106fe7a" title="who_on_rail " alt="" coords="844,508,935,535"/>
+</map>

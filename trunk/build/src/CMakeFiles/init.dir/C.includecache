@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/init.c
+stdlib.h
+-
+stdio.h
+-
+interface.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+server.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/server.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/link.h
+interface.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/player.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/server.h
+interface.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+player.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/player.h
+link.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/link.h
+

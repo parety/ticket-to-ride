@@ -1,0 +1,13 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
+struct Player{
+  int id_player;
+  int points;
+  int nbr_wagons;
+  //struct List objs;
+  //struct List occupied_rails;
+};
+
+
+#endif

@@ -1,0 +1,26 @@
+
+// Strong AI
+
+#include "AI_3.h"
+#include "player.h"
+
+
+struct Player AI_3;
+
+
+
+int AI_3_init_player(int id, int nb_player, int nb_towns, int nb_rails, struct Rail *rails, int nb_wagons, int nb_obj, struct Objective *objs);
+//cette fonction modifie AI_3 (juste au dessus)
+
+
+
+struct Action AI_3_play_turn(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards);
+
+
+
+int *AI_3_choose_objective(int nb, int *objs, int min);
+
+
+
+int AI_3_free_player();
+

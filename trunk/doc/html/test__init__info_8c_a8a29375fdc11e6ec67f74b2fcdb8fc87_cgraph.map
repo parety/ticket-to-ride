@@ -1,0 +1,5 @@
+<map id="test_init_turn_informations" name="test_init_turn_informations">
+<area shape="rect" id="node2" href="$init__info_8c.html#ad7a67018b01e818a68662e3ecc7bce64" title="max_rail_length " alt="" coords="433,5,546,32"/>
+<area shape="rect" id="node3" href="$init__info_8c.html#a34cae5918fa3688a1d31ccd185922830" title="init_turn_informations initialisation of the different informations given to clients each turn ..." alt="" coords="233,31,380,57"/>
+<area shape="rect" id="node4" href="$test__init__info_8c.html#ab56f600a164a6686651f65c3092728f8" title="test_init_turn_info_free" alt="" coords="229,81,384,108"/>
+</map>

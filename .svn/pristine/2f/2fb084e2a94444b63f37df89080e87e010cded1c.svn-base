@@ -1,0 +1,235 @@
+#ifndef SERVER_H
+#define SERVER_H
+
+#include "interface.h"
+#include "player.h"
+#include "link.h"
+
+
+#define NB_PLAYERS 2
+#define NB_STARTING_CARDS 5
+
+
+struct f_player{
+  int (*init_player)(int id, int nb_player, int nb_towns, int nb_rails, struct Rail *rails, int nb_wagons, int nb_obj, struct Objective *objs);
+
+  struct Action (*play_turn)(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards);
+
+  int* (*choose_objective)(int nb, int *objs, int min);
+  int (*free_player)();
+}; // tab de struct f_player dans server.h
+
+
+
+enum Town_name;
+
+struct Map_info{
+  int nb_towns;
+  int nb_links;
+  int nb_objs;
+  int nb_w_player;
+
+};
+  
+struct Map_info get_map_info(char* file_name);
+void file2rails(struct Rail *rails,int nb_rails,struct Objective* objs ,int nb_objs, char *file_name);  
+
+/**
+ * @brief colors Complete the array with the colors used in the game and return the number of colors
+ * @param rails Array with all the rails, where there are the colors
+ * @param nb_rails The number of rails, length of rails
+ * @param col Array to be completed
+ * @return The number of colors in the game = length of colors
+ */
+int colors(struct Rail *rails, int nb_rails, int *col);
+
+/**
+ * @brief init_card_hands initialisation of the cards in possession of each player at the beginning of the game
+ * @param card_hands array to be completed
+ * @param colors array of all colors
+ * @param nb_colors nomber of colors = length of color
+ */
+void init_card_hands(int nb_players, int nb_starting_objs, int **card_hands, int *colors, int nb_colors);
+
+/**
+ * @brief init_all_objectives_conditions initialise the condition of all objectives to not drawn
+ * @param all_objectives_conditions array of the objective conditions ( 1 : drawn, 0 : not)
+ * @param nb_objs the number of objectives
+ */
+void init_all_objective_conditions(int *all_objective_conditions, int nb_objs);
+
+
+
+/**
+ * @brief max_rail_length
+ * @param rails Array with all the rails
+ * @param nb_rails The number of rails = length of rails
+ * @return The length of the longest rail of the map
+ */
+int max_rail_length(struct Rail *rails,  int nb_rails);
+
+/**
+ * @brief init_wagons initialisation of the number of wagons in possession of each player at the beginning of the game
+ * @param wagons_remaining array of the wagons remaining of each player
+ * @param nb_player the number of players
+ * @param nb_w_player the number of wagons given to each players at the beginning of the game
+ */
+void init_wagons(int * wagons_remaining, int nb_player,int nb_w_player);
+
+/**
+ * @brief init_turn_informations initialisation of the different informations given to clients each turn
+ * @param used_wagons array of the number of wagons used during the last turn
+ * @param cards_in_hands array of the variation of the number of wagon cards in each hands (>=0 if draw, <= if built)
+ * @param objectives array of the number of objective cards drawn during the last by each player
+ * @param changes array of the rails built during the last turn
+ * @param new_obj array of the index of the objectives drawn by each player during the last turn
+ * @param cards array of the color of cards modified by each player during the last turn
+ * @param nb_players the number of players
+ * @param nb_starting_cards the number of wagon cards given to players at the beginning of the game
+ * @param nb_obj_drawn_max the number of objectives given to players when they draw objectives
+ * @param max_rail_length the length of the longuest rail of the map
+ */
+void init_turn_informations(int * used_wagons, int * cards_in_hands, int * objectives, struct New_rail * changes, int * new_obj[], int * cards[], int nb_players,int nb_starting_cards, int nb_obj_drawn_max, int max_rail_length);
+
+
+
+/**
+ * @brief init_obj_hands
+ * @param nb_players number of players toatal in the game
+ * @param nb_starting_objs number of objectives in the hand of each player in the beginning of the game
+ * @param obj_hands array to be completed, each case is an array for each player of size nb_starting objs, the int is the index in the array objectives
+ * @param all_objectives array of all the objectives of the game
+ * @param nb_objs number total of objectives in the game
+ * @param all_objectives_conditions array of booleans : 0 = free 1 = already drawn
+*/
+void init_obj_hands(int nb_players, int nb_starting_objs, int  ** obj_hands, struct Objective *all_objectives,int nb_objs,int *all_objective_conditions);
+
+
+/**
+ * @brief init_nb_objs
+ * @param nb_players
+ * @param nb_starting_objs
+ * @param nb_objs array with nb_players cases which correspond to the nb of objs of each player
+ */
+void init_nb_objs(int nb_players, int nb_starting_objs, int *nb_objs);
+
+
+/**
+ * @brief game_end
+ * @param wagons_remaining array with nb_players cases which correspond to the nb of wagon of each player
+ * @param nb_players
+ * @return 0 if all players have more than 2 wagons and the show must go on ! else 1 this this the last turn
+ */
+int is_last_turn(int * wagons_remaining, int nb_players);
+
+
+/**
+ * @brief cheat
+ * @param action draw color cards = 0, build a rail = 1, draw objectives = 2
+ * @param nb_players
+ * @param player id of the player of is playing in this turn
+ * @param nb_objs_tot total number of objectives in the game
+ * @param nb_objs array of numbers of objective of each player, index = player
+ * @param rails array of all the rails of the game
+ * @param nb_rails
+ * @param wagons_remaining array with nb_players cases which correspond to the nb of wagon of each player
+ * @param card_hands array of arrays with all color cards for each player
+ * @param nb_cards array of number of color cards of each player
+ * @param map
+ * @param nb_town
+ * @return 1 = the player is cheating, 0 = no problem
+ */
+int cheat(struct Action action, int nb_players, int player, int nb_objs_tot, int *nb_objs, struct Rail *rails,
+          int nb_rails, int *wagons_remaining, int **card_hands, int *nb_cards, struct Link **map, int nb_town);
+
+
+
+/**
+ * @brief draw_color_card applies modif if the player draw color cards
+ * @param player player who is playing
+ * @param nb_players
+ * @param card_hand colors of cards of each player
+ * @param nb_cards array of number of color cards of each player
+ * @param wagon_cards_modif array of number of more (+) or less (-) cards of each player
+ * @param cards array of colors of changed cards of each player
+ * @param nb_colors nb of different colors in the game
+ * @param col array of all the colors in the game
+ */
+void draw_color_card(int player, int nb_players, int **card_hand, int *nb_cards,
+                     int *wagon_cards_modif, int **cards, int nb_colors, int *col);
+
+
+
+
+
+/**
+ * @brief build_rail Applies modification in the map and the player when a player builds a rail
+ * @param player id of the player who is playing
+ * @param nb_players total number of player in the game
+ * @param rail id of the rail that the player want to build
+ * @param card_hand colors of cards of each player
+ * @param nb_cards array of number of color cards of each player
+ * @param wagon_cards_modif array of number of more (+) or less (-) cards of each player
+ * @param cards array of colors of changed cards of each player
+ * @param map
+ * @param rails Array with all the rails
+ * @param nb_rails
+ * @param wagons_remaining array of number of wagons remaining for each player
+ * @param used_wagons array of number of wagons used during this turn
+ */
+void build_rail(int player, int nb_players, int rail,int **card_hand,
+		int *nb_cards, int *wagon_cards_modif, int **cards, 
+		struct Link **map, struct Rail *rails, int nb_rails,
+		int *wagons_remaining, int *used_wagons);
+
+/**
+ * @brief are_objs_valid tests if the number of chosen objectives is between the minimum and the number of objectives initially given
+ * @param T_chosen_objs array of boolean representing the choice of the player for each objective (picked or not)
+ * @param min_objs_to_pick minimum of objective the player has to pick
+ * @param nb_objs_given the number of objectives initially given to the player
+ * @return
+ */
+
+int are_objs_valid(int * T_chosen_objs, int min_objs_to_pick, int nb_objs_given);
+
+/**
+ * @brief init_first_chosen_objs modifies the initial hand of objectives of a player, the informations about objectives in function of his choice
+ * @param T_chosen_objs array of boolean representing the choice of the player for each objective (picked or not)
+ * @param nb_objs_given the number of objectives initially given to the player
+ * @param all_objective_conditions array of the objective conditions (1 : drawn and 0 : not)
+ * @param all_objs_size size of the array all_objective_conditions
+ * @param obj_player_hand array of the index of the objectives the player has
+ * @param nb__player_objs array the number of objectives of each player
+ * @param objectives array of the number of objectives drawn last turn by each player
+ * @param new_obj array of the index of the objectives drawn last turn by the player
+ * @param player the number of the player
+ */
+void init_first_chosen_objs(int * T_chosen_objs,  int nb_objs_given, int * all_objective_conditions, int all_objs_conditions_size, int * obj_player_hand, int * nb_objs, int * objectives, int *new_obj, int player);
+
+
+/**
+ * @brief draw_objectives Applies modification in the server and the player when a player draws objectives
+ * @param player id of the player who is playing
+ * @param nb_players
+ * @param obj_hands
+ * @param nb_objs_player
+ * @param objectives
+ * @param nb_objs_total
+ * @param objs_cond
+ * @param new_objs
+ * @param nb_objs_drawn_max
+ */
+void draw_objectives(int player, int nb_players, int **obj_hands,int nb_objs_player,
+             struct Objective *objectives, int nb_objs_total, int *objs_cond,
+		     int **new_objs, int nb_objs_drawn_max,int min_objs_to_pick);
+
+
+
+int winner(struct Link **map, int nb_towns, int nb_players,struct Objective * all_objectives, int **obj_hands, int *nb_objs,int player);
+
+void points_rails(struct Link **map, int nb_towns, int nb_players,int *points);
+
+void points_objs(struct Link **map, int nb_towns, int nb_players,struct Objective * all_objectives, int **obj_hands, int *nb_objs,int *points);
+
+
+#endif

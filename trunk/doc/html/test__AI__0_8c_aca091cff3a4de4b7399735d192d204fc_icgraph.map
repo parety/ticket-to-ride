@@ -1,0 +1,8 @@
+<map id="AI_0_objective_realised" name="AI_0_objective_realised">
+<area shape="rect" id="node2" href="$test__AI__0_8c.html#af51c2bc8672ee161b102e06843c3a045" title="AI_0_play_turn" alt="" coords="213,111,323,137"/>
+<area shape="rect" id="node3" href="$test__AI__0_8c.html#a498000655653e4aecdb8b93ce6152fc6" title="test_game_actualisation\l_case_objective" alt="" coords="371,5,533,46"/>
+<area shape="rect" id="node5" href="$test__AI__0_8c.html#ab07668eb63fa739f6e899c68e098dde1" title="test_game_actualisation\l_case_build" alt="" coords="371,70,533,111"/>
+<area shape="rect" id="node6" href="$test__AI__0_8c.html#aeb0e31ce728fa40bb0f774fe9f97620d" title="test_game_actualisation\l_case_draw" alt="" coords="371,135,533,177"/>
+<area shape="rect" id="node7" href="$test__AI__0_8c.html#a276fb482d84a86075c77931ed6692b9c" title="test_actualise_nb_objs\l_completed" alt="" coords="375,201,529,242"/>
+<area shape="rect" id="node4" href="$test__AI__0_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="581,111,632,137"/>
+</map>

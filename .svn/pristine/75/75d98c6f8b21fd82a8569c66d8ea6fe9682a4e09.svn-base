@@ -1,0 +1,57 @@
+#ifndef LIAISON_H
+#define LIAISON_H
+
+struct My_Rail{
+  struct Rail const * rail;
+  int id;
+}
+
+/*!
+ * \brief The Link struct
+ */
+struct Link{
+  int nbr_way;
+  struct My_Rail *tab_rails;
+};
+
+
+
+
+
+/*!
+ * \brief way_size
+ * \param way
+ * \return
+ */
+int rail_size(struct My_Rail *rail);
+/*!
+ * \brief set_player_on_way
+ * \param way
+ * \param id
+ */
+void set_player_on_rail(struct My_Rail *rail, int id);
+/*!
+ * \brief is_way_free
+ * \param way
+ * \return
+ */
+int is_rail_free(struct My_Rail *rail);
+/*!
+ * \brief who_on_way
+ * \param way
+ * \return
+ */
+int who_on_rail(struct My_Rail *rail); 
+
+
+
+struct Link *init_link(stuct Rail *rail);
+struct Link *modify_link(struct Link *link, struct Rail *rail); 
+int free_my_rail(struct Link *link);
+
+struct Link **init_map();
+int free_map(struct Link *matrix);
+
+
+
+#endif 

@@ -1,0 +1,92 @@
+\hypertarget{init_8c}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/init.c File Reference}
+\label{init_8c}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/init.\-c@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/init.\-c}}
+}
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}server.\-h\char`\"{}}\\*
+Include dependency graph for init.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structMap__info}{Map\-\_\-info} \hyperlink{init_8c_a58328afc943f169a939734e4f698718e}{get\-\_\-map\-\_\-info} (char $\ast$file\-\_\-name)
+\begin{DoxyCompactList}\small\item\em get\-\_\-map\-\_\-info \end{DoxyCompactList}\item 
+void \hyperlink{init_8c_a9bddd065021bc892861112c69dc641df}{file2rails} (struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-rails, struct \hyperlink{structObjective}{Objective} $\ast$objs, int nb\-\_\-objs, char $\ast$file\-\_\-name)
+\begin{DoxyCompactList}\small\item\em file2rails \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{init_8c_a9bddd065021bc892861112c69dc641df}{\index{init.\-c@{init.\-c}!file2rails@{file2rails}}
+\index{file2rails@{file2rails}!init.c@{init.\-c}}
+\subsubsection[{file2rails}]{\setlength{\rightskip}{0pt plus 5cm}void file2rails (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-rails, }
+\item[{struct {\bf Objective} $\ast$}]{objs, }
+\item[{int}]{nb\-\_\-objs, }
+\item[{char $\ast$}]{file\-\_\-name}
+\end{DoxyParamCaption}
+)}}\label{init_8c_a9bddd065021bc892861112c69dc641df}
+
+
+file2rails 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rails} & empty table of rails to be completed \\
+\hline
+{\em size} & the nb of links \\
+\hline
+{\em file\-\_\-name} & file\-\_\-name file which contains the game info\\
+\hline
+\end{DoxyParams}
+Completes the table rails with all the rail of the map 
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8c_a9bddd065021bc892861112c69dc641df_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{init_8c_a58328afc943f169a939734e4f698718e}{\index{init.\-c@{init.\-c}!get\-\_\-map\-\_\-info@{get\-\_\-map\-\_\-info}}
+\index{get\-\_\-map\-\_\-info@{get\-\_\-map\-\_\-info}!init.c@{init.\-c}}
+\subsubsection[{get\-\_\-map\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Map\-\_\-info} get\-\_\-map\-\_\-info (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file\-\_\-name}
+\end{DoxyParamCaption}
+)}}\label{init_8c_a58328afc943f169a939734e4f698718e}
+
+
+get\-\_\-map\-\_\-info 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\-\_\-name} & file which contains the game info \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nb of towns, nb of links, nb of objectves and nb of wagon per player 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8c_a58328afc943f169a939734e4f698718e_icgraph}
+\end{center}
+\end{figure}
+
+

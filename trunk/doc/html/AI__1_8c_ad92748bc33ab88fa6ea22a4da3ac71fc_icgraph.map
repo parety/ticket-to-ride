@@ -1,0 +1,4 @@
+<map id="AI_1_objective_realised" name="AI_1_objective_realised">
+<area shape="rect" id="node2" href="$AI__1_8c.html#a44afa06d0ad3e478f1046db37fffb663" title="actualise_all_parameters_received Actualises all the changes that occured since the last time the pla..." alt="" coords="214,5,381,46"/>
+<area shape="rect" id="node3" href="$AI__1_8c.html#a8f776e760f32f938ce3203363f807f35" title="AI_0_play_turn Calls the player, actualises all the changes that occured since the last time the play..." alt="" coords="429,12,539,39"/>
+</map>

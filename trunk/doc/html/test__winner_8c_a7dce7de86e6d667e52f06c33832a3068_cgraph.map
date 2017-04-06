@@ -1,0 +1,8 @@
+<map id="test_points_rails_France" name="test_points_rails_France">
+<area shape="rect" id="node2" href="$init_8c.html#a58328afc943f169a939734e4f698718e" title="get_map_info " alt="" coords="219,5,319,32"/>
+<area shape="rect" id="node3" href="$init_8c.html#a9bddd065021bc892861112c69dc641df" title="file2rails " alt="" coords="234,56,305,83"/>
+<area shape="rect" id="node4" href="$link_8c.html#aa356dd1a6ef6b845619ba56fa563d0f5" title="init_map Initialises the matrix of all the Link(s) composed of all the My_Rail(s) corresponding to al..." alt="" coords="234,107,305,133"/>
+<area shape="rect" id="node7" href="$winner_8c.html#a950150d3a0db6c3ad8cbab2a59a38d09" title="points_rails" alt="" coords="225,157,313,184"/>
+<area shape="rect" id="node5" href="$link_8c.html#a425217f6f8098b1637ec3f27d905830c" title="init_link " alt="" coords="379,81,445,108"/>
+<area shape="rect" id="node6" href="$link_8c.html#aca0a177bc91fb070f332b263da3b0153" title="modify_link " alt="" coords="368,132,456,159"/>
+</map>

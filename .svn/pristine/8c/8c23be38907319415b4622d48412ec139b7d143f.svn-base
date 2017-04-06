@@ -1,0 +1,576 @@
+/* 
+THIS FILE IS COMPOSED OF 4 PARTS :
+---> PROTOTYPES OF THE FUNCTIONS USED
+---> TEST FUNCTIONS
+---> MAIN PART (where the test-functions are called)
+---> COPY OF THE FILE AI_0.c
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <time.h>
+#include "../src/interface.h"
+#include "../src/server.h"
+#include "../src/link.h"
+#include "../src/player.h"
+
+static struct Player AI_0;
+static struct Link **AI_0_matrix;
+
+
+
+// PROTOTYPES OF THE FUNCTIONS USED
+int objective_realised(int town1, int town2, int id);
+void fill_tab_accessible(int *tab_to_fill, int current_town, int id);
+int AI_0_init_player(int id, int nb_players, int nb_towns, int nb_rails, struct Rail *rails, int nb_initial_wagons, int nb_obj, struct Objective *objs);
+struct Action AI_0_play_turn(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards);
+int *AI_0_choose_objective(int nb, int *objs, int min);
+int AI_0_free_player();
+
+
+
+// TEST FUNCTIONS
+
+void test_initialisation(){
+  printf("Test of AI_0_init_player... ");
+
+  // Initialisation
+  struct Rail rails[3]={{1,2,5,0},{1,5,8,1},{2,3,1,0}};
+  struct Objective objs[2]={{1,5,1000},{1,3,5000}};
+  AI_0_init_player(3,4,6,3,rails,42,2,objs);
+
+  // Tests
+  assert(AI_0.id_player == 3);
+  assert(AI_0.points == 0);
+  assert(AI_0.nb_players == 4);
+  assert(AI_0.nb_towns == 6);
+  for(int i=0; i<4; i++){
+    assert(AI_0.nb_remaining_wagons[i] == 42);
+    assert(AI_0.nb_remaining_wagon_cards[i] == 0);
+    assert(AI_0.nb_remaining_objective_cards[i] == 0);
+  }
+  assert(AI_0.nb_rails == 3);
+  for(int i=0; i<3; i++){
+    assert(AI_0.rails[i].town1 == rails[i].town1);  
+    assert(AI_0.rails[i].town2 == rails[i].town2); 
+    assert(AI_0.rails[i].length == rails[i].length);  
+    assert(AI_0.rails[i].color == rails[i].color);
+  }
+  assert(AI_0.total_nb_obj == 2);
+  for(int i=0; i<2; i++){
+    assert(AI_0.objs[i].town1 == objs[i].town1);
+    assert(AI_0.objs[i].town2 == objs[i].town2);
+    assert(AI_0.objs[i].points == objs[i].points);
+  }
+  assert(AI_0.nb_personal_objs == 0);
+  assert(AI_0.nb_objs_completed == 0);
+  for(int i=0; i<2; i++)
+    assert(AI_0.personal_objs[i] == -1);
+  assert(AI_0.nb_personal_wagon_cards == 0);
+  assert(AI_0.nb_objectives_chosen == 0);
+  assert(AI_0.draw_chosen == 0);
+  printf("OK\n");
+}
+
+
+void test_game_actualisation_case_objective(){
+  printf("test of AI_0_play_turn in case of objectives chosen... ");
+
+  // Initialisation
+  struct Rail rails[3]={{1,2,5,0},{1,5,8,1},{2,3,1,0}};
+  struct Objective objs[2]={{1,5,1000},{1,3,5000}};
+  AI_0_init_player(3,4,6,3,rails,42,2,objs);
+  AI_0.nb_objectives_chosen = 1;
+  AI_0.nb_colors = 5;
+  AI_0.draw_chosen = 0;
+  for(int i=0; i<4; i++)
+    AI_0.nb_remaining_wagon_cards[i] = 15;
+  for(int i=0; i<AI_0.nb_colors; i++)
+    AI_0.personal_wagon_cards[i] = 0;
+  AI_0.personal_wagon_cards[0] = 8;
+  AI_0.personal_wagon_cards[1] = 7;
+  AI_0.nb_personal_wagon_cards = 15;
+
+  // Initialisation of play turn
+  int used_wagons[4] = {2,0,3,0};
+  int cards_in_hand[4] = {-2,2,-3,0};
+  int objectives[4] = {0,0,0,1};
+  int nb_new_rails = 0;
+  struct New_rail *changes = NULL; // uninitialised because length=0
+  int new_obj[1] = {1};
+  int *cards = NULL; // uninitialised because length=0
+  AI_0_play_turn(used_wagons,cards_in_hand,objectives,nb_new_rails,changes,new_obj,cards);
+
+  // Tests
+  assert(AI_0.id_player == 3);
+  assert(AI_0.points == 0);
+  assert(AI_0.nb_players == 4);
+  assert(AI_0.nb_towns == 6);
+  assert(AI_0.nb_rails == 3);
+  assert(AI_0.total_nb_obj == 2);
+
+  assert(AI_0.nb_remaining_wagons[0] == 40);
+  assert(AI_0.nb_remaining_wagons[1] == 42);
+  assert(AI_0.nb_remaining_wagons[2] == 39);
+  assert(AI_0.nb_remaining_wagons[3] == 42);
+
+  assert(AI_0.nb_remaining_wagon_cards[0] == 13);
+  assert(AI_0.nb_remaining_wagon_cards[1] == 17);
+  assert(AI_0.nb_remaining_wagon_cards[2] == 12);
+  assert(AI_0.nb_remaining_wagon_cards[3] == 15);
+
+  assert(AI_0.nb_personal_objs == 1);
+  assert(AI_0.objs[AI_0.personal_objs[0]].town1 == 1);
+  assert(AI_0.objs[AI_0.personal_objs[0]].town2 == 3);
+  assert(AI_0.objs[AI_0.personal_objs[0]].points == 5000);
+  
+  assert(AI_0.nb_personal_wagon_cards == 15);
+  assert(AI_0.personal_wagon_cards[0] == 8);
+  assert(AI_0.personal_wagon_cards[1] == 7);
+  assert(AI_0.personal_wagon_cards[2] == 0);
+  assert(AI_0.personal_wagon_cards[3] == 0);
+  assert(AI_0.personal_wagon_cards[4] == 0);
+
+  printf("OK\n");
+}
+
+void test_game_actualisation_case_build(){
+  printf("test of AI_0_play_turn in case of build chosen... ");
+
+  // Initialisation
+  struct Rail rails[3]={{1,2,5,0},{1,5,7,1},{2,3,3,0}};
+  struct Objective objs[2]={{1,5,1000},{1,3,5000}};
+  AI_0_init_player(3,4,6,3,rails,42,2,objs);
+  AI_0.nb_objectives_chosen = 0;
+  AI_0.nb_colors = 5;
+  AI_0.draw_chosen = 0;
+  for(int i=0; i<4; i++)
+    AI_0.nb_remaining_wagon_cards[i] = 15;
+  for(int i=0; i<AI_0.nb_colors; i++)
+    AI_0.personal_wagon_cards[i] = 0;
+  AI_0.personal_wagon_cards[0] = 8;
+  AI_0.personal_wagon_cards[1] = 7;
+  AI_0.nb_personal_wagon_cards = 15;
+  
+  // Initialisation of play turn
+  int used_wagons[4] = {0,0,3,7};
+  int cards_in_hand[4] = {1,2,-3,-7};
+  int objectives[4] = {1,0,0,0};
+  int nb_new_rails = 2;
+  struct New_rail changes[2] = {{1,3},{2,2}};
+  int *new_obj = NULL; // uninitialised because length=0
+  int cards[7] = {1,1,1,1,1,1,1};
+  AI_0_play_turn(used_wagons,cards_in_hand,objectives,nb_new_rails,changes,new_obj,cards);
+  
+  // Tests
+  assert(AI_0.id_player == 3);
+  assert(AI_0.points == 0);
+  assert(AI_0.nb_players == 4);
+  assert(AI_0.nb_towns == 6);
+  assert(AI_0.nb_rails == 3);
+  assert(AI_0.total_nb_obj == 2);
+
+  assert(AI_0.nb_remaining_wagons[0] == 42);
+  assert(AI_0.nb_remaining_wagons[1] == 42);
+  assert(AI_0.nb_remaining_wagons[2] == 39);
+  assert(AI_0.nb_remaining_wagons[3] == 35);
+
+  assert(AI_0.nb_remaining_wagon_cards[0] == 16);
+  assert(AI_0.nb_remaining_wagon_cards[1] == 17);
+  assert(AI_0.nb_remaining_wagon_cards[2] == 12);
+  assert(AI_0.nb_remaining_wagon_cards[3] == 8);
+
+  assert(AI_0.nb_personal_objs == 0);
+  
+  assert(AI_0.nb_personal_wagon_cards == 8);
+  assert(AI_0.personal_wagon_cards[0] == 8);
+  assert(AI_0.personal_wagon_cards[1] == 0);
+  assert(AI_0.personal_wagon_cards[2] == 0);
+  assert(AI_0.personal_wagon_cards[3] == 0);
+  assert(AI_0.personal_wagon_cards[4] == 0);
+ 
+  assert(AI_0_matrix[1][5].tab_rails[0].id_player == 3);
+  assert(AI_0_matrix[2][3].tab_rails[0].id_player == 2);
+
+  printf("OK\n");
+}
+
+
+void test_game_actualisation_case_draw(){
+   printf("test of AI_0_play_turn in case of draw chosen... ");
+
+  // Initialisation
+  struct Rail rails[3]={{1,2,5,0},{1,5,8,1},{2,3,1,0}};
+  struct Objective objs[2]={{1,5,1000},{1,3,5000}};
+  AI_0_init_player(3,4,6,3,rails,42,2,objs);
+  AI_0.nb_objectives_chosen = 0;
+  AI_0.nb_colors = 5;
+  AI_0.draw_chosen = 1;
+  for(int i=0; i<4; i++)
+    AI_0.nb_remaining_wagon_cards[i] = 15;
+  for(int i=0; i<AI_0.nb_colors; i++)
+    AI_0.personal_wagon_cards[i] = 0;
+  AI_0.personal_wagon_cards[0] = 8;
+  AI_0.personal_wagon_cards[1] = 7;
+  AI_0.nb_personal_wagon_cards = 15;
+
+  // Initialisation of play turn
+  int used_wagons[4] = {2,0,3,0};
+  int cards_in_hand[4] = {-2,2,-3,3};
+  int objectives[4] = {0,0,0,0};
+  int nb_new_rails = 0;
+  struct New_rail *changes = NULL; // uninitialised because length=0
+  int *new_obj = NULL; // uninitialised because length=0
+  int cards[3] = {0,1,4};
+  AI_0_play_turn(used_wagons,cards_in_hand,objectives,nb_new_rails,changes,new_obj,cards);
+
+  // Tests
+  assert(AI_0.id_player == 3);
+  assert(AI_0.points == 0);
+  assert(AI_0.nb_players == 4);
+  assert(AI_0.nb_towns == 6);
+  assert(AI_0.nb_rails == 3);
+  assert(AI_0.total_nb_obj == 2);
+
+  assert(AI_0.nb_remaining_wagons[0] == 40);
+  assert(AI_0.nb_remaining_wagons[1] == 42);
+  assert(AI_0.nb_remaining_wagons[2] == 39);
+  assert(AI_0.nb_remaining_wagons[3] == 42);
+
+  assert(AI_0.nb_remaining_wagon_cards[0] == 13);
+  assert(AI_0.nb_remaining_wagon_cards[1] == 17);
+  assert(AI_0.nb_remaining_wagon_cards[2] == 12);
+  assert(AI_0.nb_remaining_wagon_cards[3] == 18);
+
+  assert(AI_0.nb_personal_objs == 0);
+  
+  assert(AI_0.nb_personal_wagon_cards == 18);
+  assert(AI_0.personal_wagon_cards[0] == 9);
+  assert(AI_0.personal_wagon_cards[1] == 8);
+  assert(AI_0.personal_wagon_cards[2] == 0);
+  assert(AI_0.personal_wagon_cards[3] == 0);
+  assert(AI_0.personal_wagon_cards[4] == 1);
+
+  printf("OK\n");
+}
+
+
+
+void test_actualise_nb_objs_completed(){
+  printf("Test of actualise_nb_objs_completed... ");
+
+  // Initialisation
+  struct Rail rails[4]={{2,1,1,0},{2,5,1,1},{3,2,1,0},{4,1,1,3}};
+  struct Objective objs[5]={{3,1,32},{1,5,57},{1,3,53},{4,2,42}};
+  AI_0_init_player(3,4,6,4,rails,42,4,objs);
+  AI_0.nb_objectives_chosen = 0;
+  AI_0.nb_colors = 5;
+  AI_0.draw_chosen = 0;
+  for(int i=0; i<4; i++)
+    AI_0.nb_remaining_wagon_cards[i] = 15;
+  for(int i=0; i<AI_0.nb_colors; i++)
+    AI_0.personal_wagon_cards[i] = 0;
+  AI_0.personal_wagon_cards[0] = 8;
+  AI_0.personal_wagon_cards[1] = 7;
+  AI_0.nb_personal_wagon_cards = 15;
+
+  // Initialisation of play_turn
+  int used_wagons[4] = {0,0,0,3};
+  int cards_in_hand[4] = {0,0,0,-3};
+  int objectives[4] = {0,0,0,0};
+  int nb_new_rails = 3; 
+  struct New_rail changes[3] ={{0,3},{3,3},{1,3}}; 
+  int *new_obj = NULL; // uninitialised because length=0
+  int cards[4] = {0,0,0};
+
+  // Initialisation of personal objectives
+  AI_0.nb_personal_objs = 4;
+  AI_0.nb_objs_completed = 0;
+  AI_0.personal_objs[0] = 0;
+  AI_0.personal_objs[1] = 3;
+  AI_0.personal_objs[2] = 1;
+  AI_0.personal_objs[3] = 2;
+
+  AI_0_play_turn(used_wagons,cards_in_hand,objectives,nb_new_rails,changes,new_obj,cards);
+
+  // Tests
+  assert(AI_0.nb_personal_objs == 4);
+  assert(AI_0.personal_objs[0] == 0);
+  assert(AI_0.personal_objs[1] == 3);
+  assert(AI_0.personal_objs[2] == 1);
+  assert(AI_0.personal_objs[3] == 2);
+  assert(AI_0.nb_objs_completed == 2);
+  // The player owns all the objective cards
+  // He has set 3 rails: of indices 0, 1 and 3
+  // He has realised 2 objectives: of indices 1 and 3
+  
+  printf("OK\n");
+}
+
+
+
+// MAIN FUNCTION
+
+int main(){
+  test_initialisation();
+  test_game_actualisation_case_objective();
+  test_game_actualisation_case_build();
+  test_game_actualisation_case_draw();
+  test_actualise_nb_objs_completed();
+  AI_0_free_player();
+  return 0;
+}
+
+
+
+
+
+
+
+// COPY OF THE FILE "AI_0.c"
+
+void AI_0_fill_tab_accessible(int *tab_to_fill, int current_town, int id){ 
+  tab_to_fill[current_town] = 1;
+  for(int i=0; i<AI_0.nb_rails; i++){
+    int town1 = AI_0.rails[i].town1;
+    int town2 = AI_0.rails[i].town2;
+    struct My_Rail *my_rail = give_my_rail(i,AI_0_matrix,AI_0.rails);
+    if(my_rail->id_player == id && town1 == current_town && tab_to_fill[town2]==0)
+      AI_0_fill_tab_accessible(tab_to_fill,town2,id);
+    if(my_rail->id_player == id && town2 == current_town && tab_to_fill[town1]==0)
+      AI_0_fill_tab_accessible(tab_to_fill,town1,id);
+  }
+}
+
+
+
+int AI_0_objective_realised(int town1, int town2, int id){
+  int towns_accessible_left[AI_0.nb_towns+1];
+  int towns_accessible_right[AI_0.nb_towns+1];
+  for(int i=1; i<AI_0.nb_towns+1; i++){
+    towns_accessible_left[i] = 0;
+    towns_accessible_right[i] = 0;
+  }
+  AI_0_fill_tab_accessible(towns_accessible_left,town1,id);
+  AI_0_fill_tab_accessible(towns_accessible_right,town2,id);
+  int realised = 0;
+  for(int i=1; i<AI_0.nb_towns+1; i++){
+    if(towns_accessible_left[i]==1 && towns_accessible_right[i]==1)
+      realised = 1;
+  } 
+  return realised;
+} 
+
+
+
+
+int AI_0_init_player(int id, int nb_players, int nb_towns, int nb_rails, struct Rail *rails, int nb_initial_wagons, int nb_obj, struct Objective *objs){
+
+  // Storage of all the informations
+  AI_0.id_player = id;
+  AI_0.points = 0;
+  AI_0.nb_players = nb_players;
+  AI_0.nb_towns = nb_towns;
+
+  AI_0.nb_remaining_wagons = malloc(nb_players*sizeof(int)); 
+  for(int i=0; i<nb_players; i++)
+    AI_0.nb_remaining_wagons[i] = nb_initial_wagons;
+
+
+  AI_0.nb_remaining_wagon_cards = malloc(nb_players*sizeof(int));
+  for(int i=0; i<nb_players; i++){
+    AI_0.nb_remaining_wagon_cards[i] = 0;
+  }
+  
+
+  AI_0.nb_remaining_objective_cards = malloc(nb_players*sizeof(int));
+  for(int i=0; i<nb_players; i++){
+    AI_0.nb_remaining_objective_cards[i] = 0;
+  }
+
+
+  AI_0.nb_rails = nb_rails;
+  AI_0.rails = malloc(nb_rails*sizeof(struct Rail));
+  for(int i=0; i<nb_rails; i++){
+    AI_0.rails[i].town1 = rails[i].town1;
+    AI_0.rails[i].town2 = rails[i].town2;
+    AI_0.rails[i].length = rails[i].length; 
+    AI_0.rails[i].color = rails[i].color;
+  }
+
+
+  AI_0.total_nb_obj = nb_obj;
+  AI_0.objs = malloc(nb_obj*sizeof(struct Objective));
+  for(int i=0; i<nb_obj; i++){
+    AI_0.objs[i].town1 = objs[i].town1;
+    AI_0.objs[i].town2 = objs[i].town2;
+    AI_0.objs[i].points = objs[i].points;
+  }
+
+
+  AI_0.nb_personal_objs = 0;
+  AI_0.nb_objs_completed = 0;
+  AI_0.personal_objs = malloc(nb_obj*sizeof(int));
+  for(int i=0; i<nb_obj; i++)
+    AI_0.personal_objs[i] = -1;
+  // size of AI_0.personal_objs = total number of objs
+  // but has only AI_0.nb_personal_objs
+
+
+  int *col = malloc(sizeof(int)); //col must be used in the function colors
+  AI_0.nb_colors = colors(AI_0.rails, AI_0.nb_rails, &col);
+  free(col); //col not usefull so needs to be freed
+
+  AI_0.nb_personal_wagon_cards = 0;
+  AI_0.personal_wagon_cards = malloc(AI_0.nb_colors*sizeof(int));
+  for(int i=0; i<AI_0.nb_colors; i++)
+    AI_0.personal_wagon_cards[i] = 0;
+
+
+  AI_0.nb_objectives_chosen = 0;
+  AI_0.draw_chosen = 0;
+
+
+  // Initialisation of the personal matrix
+  AI_0_matrix = init_map(nb_towns, rails, nb_rails);
+
+  return 1;
+}
+
+
+
+
+struct Action AI_0_play_turn(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards){
+
+
+  // Actualisation of the matrix with the tabular "changes"
+  for(int i=0; i<nb_new_rails; i++){
+    struct My_Rail *my_rail = give_my_rail(changes[i].rail, AI_0_matrix, AI_0.rails);
+    set_player_on_rail(my_rail, changes[i].player);
+  }
+
+
+  // Actualisation of all player's parameters
+  for(int i=0; i<AI_0.nb_players; i++){
+    AI_0.nb_remaining_wagons[i] -= used_wagons[i];
+    AI_0.nb_remaining_wagon_cards[i] += cards_in_hand[i];
+    AI_0.nb_remaining_objective_cards[i] += objectives[i];
+  }
+
+  // Actualisation of own objectives
+  for(int i=0; i<AI_0.nb_objectives_chosen; i++){
+    AI_0.personal_objs[AI_0.nb_personal_objs] = new_obj[i];
+    AI_0.nb_personal_objs++;
+  }
+
+  // Actualisation of own cards
+  if(AI_0.draw_chosen == 1){ // case draw
+    for(int i=0; i<cards_in_hand[AI_0.id_player]; i++){
+      AI_0.nb_personal_wagon_cards++;
+      for(int j=0; j<AI_0.nb_colors; j++){
+	if(cards[i]==j)
+	  AI_0.personal_wagon_cards[j]++;
+      }
+    }
+  }
+  if(cards_in_hand[AI_0.id_player]<0){ // case build
+    for(int i=0; i<(0-cards_in_hand[AI_0.id_player]); i++){
+      AI_0.nb_personal_wagon_cards--;
+      for(int j=0; j<AI_0.nb_colors; j++){
+	if(cards[i]==j)
+	  AI_0.personal_wagon_cards[j]--;
+      }
+    }
+  }
+
+  // Actualisation of number of own objectives completed
+  int number_realised = 0;
+  for(int i=0; i<AI_0.nb_personal_objs; i++){
+    int town1 = AI_0.objs[AI_0.personal_objs[i]].town1;
+    int town2 = AI_0.objs[AI_0.personal_objs[i]].town2;
+    int realised = AI_0_objective_realised(town1,town2,AI_0.id_player);
+    if(realised)
+      number_realised++;
+  }
+  AI_0.nb_objs_completed = number_realised;
+
+
+  // Choose a random action
+  struct Action res_action;
+  srand(time(NULL));
+  int nb_aleat = rand();
+  nb_aleat = nb_aleat%3;
+
+
+  // Completion of the struct Action (in relation of the action chosen)
+  if(nb_aleat==0){
+    res_action.type = DRAW; 
+    res_action.rail = 0; // unusefull but still initialised
+    int color_aleat_1 = rand();
+    int color_aleat_2 = rand();
+
+    res_action.color = (color_aleat_1)%(AI_0.nb_colors);
+    res_action.color2 = (color_aleat_2)%(AI_0.nb_colors);  
+
+    AI_0.nb_objectives_chosen = 0;
+    AI_0.draw_chosen = 1;
+  }
+  if(nb_aleat==1){
+    res_action.type = BUILD; 
+    int rail_aleat = rand();
+    res_action.rail = (rail_aleat)%(AI_0.nb_rails);
+    res_action.color = 0; // unusefull but still initialised
+    res_action.color2 = 0; // unusefull but still initialised
+    
+    AI_0.nb_objectives_chosen = 0;
+    AI_0.draw_chosen = 0;
+  }
+  if(nb_aleat==2){
+    res_action.type = OBJECTIVE;
+    res_action.rail = 0; // unusefull but still initialised
+    res_action.color = 0; // unusefull but still initialised
+    res_action.color2 = 0; // unusefull but still initialised
+
+    AI_0.draw_chosen = 0;
+    // AI_0.nb_objectives_chosen set in the function AI_O_choose_objective
+  }
+
+  return res_action;
+}
+
+
+
+
+
+int *AI_0_choose_objective(int nb, int *objs, int min){ // Picks a random number of objectives
+  srand(time(NULL));
+  int *tab = malloc(nb * sizeof(int));
+  for(int i=0; i<nb; i++)
+    tab[i] = rand()%2;
+
+  int k = 0;
+  for(int i=0; i<nb; i++){
+    if(tab[i]==1)
+      k++;
+  }
+
+  AI_0.nb_objectives_chosen = k;
+  return tab;
+}
+
+
+
+
+
+int AI_0_free_player(){
+  free(AI_0.nb_remaining_wagons);
+  free(AI_0.nb_remaining_wagon_cards);
+  free(AI_0.nb_remaining_objective_cards);
+  free(AI_0.rails);
+  free(AI_0.objs);
+  free(AI_0.personal_objs);
+  free(AI_0.personal_wagon_cards);
+  return 1;
+}
+

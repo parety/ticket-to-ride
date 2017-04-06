@@ -1,0 +1,5 @@
+<map id="test_max_rail_length" name="test_max_rail_length">
+<area shape="rect" id="node2" href="$init_8c.html#a58328afc943f169a939734e4f698718e" title="get_map_info " alt="" coords="205,5,305,32"/>
+<area shape="rect" id="node3" href="$init_8c.html#a9bddd065021bc892861112c69dc641df" title="file2rails " alt="" coords="219,56,290,83"/>
+<area shape="rect" id="node4" href="$init__info_8c.html#ad7a67018b01e818a68662e3ecc7bce64" title="max_rail_length " alt="" coords="198,107,311,133"/>
+</map>

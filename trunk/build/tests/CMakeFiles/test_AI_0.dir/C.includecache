@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/link.h
+interface.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/player.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/server.h
+interface.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+player.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/player.h
+link.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/link.h
+
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/tests/test_AI_0.c
+stdio.h
+-
+stdlib.h
+-
+assert.h
+-
+time.h
+-
+../src/interface.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/interface.h
+../src/server.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/server.h
+../src/link.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/link.h
+../src/player.h
+/net/malt/i/sbrouard/Documents/projets6/s6-rails-1992/trunk/src/player.h
+

@@ -1,0 +1,12 @@
+<map id="test_game_actualisation_case_build" name="test_game_actualisation_case_build">
+<area shape="rect" id="node2" href="$test__AI__0_8c.html#a4ed15e4ae5472f5bf9b586526318fcf3" title="AI_0_init_player" alt="" coords="216,56,331,83"/>
+<area shape="rect" id="node7" href="$test__AI__0_8c.html#af51c2bc8672ee161b102e06843c3a045" title="AI_0_play_turn" alt="" coords="219,132,328,159"/>
+<area shape="rect" id="node3" href="$cards__gestion_8c.html#a6476a83be99f343b2baff69567b03280" title="colors Complete the array with the colors used in the game and return the number of colors ..." alt="" coords="430,5,487,32"/>
+<area shape="rect" id="node4" href="$link_8c.html#aa356dd1a6ef6b845619ba56fa563d0f5" title="init_map Initialises the matrix of all the Link(s) composed of all the My_Rail(s) corresponding to al..." alt="" coords="423,56,494,83"/>
+<area shape="rect" id="node5" href="$link_8c.html#a425217f6f8098b1637ec3f27d905830c" title="init_link " alt="" coords="635,5,701,32"/>
+<area shape="rect" id="node6" href="$link_8c.html#aca0a177bc91fb070f332b263da3b0153" title="modify_link " alt="" coords="624,56,712,83"/>
+<area shape="rect" id="node8" href="$link_8c.html#a6ccd449d6f68b97d9b90fd006bdd6108" title="give_my_rail " alt="" coords="798,145,893,172"/>
+<area shape="rect" id="node9" href="$link_8c.html#af9b110cbe33aa6495ae1315f48392a57" title="set_player_on_rail " alt="" coords="395,157,522,184"/>
+<area shape="rect" id="node10" href="$test__AI__0_8c.html#aca091cff3a4de4b7399735d192d204fc" title="AI_0_objective_realised" alt="" coords="379,208,539,235"/>
+<area shape="rect" id="node11" href="$test__AI__0_8c.html#ae6a5a9fb92d4c61bff427f6d8964b1ce" title="AI_0_fill_tab_accessible" alt="" coords="587,183,749,209"/>
+</map>

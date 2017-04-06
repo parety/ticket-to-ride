@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "interface.h"
+#include "server.h"
+#include "link.h"
+
+
+void colors(struct Rails rails, int nb_rails, int *colors){
+
+}

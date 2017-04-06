@@ -1,0 +1,32 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$init_8c.html#a58328afc943f169a939734e4f698718e" title="get_map_info " alt="" coords="129,5,229,32"/>
+<area shape="rect" id="node3" href="$init__info_8c.html#a0de9947110eecc050be071f5549dc25c" title="init_all_objectives_conditions initialise the condition of all objectives to not drawn ..." alt="" coords="119,57,238,98"/>
+<area shape="rect" id="node4" href="$init_8c.html#a9bddd065021bc892861112c69dc641df" title="file2rails " alt="" coords="143,123,214,149"/>
+<area shape="rect" id="node5" href="$cards__gestion_8c.html#a6476a83be99f343b2baff69567b03280" title="colors Complete the array with the colors used in the game and return the number of colors ..." alt="" coords="150,173,207,200"/>
+<area shape="rect" id="node6" href="$link_8c.html#aa356dd1a6ef6b845619ba56fa563d0f5" title="init_map Initialises the matrix of all the Link(s) composed of all the My_Rail(s) corresponding to al..." alt="" coords="143,224,214,251"/>
+<area shape="rect" id="node9" href="$cards__gestion_8c.html#a10839b86959ad4336606d439d85cf2ac" title="init_card_hands initialisation of the cards in possession of each player at the beginning of the game..." alt="" coords="122,275,235,301"/>
+<area shape="rect" id="node10" href="$cards__gestion_8c.html#abbbcd18606eb6dc90250f2d7814c17a8" title="init_obj_hands " alt="" coords="126,325,231,352"/>
+<area shape="rect" id="node11" href="$cards__gestion_8c.html#a87f6a92801d41d1ea98ee373cb4932b8" title="init_nb_objs " alt="" coords="133,376,224,403"/>
+<area shape="rect" id="node12" href="$init__info_8c.html#a9ee02bd78772fa104e7d455b9f97b279" title="init_wagons initialisation of the number of wagons in possession of each player at the beginning of t..." alt="" coords="133,427,224,453"/>
+<area shape="rect" id="node13" href="$init__info_8c.html#ad7a67018b01e818a68662e3ecc7bce64" title="max_rail_length " alt="" coords="303,503,417,529"/>
+<area shape="rect" id="node14" href="$init__info_8c.html#a34cae5918fa3688a1d31ccd185922830" title="init_turn_informations initialisation of the different informations given to clients each turn ..." alt="" coords="105,528,252,555"/>
+<area shape="rect" id="node15" href="$play__turn_8c.html#aa51d57181d4ae1b13ba31dd55181f6eb" title="are_objs_valid tests if the number of chosen objectives is between the minimum and the number of obje..." alt="" coords="478,680,583,707"/>
+<area shape="rect" id="node16" href="$cards__gestion_8c.html#a720d4a54fde8ac30d82ea055669dfc6c" title="init_first_chosen_objs modifies the initial hand of objectives of a player, the informations about ob..." alt="" coords="105,629,253,656"/>
+<area shape="rect" id="node17" href="$play__turn_8c.html#aaa888be4170e398de74e3b123d0c194b" title="game_end " alt="" coords="134,680,223,707"/>
+<area shape="rect" id="node18" href="$play__turn_8c.html#a091e5087dae440aa98617aa831fecd28" title="cheat" alt="" coords="151,731,206,757"/>
+<area shape="rect" id="node19" href="$play__turn_8c.html#ad1f55ecdce64f0b9fc7e10aeb0275029" title="apply" alt="" coords="152,781,205,808"/>
+<area shape="rect" id="node23" href="$winner_8c.html#afb7339ba1d0abb0d8f7e8d530d9ba935" title="winner" alt="" coords="149,832,209,859"/>
+<area shape="rect" id="node29" href="$free_8c.html#a262b55585a5658ee48ad53ba1ee0cb11" title="free_all" alt="" coords="147,908,211,935"/>
+<area shape="rect" id="node7" href="$link_8c.html#a425217f6f8098b1637ec3f27d905830c" title="init_link " alt="" coords="327,199,393,225"/>
+<area shape="rect" id="node8" href="$link_8c.html#aca0a177bc91fb070f332b263da3b0153" title="modify_link " alt="" coords="316,249,404,276"/>
+<area shape="rect" id="node20" href="$cards__gestion_8c.html#a29db272fe208ef85ffd21981b50dbe23" title="draw_color_card applies modif if the player draw color cards " alt="" coords="301,680,419,707"/>
+<area shape="rect" id="node21" href="$build__rail_8c.html#ada2781c3fc6ea007f3426d76fbcb8082" title="build_rail Applies modification in the map and the player when a player builds a rail ..." alt="" coords="323,731,397,757"/>
+<area shape="rect" id="node22" href="$cards__gestion_8c.html#a87da09cde6e4fc0c6d8d8280bd4863d9" title="draw_objectives Applies modification in the server and the player when a player draws objectives ..." alt="" coords="302,781,418,808"/>
+<area shape="rect" id="node24" href="$winner_8c.html#a950150d3a0db6c3ad8cbab2a59a38d09" title="points_rails" alt="" coords="316,832,404,859"/>
+<area shape="rect" id="node25" href="$winner_8c.html#ad5c5cd232de97fe909bc6639cf2c5997" title="points_objs" alt="" coords="316,883,404,909"/>
+<area shape="rect" id="node26" href="$winner_8c.html#aebf975c5c45f7572c7d064c3716754fe" title="objective_realised" alt="" coords="467,883,594,909"/>
+<area shape="rect" id="node27" href="$winner_8c.html#ae5dc19d61241ea1005a9733c1d1c04de" title="fill_tab_accessible" alt="" coords="643,883,773,909"/>
+<area shape="rect" id="node28" href="$link_8c.html#a6ccd449d6f68b97d9b90fd006bdd6108" title="give_my_rail " alt="" coords="822,883,917,909"/>
+<area shape="rect" id="node30" href="$link_8c.html#a22a173777c8b30fc8003e2bf6b58dc0b" title="free_map Frees the matrix created by the function &quot;init_map&quot;. " alt="" coords="322,933,398,960"/>
+<area shape="rect" id="node31" href="$link_8c.html#a7ba155c466dd741201dca708bdec8042" title="free_link " alt="" coords="495,933,566,960"/>
+</map>

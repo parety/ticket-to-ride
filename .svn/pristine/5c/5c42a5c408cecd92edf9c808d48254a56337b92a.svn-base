@@ -1,0 +1,65 @@
+#ifndef SERVER_H
+#define SERVER_H
+
+#include "interface.h"
+#include "player.h"
+#include "AI_1.h"
+#include "AI_2.h"
+#include "AI_3.h"
+
+
+#define NB_PLAYERS 2
+#define NB_STARTING_CARDS 5
+
+
+struct f_player{
+  int (*init_player)(int id, int nb_player, int nb_towns, int nb_rails, struct Rail *rails, int nb_wagons, int nb_obj, struct Objective *objs);
+
+  struct Action (*play_turn)(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards);
+
+  int* (*choose_objective)(int nb, int *objs, int min);
+  int (*free_player)();
+}; // tab de struct f_player dans server.h
+
+
+
+enum Town_name;
+
+struct Map_info{
+  int nb_towns;
+  int nb_links;
+  int nb_objs;
+  int nb_w_player;
+
+};
+  
+struct Map_info get_map_info(char* file_name);
+void file2rails(struct Rail *rails,int nb_rails,struct Objective* objs ,int nb_objs, char *file_name);  
+
+/**
+ * @brief colors Complete the array with the colors used in the gaùe and return the number of colors
+ * @param rails Array with all the rails, where there arre the colors
+ * @param nb_rails The number of rails, leghth of rails
+ * @param col Array to be completed
+ * @return The number of colors in the game = length of colors
+ */
+int colors(struct Rail *rails, int nb_rails, int *col);
+
+/**
+ * @brief init_card_hands initialisation of the cards in possession of each player in the beaginning of the game
+ * @param card_hands array to be completed
+ * @param colors array of all colors
+ * @param nb_colors nomber of colors = length of color
+ */
+void init_card_hands(int **card_hands, int *colors, int nb_colors);
+
+//void init_nb_cards(NB_PLAYERS, NB_STARTING_CARDS, card_hands, col, nb_colors);
+
+/**
+ * @brief max_rail_length
+ * @param rails Array with all the rails
+ * @return The length of the longest rail of the map
+ */
+int max_rail_length(struct Rail *rails);
+
+#endif

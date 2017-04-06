@@ -1,0 +1,12 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$test__build__rail_8c.html#ab6d5816eb886fb6553eade85226e8831" title="test_build_rail" alt="" coords="105,157,207,184"/>
+<area shape="rect" id="node3" href="$init_8c.html#a58328afc943f169a939734e4f698718e" title="get_map_info " alt="" coords="263,5,363,32"/>
+<area shape="rect" id="node4" href="$init_8c.html#a9bddd065021bc892861112c69dc641df" title="file2rails " alt="" coords="278,56,349,83"/>
+<area shape="rect" id="node5" href="$cards__gestion_8c.html#a6476a83be99f343b2baff69567b03280" title="colors Complete the array with the colors used in the game and return the number of colors ..." alt="" coords="285,107,342,133"/>
+<area shape="rect" id="node6" href="$cards__gestion_8c.html#a10839b86959ad4336606d439d85cf2ac" title="init_card_hands initialisation of the cards in possession of each player at the beginning of the game..." alt="" coords="257,157,370,184"/>
+<area shape="rect" id="node7" href="$link_8c.html#aa356dd1a6ef6b845619ba56fa563d0f5" title="init_map Initialises the matrix of all the Link(s) composed of all the My_Rail(s) corresponding to al..." alt="" coords="278,208,349,235"/>
+<area shape="rect" id="node10" href="$init__info_8c.html#a9ee02bd78772fa104e7d455b9f97b279" title="init_wagons initialisation of the number of wagons in possession of each player at the beginning of t..." alt="" coords="268,259,359,285"/>
+<area shape="rect" id="node11" href="$build__rail_8c.html#ada2781c3fc6ea007f3426d76fbcb8082" title="build_rail Applies modification in the map and the player when a player builds a rail ..." alt="" coords="277,309,350,336"/>
+<area shape="rect" id="node8" href="$link_8c.html#a425217f6f8098b1637ec3f27d905830c" title="init_link " alt="" coords="429,183,496,209"/>
+<area shape="rect" id="node9" href="$link_8c.html#aca0a177bc91fb070f332b263da3b0153" title="modify_link " alt="" coords="419,233,507,260"/>
+</map>

@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "interface.h"
+#include "server.h"
+#include "link.h"
+#include <time.h>
+
+
+int colors(struct Rail *rails, int nb_rails, int *col){
+  int nb_colors = 0;
+  size_t max_colors = 1;
+  int is_in_colors = 0;
+  for (int ind_rail = 0; ind_rail < nb_rails; ind_rail++){
+    for (int ind_color = 0; ind_color < nb_colors; ind_color++){
+      if (rails[ind_rail].color == col[ind_color]){
+	is_in_colors = 1;
+	break;
+      }
+    }
+    if (!is_in_colors){
+      if (nb_colors >= max_colors){
+	col = realloc(col, 2*max_colors);
+	max_colors*=2;
+      }
+      col[nb_colors] = rails[ind_rail].color;
+      nb_colors++;
+    }
+    is_in_colors = 0;
+  }
+  return nb_colors;
+}
+
+
+
+
+
+void init_card_hands(int **card_hands, int *colors, int nb_colors){ 
+  int color;
+  srand(time(NULL));
+  for (int player = 0; player < NB_PLAYERS; player++){
+    card_hands[player] = realloc(card_hands[player],NB_STARTING_CARDS*sizeof(int));
+    for (int card = 0; card < NB_STARTING_CARDS; card++){
+      color = rand() % nb_colors;
+      card_hands[player][card]= colors[color];
+    }
+  }
+}

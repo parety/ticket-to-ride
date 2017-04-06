@@ -1,0 +1,393 @@
+\hypertarget{link_8c}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/link.c File Reference}
+\label{link_8c}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/link.\-c@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/link.\-c}}
+}
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}link.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}interface.\-h\char`\"{}}\\*
+Include dependency graph for link.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{link_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{link_8c_a425217f6f8098b1637ec3f27d905830c}{init\-\_\-link} (struct \hyperlink{structLink}{Link} $\ast$res)
+\begin{DoxyCompactList}\small\item\em init\-\_\-link \end{DoxyCompactList}\item 
+void \hyperlink{link_8c_aca0a177bc91fb070f332b263da3b0153}{modify\-\_\-link} (struct \hyperlink{structLink}{Link} $\ast$link, struct \hyperlink{structRail}{Rail} $\ast$rail, int id\-\_\-rail)
+\begin{DoxyCompactList}\small\item\em modify\-\_\-link \end{DoxyCompactList}\item 
+void \hyperlink{link_8c_a7ba155c466dd741201dca708bdec8042}{free\-\_\-link} (struct \hyperlink{structLink}{Link} $\ast$link)
+\begin{DoxyCompactList}\small\item\em free\-\_\-link \end{DoxyCompactList}\item 
+struct \hyperlink{structLink}{Link} $\ast$$\ast$ \hyperlink{link_8c_aa356dd1a6ef6b845619ba56fa563d0f5}{init\-\_\-map} (int nbr\-\_\-towns, struct \hyperlink{structRail}{Rail} $\ast$tab\-\_\-rails, int size\-\_\-tab\-\_\-rails)
+\begin{DoxyCompactList}\small\item\em init\-\_\-map Initialises the matrix of all the \hyperlink{structLink}{Link(s)} composed of all the \hyperlink{structMy__Rail}{My\-\_\-\-Rail(s)} corresponding to all the rails of the game. \end{DoxyCompactList}\item 
+void \hyperlink{link_8c_a22a173777c8b30fc8003e2bf6b58dc0b}{free\-\_\-map} (struct \hyperlink{structLink}{Link} $\ast$$\ast$matrix, int nbr\-\_\-towns)
+\begin{DoxyCompactList}\small\item\em free\-\_\-map Frees the matrix created by the function \char`\"{}init\-\_\-map\char`\"{}. \end{DoxyCompactList}\item 
+void \hyperlink{link_8c_af9b110cbe33aa6495ae1315f48392a57}{set\-\_\-player\-\_\-on\-\_\-rail} (struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} $\ast$rail, int id)
+\begin{DoxyCompactList}\small\item\em set\-\_\-player\-\_\-on\-\_\-rail \end{DoxyCompactList}\item 
+int \hyperlink{link_8c_aa411a7aab379ecada4b140fd00078bca}{is\-\_\-rail\-\_\-free} (struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} $\ast$rail)
+\begin{DoxyCompactList}\small\item\em is\-\_\-rail\-\_\-free \end{DoxyCompactList}\item 
+int \hyperlink{link_8c_aad404b1a4dc11e07cd7361e27106fe7a}{who\-\_\-on\-\_\-rail} (struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} $\ast$rail)
+\begin{DoxyCompactList}\small\item\em who\-\_\-on\-\_\-rail \end{DoxyCompactList}\item 
+int \hyperlink{link_8c_af168bfabee8aa1bb9edf5ee37bd27541}{rail\-\_\-size} (struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} $\ast$rail)
+\begin{DoxyCompactList}\small\item\em rail\-\_\-size \end{DoxyCompactList}\item 
+struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} $\ast$ \hyperlink{link_8c_a6ccd449d6f68b97d9b90fd006bdd6108}{give\-\_\-my\-\_\-rail} (int id\-\_\-rail, struct \hyperlink{structLink}{Link} $\ast$$\ast$matrix, struct \hyperlink{structRail}{Rail} $\ast$tab\-\_\-rails)
+\begin{DoxyCompactList}\small\item\em give\-\_\-my\-\_\-rail \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structRail}{Rail} const \hyperlink{link_8c_ad8018e773ffbf48b9f9ef7d446349023}{rail\-\_\-defaut} = \{-\/1,-\/1,-\/1,-\/1\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{link_8c_a7ba155c466dd741201dca708bdec8042}{\index{link.\-c@{link.\-c}!free\-\_\-link@{free\-\_\-link}}
+\index{free\-\_\-link@{free\-\_\-link}!link.c@{link.\-c}}
+\subsubsection[{free\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}void free\-\_\-link (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Link} $\ast$}]{link}
+\end{DoxyParamCaption}
+)}}\label{link_8c_a7ba155c466dd741201dca708bdec8042}
+
+
+free\-\_\-link 
+
+
+\begin{DoxyParams}{Parameters}
+{\em link} & is a pointer to the struct \hyperlink{structLink}{Link} which is going to be freed. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{link_8c_a7ba155c466dd741201dca708bdec8042_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{link_8c_a22a173777c8b30fc8003e2bf6b58dc0b}{\index{link.\-c@{link.\-c}!free\-\_\-map@{free\-\_\-map}}
+\index{free\-\_\-map@{free\-\_\-map}!link.c@{link.\-c}}
+\subsubsection[{free\-\_\-map}]{\setlength{\rightskip}{0pt plus 5cm}void free\-\_\-map (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Link} $\ast$$\ast$}]{matrix, }
+\item[{int}]{nbr\-\_\-towns}
+\end{DoxyParamCaption}
+)}}\label{link_8c_a22a173777c8b30fc8003e2bf6b58dc0b}
+
+
+free\-\_\-map Frees the matrix created by the function \char`\"{}init\-\_\-map\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em matrix} & is the matrix created by the function \char`\"{}init\-\_\-map\char`\"{}. \\
+\hline
+{\em nbr\-\_\-towns} & is the total number of towns. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{link_8c_a22a173777c8b30fc8003e2bf6b58dc0b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{link_8c_a22a173777c8b30fc8003e2bf6b58dc0b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{link_8c_a6ccd449d6f68b97d9b90fd006bdd6108}{\index{link.\-c@{link.\-c}!give\-\_\-my\-\_\-rail@{give\-\_\-my\-\_\-rail}}
+\index{give\-\_\-my\-\_\-rail@{give\-\_\-my\-\_\-rail}!link.c@{link.\-c}}
+\subsubsection[{give\-\_\-my\-\_\-rail}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf My\-\_\-\-Rail}$\ast$ give\-\_\-my\-\_\-rail (
+\begin{DoxyParamCaption}
+\item[{int}]{id\-\_\-rail, }
+\item[{struct {\bf Link} $\ast$$\ast$}]{matrix, }
+\item[{struct {\bf Rail} $\ast$}]{tab\-\_\-rails}
+\end{DoxyParamCaption}
+)}}\label{link_8c_a6ccd449d6f68b97d9b90fd006bdd6108}
+
+
+give\-\_\-my\-\_\-rail 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\-\_\-rail} & is the identifier of the rail wanted. \\
+\hline
+{\em matrix} & is the matrix of all \hyperlink{structLink}{Link(s)} composed of all the \hyperlink{structMy__Rail}{My\-\_\-\-Rail(s)} corresponding to all the rails of the game. \\
+\hline
+{\em tab\-\_\-rails} & is the tabular composed of all the rails of the game. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the \hyperlink{structMy__Rail}{My\-\_\-\-Rail} corresponding to the identifier \char`\"{}id\-\_\-rail\char`\"{} of a given rail in the tabular \char`\"{}tab\-\_\-rails\char`\"{}. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{link_8c_a6ccd449d6f68b97d9b90fd006bdd6108_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{link_8c_a425217f6f8098b1637ec3f27d905830c}{\index{link.\-c@{link.\-c}!init\-\_\-link@{init\-\_\-link}}
+\index{init\-\_\-link@{init\-\_\-link}!link.c@{link.\-c}}
+\subsubsection[{init\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-link (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Link} $\ast$}]{link}
+\end{DoxyParamCaption}
+)}}\label{link_8c_a425217f6f8098b1637ec3f27d905830c}
+
+
+init\-\_\-link 
+
+
+\begin{DoxyParams}{Parameters}
+{\em link} & is a pointer to the struct \hyperlink{structLink}{Link} which is going to be initialised. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{link_8c_a425217f6f8098b1637ec3f27d905830c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{link_8c_aa356dd1a6ef6b845619ba56fa563d0f5}{\index{link.\-c@{link.\-c}!init\-\_\-map@{init\-\_\-map}}
+\index{init\-\_\-map@{init\-\_\-map}!link.c@{link.\-c}}
+\subsubsection[{init\-\_\-map}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Link}$\ast$$\ast$ init\-\_\-map (
+\begin{DoxyParamCaption}
+\item[{int}]{nbr\-\_\-towns, }
+\item[{struct {\bf Rail} $\ast$}]{tab\-\_\-rails, }
+\item[{int}]{size\-\_\-tab\-\_\-rails}
+\end{DoxyParamCaption}
+)}}\label{link_8c_aa356dd1a6ef6b845619ba56fa563d0f5}
+
+
+init\-\_\-map Initialises the matrix of all the \hyperlink{structLink}{Link(s)} composed of all the \hyperlink{structMy__Rail}{My\-\_\-\-Rail(s)} corresponding to all the rails of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nbr\-\_\-towns} & is the total number of towns. \\
+\hline
+{\em tab\-\_\-rails} & is the tabular of all the rails of the game. \\
+\hline
+{\em size\-\_\-tab\-\_\-rails} & is the length of the tabular \char`\"{}tab\-\_\-rails\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a matrix so that matrix\mbox{[}i\mbox{]}\mbox{[}j\mbox{]} is the struct \hyperlink{structLink}{Link} corresponding to the rails between town \char`\"{}i\char`\"{} and town \char`\"{}j\char`\"{}. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{link_8c_aa356dd1a6ef6b845619ba56fa563d0f5_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{link_8c_aa356dd1a6ef6b845619ba56fa563d0f5_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{link_8c_aa411a7aab379ecada4b140fd00078bca}{\index{link.\-c@{link.\-c}!is\-\_\-rail\-\_\-free@{is\-\_\-rail\-\_\-free}}
+\index{is\-\_\-rail\-\_\-free@{is\-\_\-rail\-\_\-free}!link.c@{link.\-c}}
+\subsubsection[{is\-\_\-rail\-\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}int is\-\_\-rail\-\_\-free (
+\begin{DoxyParamCaption}
+\item[{struct {\bf My\-\_\-\-Rail} $\ast$}]{rail}
+\end{DoxyParamCaption}
+)}}\label{link_8c_aa411a7aab379ecada4b140fd00078bca}
+
+
+is\-\_\-rail\-\_\-free 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rail} & is a pointer to the struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} which is going to be analysed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} is free, 0 otherwise. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{link_8c_aa411a7aab379ecada4b140fd00078bca_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{link_8c_aca0a177bc91fb070f332b263da3b0153}{\index{link.\-c@{link.\-c}!modify\-\_\-link@{modify\-\_\-link}}
+\index{modify\-\_\-link@{modify\-\_\-link}!link.c@{link.\-c}}
+\subsubsection[{modify\-\_\-link}]{\setlength{\rightskip}{0pt plus 5cm}void modify\-\_\-link (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Link} $\ast$}]{link, }
+\item[{struct {\bf Rail} $\ast$}]{rail, }
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}\label{link_8c_aca0a177bc91fb070f332b263da3b0153}
+
+
+modify\-\_\-link 
+
+
+\begin{DoxyParams}{Parameters}
+{\em link} & is a pointer to the struct \hyperlink{structLink}{Link} where a rail is going to be added. \\
+\hline
+{\em rail} & is a pointer to the struct \hyperlink{structRail}{Rail} which is going to be added in the given struct \hyperlink{structLink}{Link}. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{link_8c_aca0a177bc91fb070f332b263da3b0153_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{link_8c_af168bfabee8aa1bb9edf5ee37bd27541}{\index{link.\-c@{link.\-c}!rail\-\_\-size@{rail\-\_\-size}}
+\index{rail\-\_\-size@{rail\-\_\-size}!link.c@{link.\-c}}
+\subsubsection[{rail\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int rail\-\_\-size (
+\begin{DoxyParamCaption}
+\item[{struct {\bf My\-\_\-\-Rail} $\ast$}]{rail}
+\end{DoxyParamCaption}
+)}}\label{link_8c_af168bfabee8aa1bb9edf5ee37bd27541}
+
+
+rail\-\_\-size 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rail} & is a pointer to the struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} of which the size is wanted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the size of the struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} given. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{link_8c_af168bfabee8aa1bb9edf5ee37bd27541_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{link_8c_af9b110cbe33aa6495ae1315f48392a57}{\index{link.\-c@{link.\-c}!set\-\_\-player\-\_\-on\-\_\-rail@{set\-\_\-player\-\_\-on\-\_\-rail}}
+\index{set\-\_\-player\-\_\-on\-\_\-rail@{set\-\_\-player\-\_\-on\-\_\-rail}!link.c@{link.\-c}}
+\subsubsection[{set\-\_\-player\-\_\-on\-\_\-rail}]{\setlength{\rightskip}{0pt plus 5cm}void set\-\_\-player\-\_\-on\-\_\-rail (
+\begin{DoxyParamCaption}
+\item[{struct {\bf My\-\_\-\-Rail} $\ast$}]{rail, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{link_8c_af9b110cbe33aa6495ae1315f48392a57}
+
+
+set\-\_\-player\-\_\-on\-\_\-rail 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rail} & is a pointer to the struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} where the player is going to be placed. \\
+\hline
+{\em id} & is the identifier of the player who is going to be placed on the \hyperlink{structMy__Rail}{My\-\_\-\-Rail}. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{link_8c_af9b110cbe33aa6495ae1315f48392a57_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{link_8c_aad404b1a4dc11e07cd7361e27106fe7a}{\index{link.\-c@{link.\-c}!who\-\_\-on\-\_\-rail@{who\-\_\-on\-\_\-rail}}
+\index{who\-\_\-on\-\_\-rail@{who\-\_\-on\-\_\-rail}!link.c@{link.\-c}}
+\subsubsection[{who\-\_\-on\-\_\-rail}]{\setlength{\rightskip}{0pt plus 5cm}int who\-\_\-on\-\_\-rail (
+\begin{DoxyParamCaption}
+\item[{struct {\bf My\-\_\-\-Rail} $\ast$}]{rail}
+\end{DoxyParamCaption}
+)}}\label{link_8c_aad404b1a4dc11e07cd7361e27106fe7a}
+
+
+who\-\_\-on\-\_\-rail 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rail} & is a pointer to the struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail} which is going to be analysed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the identifier of the player set on the given struct \hyperlink{structMy__Rail}{My\-\_\-\-Rail}. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{link_8c_aad404b1a4dc11e07cd7361e27106fe7a_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{link_8c_ad8018e773ffbf48b9f9ef7d446349023}{\index{link.\-c@{link.\-c}!rail\-\_\-defaut@{rail\-\_\-defaut}}
+\index{rail\-\_\-defaut@{rail\-\_\-defaut}!link.c@{link.\-c}}
+\subsubsection[{rail\-\_\-defaut}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Rail} const rail\-\_\-defaut = \{-\/1,-\/1,-\/1,-\/1\}}}\label{link_8c_ad8018e773ffbf48b9f9ef7d446349023}

@@ -1,0 +1,7 @@
+<map id="build_rail" name="build_rail">
+<area shape="rect" id="node2" href="$play__turn_8c.html#ad1f55ecdce64f0b9fc7e10aeb0275029" title="apply" alt="" coords="153,56,207,83"/>
+<area shape="rect" id="node5" href="$test__build__rail_8c.html#ab6d5816eb886fb6553eade85226e8831" title="test_build_rail" alt="" coords="129,107,231,133"/>
+<area shape="rect" id="node3" href="$server_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="283,5,333,32"/>
+<area shape="rect" id="node4" href="$server_8h.html#a091e5087dae440aa98617aa831fecd28" title="cheat " alt="" coords="281,56,335,83"/>
+<area shape="rect" id="node6" href="$test__build__rail_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="283,107,333,133"/>
+</map>

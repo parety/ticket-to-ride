@@ -1,0 +1,12 @@
+#ifndef CARDS_GESTION_H
+#define CARDS_GESTION_H
+
+int colors(struct Rail *rails, int nb_rails, int *col);
+void init_card_hands(int nb_players, int nb_starting_cards, int **card_hands, int *colors, int nb_colors);
+void init_obj_hands(int nb_players, int nb_starting_objs, int  ** obj_hands, struct Objective *objectives,int nb_objs);
+void init_nb_objs(int nb_players, int nb_starting_objs, int *nb_objs);
+void draw_wagon_cards(int player, int nb_players, int **card_hands, int *wagon_cards_modif);
+void draw_color_card(int player, int nb_players, int **card_hand, int *nb_cards, int *wagon_cards_modif, int **cards, int nb_colors, int *colors);
+
+
+#endif

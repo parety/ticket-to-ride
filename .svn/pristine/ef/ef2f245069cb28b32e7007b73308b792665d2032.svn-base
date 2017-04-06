@@ -1,0 +1,134 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "interface.h"
+#include "server.h"
+
+
+struct Map_info get_map_info(char* file_name){
+  FILE * f = fopen(file_name, "r");
+  int nb_read = 0;
+  struct Map_info map_info;
+  while (nb_read < 4){
+    int i = 0;
+    char c = getc(f);
+    if (c == '%'){
+      while (c != '\n'){
+	c = getc(f);
+      }
+    }
+
+    else if (c != ' ' && c!= '\n'){
+      nb_read++;
+      while (c != ' ' && c!='\n'){ 
+	i = 10*i + atoi(&c);
+	c = getc(f);
+      }
+      if (nb_read == 1){
+	map_info.nb_towns = i;
+      }
+      else if (nb_read == 2){
+	map_info.nb_links = i;
+      }
+      else if (nb_read == 3){
+	map_info.nb_objs = i;
+      }
+      else if (nb_read == 4){
+	map_info.nb_w_player = i;	
+      }
+      
+    }
+  }
+  fclose(f);
+  return map_info;
+}
+
+
+void file2rails(struct Rail *rails, int size, char *file_name){
+  FILE * f = fopen(file_name, "r");
+  char c = getc(f);
+  int skiped_line1 = 0;
+  int nb_param = 0;
+  int id1, id2, length, color;
+  int n = 0;
+  int i = 0;
+  
+  while (c != EOF){
+
+    // skip all comments
+
+    if (c == '%'){ 
+      while (c != '\n'){
+	c = getc(f);
+      }
+      c = getc(f);
+    }
+
+    // skip the first line
+    
+    else if (!skiped_line1){
+      while (c != '\n'){
+	c = getc(f);
+      }
+      skiped_line1 = 1;
+      c = getc(f);
+    }
+
+    // test if the line is a rail and get the parameters:
+
+    else{
+
+      if (c == ' '){
+	printf("if\n");
+	n = 0;
+      }
+
+      else if (c != '\n'){
+
+	int j = 0;
+	while (c != ' ' && c != '\n'){
+	  j++;
+
+	  n = 10*n+atoi(&c);
+
+	  c = getc(f);
+	}
+	nb_param++;
+	if (nb_param == 1)
+	  id1 = n;
+	else if (nb_param == 2)
+	  id2 = n;
+	else if (nb_param == 3)
+	  color = n;
+	else if (nb_param == 4)
+	  length = n;
+	n = 0;
+	if (c !='\n')
+	  c = getc(f);
+
+      }
+      
+      else{
+
+	n = 0;
+	if (nb_param == 4){ //if is a rail
+	  struct Rail rail;
+	  rail.town1 = id1;
+
+	  rail.town2 = id2;
+
+	  rail.color = color;
+
+	  rail.length = length;
+
+	  rails[i*sizeof(struct Rail)] = rail;
+
+	  i++;
+
+	}
+	c = getc(f);
+        nb_param = 0;
+      }
+    }
+  }
+
+}

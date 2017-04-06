@@ -1,0 +1,24 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "../src/interface.h"
+#include "../src/server.h"
+
+
+int test_get_map_info(){
+  struct Map_info map_info = get_map_info("tests_file.txt");
+  if (map_info.nb_towns == 2 && map_info.nb_links == 1 && map_info.nb_objs == 1 && map_info.nb_w_player == 10)
+    return 1;
+  return 0;
+  
+}
+
+
+int main(){
+  printf("test of get_map_info ... ");
+  if (test_get_map_info())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+
+  return 0;
+}

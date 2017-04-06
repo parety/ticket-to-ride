@@ -1,0 +1,6 @@
+#ifndef CARDS_GESTION_H
+#define CARDS_GESTION_H
+
+int colors(struct Rail *rails, int nb_rails, int *col);
+
+#endif

@@ -1,0 +1,7 @@
+<map id="set_player_on_rail" name="set_player_on_rail">
+<area shape="rect" id="node2" href="$AI__0_8c.html#af51c2bc8672ee161b102e06843c3a045" title="AI_0_play_turn Calls the player, actualises all the changes that occured since the last time the play..." alt="" coords="211,5,320,32"/>
+<area shape="rect" id="node3" href="$AI__1_8c.html#a44afa06d0ad3e478f1046db37fffb663" title="actualise_all_parameters_received Actualises all the changes that occured since the last time the pla..." alt="" coords="182,57,349,98"/>
+<area shape="rect" id="node5" href="$test__link_8c.html#a8eb513d982d21096e671c7a1df37d8a2" title="test_player_on_rail" alt="" coords="200,123,331,149"/>
+<area shape="rect" id="node4" href="$AI__1_8c.html#a8f776e760f32f938ce3203363f807f35" title="AI_0_play_turn Calls the player, actualises all the changes that occured since the last time the play..." alt="" coords="397,64,507,91"/>
+<area shape="rect" id="node6" href="$test__link_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="427,123,477,149"/>
+</map>

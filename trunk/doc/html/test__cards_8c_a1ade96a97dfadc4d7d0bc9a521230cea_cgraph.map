@@ -1,0 +1,7 @@
+<map id="test_draw_color_card" name="test_draw_color_card">
+<area shape="rect" id="node2" href="$init_8c.html#a58328afc943f169a939734e4f698718e" title="get_map_info " alt="" coords="209,5,309,32"/>
+<area shape="rect" id="node3" href="$init_8c.html#a9bddd065021bc892861112c69dc641df" title="file2rails " alt="" coords="223,56,294,83"/>
+<area shape="rect" id="node4" href="$cards__gestion_8c.html#a6476a83be99f343b2baff69567b03280" title="colors Complete the array with the colors used in the game and return the number of colors ..." alt="" coords="230,107,287,133"/>
+<area shape="rect" id="node5" href="$cards__gestion_8c.html#a10839b86959ad4336606d439d85cf2ac" title="init_card_hands initialisation of the cards in possession of each player at the beginning of the game..." alt="" coords="202,157,315,184"/>
+<area shape="rect" id="node6" href="$cards__gestion_8c.html#a29db272fe208ef85ffd21981b50dbe23" title="draw_color_card applies modif if the player draw color cards " alt="" coords="200,208,317,235"/>
+</map>

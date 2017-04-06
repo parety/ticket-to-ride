@@ -1,0 +1,62 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "../src/interface.h"
+#include "../src/server.h"
+
+
+
+int test_colors(){
+  struct Map_info map_info = get_map_info("tests_file.txt");
+  //struct Rails *rails;
+  //struct Objective *objs;
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"tests_file.txt");
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,col);
+  
+  if (nb_colors == 1 && col[0] == 42)
+    return 1;
+  else
+    return 0;
+}
+
+
+int test_init_card_hands(){
+
+   struct Map_info map_info = get_map_info("tests_file.txt");
+   struct Rail rails[map_info.nb_links];
+   struct Objective objectives[map_info.nb_objs];
+   file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"tests_file.txt");
+
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,col);
+
+
+  int ** card_hands = malloc(NB_PLAYERS*sizeof(int *));
+  init_card_hands(card_hands, col, nb_colors);
+
+  return 1;
+}
+
+
+
+
+int main(){
+
+  printf("Test of colors ... ");
+  if (test_colors())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+
+
+  
+  printf("Test of init_card_hands ... ");
+  if (test_init_card_hands())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+
+  return 0;
+}

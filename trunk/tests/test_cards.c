@@ -1,0 +1,240 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "../src/interface.h"
+#include "../src/server.h"
+
+
+
+int test_colors(){
+  struct Map_info map_info = get_map_info("tests_file.txt");
+  //struct Rails *rails;
+  //struct Objective *objs;
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"tests_file.txt");
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,col);
+  
+  if (nb_colors == 1 && col[0] == 42)
+    return 1;
+  else
+    return 0;
+}
+
+
+int test_init_card_hands(){
+
+   struct Map_info map_info = get_map_info("tests_file.txt");
+   struct Rail rails[map_info.nb_links];
+   struct Objective objectives[map_info.nb_objs];
+   file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"tests_file.txt");
+
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,col);
+
+
+  int ** card_hands = malloc(NB_PLAYERS*sizeof(int *));
+  int nb_players = 3;
+  int nb_starting_cards = 5;
+  init_card_hands(nb_players, nb_starting_cards,card_hands, col, nb_colors);
+  
+  for (int i = 0; i < nb_players; i++){
+    for (int j = 0; j < nb_starting_cards; j++){
+      if (card_hands[i][j] != 42)
+	return 0;
+    }
+  }
+
+  return 1;
+}
+
+
+
+
+int test_init_obj_hands(){
+  
+  
+  struct Map_info map_info = get_map_info("France.txt");
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"France.txt");
+  
+  int ** obj_hands = malloc(NB_PLAYERS*sizeof(int *));
+  int nb_players = 3;
+  int nb_starting_objs = 3;
+  int all_objective_conditions[map_info.nb_objs];
+  init_obj_hands(nb_players,nb_starting_objs, obj_hands,objectives,map_info.nb_objs,all_objective_conditions);
+  int verif[nb_players*nb_starting_objs];
+  for (int player = 0; player < nb_players; player++){
+    for (int obj = 0; obj < nb_starting_objs; obj++){
+      if (obj_hands[player][obj] < 0 || obj_hands[player][obj] > map_info.nb_objs)
+	return 0;
+      verif[player*nb_starting_objs + obj] = obj_hands[player][obj];
+    }
+  }
+  
+  for (int i = 0; i < nb_players*nb_starting_objs; i++){
+    for (int j = i+1; j < nb_players*nb_starting_objs; j++){
+      if (verif[i] == verif[j])
+	return 0;
+    }
+  }
+
+  return 42;
+ 
+}
+
+
+
+int test_draw_color_card(){
+
+  // Initialisation of parameters
+  int player = 1;
+  struct Map_info map_info = get_map_info("tests_file.txt");
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"tests_file.txt");
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,col);
+  int ** card_hands = malloc(NB_PLAYERS*sizeof(int *));
+  int nb_players = 3;
+  int nb_starting_cards = 5;
+  init_card_hands(nb_players, nb_starting_cards,card_hands, col, nb_colors);
+  int nb_cards[] = {nb_starting_cards,nb_starting_cards,nb_starting_cards};
+  int wagon_cards_modif[] = {0,0,0};
+  int **cards = malloc(nb_players*sizeof(int*));
+  for (int i = 0; i < nb_players; i++){
+    cards[i] = malloc(2*sizeof(int));
+    for (int j = 0; j < 2; j++)
+      cards[i][j] = -1;
+  }
+
+
+  // test
+
+  draw_color_card(player,nb_players,card_hands,nb_cards,wagon_cards_modif, cards,nb_colors,col);
+  
+
+  if (wagon_cards_modif[player] != 2) // the player has 2 new more cards
+    return 0;
+  if (nb_cards[player] != nb_starting_cards + wagon_cards_modif[player]) // the player had 5 cards, now he has 7
+    return 0;
+  if (cards[player][0] != 42 || cards[player][1] != 42) // the new colors are 42 (there is only this color in this game)
+    return 0;
+  if (card_hands[player][nb_cards[player]-1] != 42 || card_hands[player][nb_cards[player]] != 42)
+    return 0;
+  
+  
+  return 1;
+  
+
+}
+
+
+
+int test_init_first_chosen_objs(){
+  int nb_objs_given=5;
+  int T_chosen_objs[nb_objs_given];
+  T_chosen_objs[0]=0;
+  T_chosen_objs[1]=1;
+  T_chosen_objs[2]=1;
+  T_chosen_objs[3]=0;
+  T_chosen_objs[4]=1;
+  int all_objs_conditions_size=10;
+  int all_objs_conditions[all_objs_conditions_size];
+  for (int i=0; i<10 ;i++){
+    all_objs_conditions[i]=0;
+  }
+  all_objs_conditions[0]=1;
+  all_objs_conditions[4]=1;
+  all_objs_conditions[7]=1;
+  all_objs_conditions[1]=1;
+  all_objs_conditions[8]=1;
+  int nb_objs[4];//4 players
+  for (int i=0; i<4 ;i++){
+    nb_objs[i]=5;
+  }
+  int obj_player_hand[5];
+  obj_player_hand[0]=0;
+  obj_player_hand[1]=4;
+  obj_player_hand[2]=7;
+  obj_player_hand[3]=1;
+  obj_player_hand[4]=8;
+  int objectives[4];
+  for (int i=0; i<4 ;i++){
+    objectives[i]=0;
+  }
+  int new_obj[5];
+  for (int i=0; i<4 ;i++){
+    new_obj[i]=-1;
+  }
+  int player=0;
+  
+  init_first_chosen_objs( T_chosen_objs, nb_objs_given, all_objs_conditions, all_objs_conditions_size, obj_player_hand, nb_objs, objectives,new_obj, player);
+  
+  for (int i=0; i<3; i++){//3 nb of objectives chosen by the player 
+    if(obj_player_hand[i]==-1 || obj_player_hand[i]==0 ||obj_player_hand[i]==1)
+      return 0;
+    if (new_obj[i]==-1 || new_obj[i]==0 ||new_obj[i]==1)
+      return 0;
+  }
+  for (int i=3; i<5; i++){ 
+    if(obj_player_hand[i]!=-1)
+      return 0;
+  }
+  if(all_objs_conditions[0]!=0 || all_objs_conditions[1]!=0)
+    return 0;
+  
+  if(nb_objs[player]!=3 || objectives[player]!=3)
+    return 0;
+
+  return 1;
+}
+
+
+
+
+
+int main(){
+  
+  printf("Test of colors ... ");
+  if (test_colors())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+
+  
+  
+  printf("Test of init_card_hands ... ");
+  if (test_init_card_hands())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+  
+  
+  /*
+
+  printf("Test of init_obj_hands ... ");
+  if (test_init_obj_hands())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+  */
+
+
+  printf("Test of draw_color_card ... ");
+  if (test_draw_color_card())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+
+
+  printf("Test_init_first_chosen_objs ... ");
+  if(test_init_first_chosen_objs())
+    printf("PASSED\n");
+  else 
+    printf("FAILED\n");
+
+  return 0;
+
+}

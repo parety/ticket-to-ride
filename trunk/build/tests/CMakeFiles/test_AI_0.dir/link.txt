@@ -1,0 +1,1 @@
+/usr/bin/cc  -std=c99 -fPIC -O0 -g    CMakeFiles/test_AI_0.dir/test_AI_0.c.o  -o test_AI_0 -rdynamic ../src/liblink.a ../src/libcards.a ../src/libplay.a 

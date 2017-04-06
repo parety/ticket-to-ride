@@ -1,0 +1,139 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "interface.h"
+#include "server.h"
+#include "link.h"
+#include "concat.h"
+
+
+#define NB_PLAYERS 1
+#define NB_PLAYERS_MAX 2
+#define NB_STARTING_CARDS 4
+#define NB_STARTING_OBJS 3
+#define NB_OBJ_DRAWN_MAX 3
+#define MIN_OBJS_TO_PICK 1
+#define COLORED_GAME 0
+
+
+int main(int argc,char * argv[]){
+  srand(time(NULL));
+  
+  //need 1 file
+  if (argc != 2){
+    printf("error : expected 1 argument, given %d\n",argc-1);
+    return EXIT_FAILURE;
+  }
+  ////INITIALISATION OF GENERAL INFORMATIONS
+  struct Map_info map_info = get_map_info(argv[1]);
+  struct Rail rails[map_info.nb_links];
+  struct Objective all_objectives[map_info.nb_objs];
+  int all_objective_conditions[map_info.nb_objs];
+  init_all_objective_conditions(all_objective_conditions,map_info.nb_objs);
+  //struct Town towns[map_info.nb_towns];
+  file2rails(rails, map_info.nb_links, all_objectives, map_info.nb_objs, argv[1]);
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,&col);
+
+
+
+
+  ////INITIALISATION OF SERVER INFORMATIONS
+  struct Link ** map = init_map(map_info.nb_towns, rails, map_info.nb_links); //matrix of link structures
+
+  int ** card_hands = malloc(NB_PLAYERS*sizeof(int *));//array of the player's wagon card hands
+  init_card_hands(NB_PLAYERS, NB_STARTING_CARDS, card_hands, col, nb_colors); //DONE
+
+  int nb_cards[NB_PLAYERS]; //array of the number of wagon cards of each player
+  for (int i = 0 ; i < NB_PLAYERS ; i++){
+    nb_cards[i] = NB_STARTING_CARDS;
+  }
+
+
+
+  int ** obj_hands = malloc(NB_PLAYERS*sizeof(int *));//array of the player's objective card hands
+  init_obj_hands(NB_PLAYERS, NB_STARTING_OBJS, obj_hands, all_objectives, map_info.nb_objs,all_objective_conditions);
+  int nb_objs[NB_PLAYERS];
+  init_nb_objs(NB_PLAYERS, NB_STARTING_OBJS, nb_objs);//array with nb_players cases which correspond to the nb of objs of each player
+
+
+  
+  ////INITIALISATION OF PLAYER FONCTIONS
+  struct f_player * player_fonctions = malloc(NB_PLAYERS_MAX * sizeof(struct f_player));
+
+    player_fonctions[0].init_player = CONCAT(CONCAT(AI_ , 0) , _init_player);
+    player_fonctions[0].play_turn = CONCAT(CONCAT(AI_ , 0) , _play_turn);
+    player_fonctions[0].choose_objective = CONCAT(CONCAT(AI_ , 0) , _choose_objective);
+    player_fonctions[0].free_player = CONCAT(CONCAT(AI_ , 0) , _free_player);
+
+
+    player_fonctions[1].init_player = CONCAT(CONCAT(AI_ , 1) , _init_player);
+    player_fonctions[1].play_turn = CONCAT(CONCAT(AI_ , 1) , _play_turn);
+    player_fonctions[1].choose_objective = CONCAT(CONCAT(AI_ , 1) , _choose_objective);
+    player_fonctions[1].free_player = CONCAT(CONCAT(AI_ , 1) , _free_player);
+
+  ////INITIALISATION OF PLAYER INFORMATIONS
+  for (int i=0; i<NB_PLAYERS ; i++){
+    int ok = player_fonctions[i].init_player(i, NB_PLAYERS, map_info.nb_towns, map_info.nb_links, rails, map_info.nb_w_player, map_info.nb_objs, all_objectives);
+  }
+    
+  //////////GAME START//////////
+
+  ////DECLARATION OF TURN INFORMATIONS
+  struct Action action;
+  int wagons_remaining[NB_PLAYERS];
+  init_wagons(wagons_remaining,NB_PLAYERS, map_info.nb_w_player);//DONE  //array of the wagons remaining for each player
+  int used_wagons[NB_PLAYERS];
+  int  wagon_cards_modif[NB_PLAYERS];//array of the variation of the number of wagon cards in each hands (>=0 if draw, <= if built)
+  int  objectives[NB_PLAYERS];//array of the number of objectives cards drawn during the last by each player
+  int nb_new_rails = 0;
+  struct New_rail changes[NB_PLAYERS];//array of the rails built during the last turn
+
+  int **new_obj;//array of the index of the objectives drawn by each player during the last turn
+  int M_rail_length = max_rail_length(rails, map_info.nb_links);//max_rail_length DONE
+  int **cards;  //array of the color of cards modified by each player during the last turn
+  //allocation of new_obj and cards
+  new_obj = malloc(sizeof(int*)*NB_PLAYERS);
+  cards =  malloc(sizeof(int*)*NB_PLAYERS);
+  for (int i=0; i<NB_PLAYERS; i++){
+    new_obj[i]=malloc(sizeof(int)*NB_OBJ_DRAWN_MAX);
+    cards[i]=malloc(sizeof(int)*M_rail_length);
+      }
+
+
+  
+  init_turn_informations(used_wagons, wagon_cards_modif, objectives, changes, new_obj, cards, NB_PLAYERS, NB_STARTING_CARDS, NB_OBJ_DRAWN_MAX, M_rail_length); // DONE  //initialise all elts of used_wagons, objectives, new_obj, cards to 0 ; all elts of cards_in_hands to NB_STARTING_CARDS and all elts of changes to a New_rail "no_change" with rail=-1, player=-1.
+
+
+
+  ////CHOICE OF THE OBJECTIVES IN THE BEGINNING HANDS
+  int * T_chosen_objs;
+  for ( int i =0 ; i<NB_PLAYERS ; i++){
+    T_chosen_objs = player_fonctions[i].choose_objective(NB_STARTING_OBJS, obj_hands[i], MIN_OBJS_TO_PICK);//array of boolean telling if objs are kept or not
+    if (are_objs_valid(T_chosen_objs, MIN_OBJS_TO_PICK, NB_STARTING_OBJS)){ //test if the number of chosen objectives are between MIN_OBJS_TO_PICK and NB_STARTING_OBJ  
+      init_first_chosen_objs(T_chosen_objs, NB_STARTING_OBJS,all_objective_conditions, map_info.nb_objs , obj_hands[i], nb_objs, objectives ,new_obj[i], i);//initialise the first objectives chosen by the player in his beginning hand // DONE
+
+    }
+  }
+
+  ////PLAY TURNS
+  while ( ! is_last_turn(wagons_remaining,NB_PLAYERS)){//is_last_turn DONE
+      for (int j=0 ; j<NB_PLAYERS ; j++){
+	action = player_fonctions[j].play_turn(used_wagons, wagon_cards_modif, objectives, nb_new_rails, changes, new_obj[j], cards[j]);
+    if (!cheat(action,NB_PLAYERS,j,map_info.nb_objs,nb_objs,rails,map_info.nb_links,wagons_remaining,card_hands,nb_cards,map,map_info.nb_towns)) //pass turn if the client cheated DONE
+      apply(j, action, NB_PLAYERS, card_hands, nb_cards, wagon_cards_modif, cards, nb_colors, col, map, rails, wagons_remaining, used_wagons, obj_hands, map_info.nb_objs, all_objective_conditions, new_obj, NB_OBJ_DRAWN_MAX, MIN_OBJS_TO_PICK, player_fonctions, nb_objs, objectives,COLORED_GAME); //modify the server informations and the turn informations //DONE
+      }
+    }
+
+  //////////GAME END//////////
+  //the winner is ...
+  int w_player = winner(map, map_info.nb_towns, NB_PLAYERS, all_objectives, obj_hands, nb_objs, map_info.nb_links, rails); //TO FINISH (points_objs...) 
+
+  //free the memory
+  free_all(col, map_info.nb_towns, map, NB_PLAYERS, card_hands, obj_hands, player_fonctions, new_obj, cards, T_chosen_objs);// DONE
+  
+
+  printf("and the winnner is ... the player %d\n",w_player); 
+  return EXIT_SUCCESS;
+}
+

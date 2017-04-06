@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "interface.h"
+#include "server.h"
+#include "link.h"
+
+#define NB_PLAYERS 2
+#define NB_STARTING_CARDS 5
+
+
+
+int main(int argc,char * argv[]){
+  //need 1 file
+  if (argc != 2){
+    printf("error : expected 1 argument, given %d\n",argc-1);
+    return EXIT_FAILURE;
+  }
+  //initialisation of general informations
+  struct Map_info map_info = get_map_info(argv[1]);
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  struct Town towns[map_info.nb_towns];
+  file2rails(rails, map_info.nb_rails, objectives, map_info.nb_objs, argv[1]);
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,col);
+
+
+
+
+  //initialisation of server informations
+  struct Link ** map = init_map(map_info.nb_towns, rails, map_info.nb_links); //matrix of link structures
+
+  int ** card_hands = malloc(NB_PLAYERS*sizeof(int *));
+  init_card_hands(NB_PLAYERS, NB_STARTING_CARDS, card_hands, col, nb_colors); //array with the the starting card colors of the first player, then those of the second ...
+
+  //init_nb_cards(NB_PLAYERS, NB_STARTING_CARDS, card_hands, col, nb_colors); //array with nb_players cases which correspond to the nb of cards of each player
+  int nb_cards[NB_PLAYERS];
+  for (int i = 0; i < NB_PLAYERS){
+    nb_cards[i] = NB_STARTING_CARDS;
+  }
+
+  struct Objective * obj_hands = init_obj_hands(NB_PLAYERS, NB_STARTING_OBJS); //array of nb_starting_objs * player (ex : the 5 player1 objs, then the 5 player2 objs ...)
+  int * nb_objs = init_nb_objs(NB_PLAYERS, NB_STARTING_OBJS);//array with nb_players cases which correspond to the nb of objs of each player
+
+
+
+  
+  //initialisation of player informations
+    init_player(i, NB_PLAYER, map_info.nb_towns, map_info.nb_rails, 
+  
+
+  
+  //game start
+
+
+
+  //game end
+  //the winner is ...
+
+  //free the memory
+  
+  
+  return EXIT_SUCCESS;
+}

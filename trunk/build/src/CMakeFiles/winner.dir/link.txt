@@ -1,0 +1,2 @@
+/usr/bin/ar cr libwinner.a  CMakeFiles/winner.dir/winner.c.o
+/usr/bin/ranlib libwinner.a

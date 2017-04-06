@@ -1,0 +1,9 @@
+<map id="AI_1_free_player" name="AI_1_free_player">
+<area shape="rect" id="node2" href="$test__AI__1_8c.html#a7a3be6f5fc9534823762c87146219d8d" title="test_initialisation" alt="" coords="195,5,314,32"/>
+<area shape="rect" id="node4" href="$test__AI__1_8c.html#a498000655653e4aecdb8b93ce6152fc6" title="test_game_actualisation\l_case_objective" alt="" coords="173,57,336,98"/>
+<area shape="rect" id="node5" href="$test__AI__1_8c.html#ab07668eb63fa739f6e899c68e098dde1" title="test_game_actualisation\l_case_build" alt="" coords="173,122,336,163"/>
+<area shape="rect" id="node6" href="$test__AI__1_8c.html#aeb0e31ce728fa40bb0f774fe9f97620d" title="test_game_actualisation\l_case_draw" alt="" coords="173,187,336,229"/>
+<area shape="rect" id="node7" href="$test__AI__1_8c.html#a276fb482d84a86075c77931ed6692b9c" title="test_actualise_nb_objs\l_completed" alt="" coords="177,253,332,294"/>
+<area shape="rect" id="node8" href="$test__AI__1_8c.html#abdd3f435ef1978132c5d1355dce961ac" title="test_choose_objective" alt="" coords="179,319,331,345"/>
+<area shape="rect" id="node3" href="$test__AI__1_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="384,163,435,189"/>
+</map>

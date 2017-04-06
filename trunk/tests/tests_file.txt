@@ -1,0 +1,15 @@
+% Chaque ligne commencant par un '%' est un commentaire.
+%
+% La premiere ligne sans commentaire contient quatre entiers donnant le
+% nombre de sommets, d'aretes et d'objectifs de la carte, et finalement
+% le nombre de wagons par joueur. 
+2 1 1 10
+% Chaque sommet est defini par un id entier et un nom de ville./n
+1 Vladivostok
+2 Kinshasa
+% Chaque arete est definie par une paire d'ids, une couleur, et
+% une distance, tous entiers.
+1 2 42 6
+% Chaque objectif est defini par une paire d'ids et un nombre de 
+% points, tous entiers.
+1 2 100000

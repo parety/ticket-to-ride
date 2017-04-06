@@ -1,0 +1,50 @@
+#include <stdlib.h>
+#include "link.h"
+#include "interface.h"
+
+
+struct Link * init_link(struct Rail * rail){
+
+}
+
+struct Link * modify_link(struct Link * link, struct Rail * rail){
+
+}
+
+int free_my_rail(struct Link * link){
+
+}
+
+struct Link * init_map(){
+
+}
+
+int free_map(struct Link * matrix){
+
+}
+
+
+
+
+
+
+
+void set_player_on_rail(struct My_Rail * rail, int id){
+    rail->id = id;
+}
+
+
+int is_rail_free(struct My_Rail * rail){
+    return rail>id==0;
+}
+
+
+int who_on_rail(struct My_Rail * rail){
+    return rail->id;
+}
+
+
+int rail_size(struct My_Rail * rail){
+    return rail->rail->length;
+}
+

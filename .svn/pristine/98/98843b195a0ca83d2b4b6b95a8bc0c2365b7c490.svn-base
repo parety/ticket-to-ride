@@ -1,0 +1,42 @@
+#include <stdlib.h>
+#include "link.h"
+
+
+
+/*
+int free_link(struct Link * link){
+    free(link);
+    return 0;
+}
+
+
+
+struct Link * init_link(int town1, int town2, int color, int length){
+
+
+    struct Link * link = malloc(sizeof(struct Link));
+
+
+}
+*/
+
+
+void set_player_on_way(struct Way * way, int id){
+    way->id = id;
+}
+
+
+int is_way_free(struct Way * way){
+    return way->id==0;
+}
+
+
+int who_on_way(struct Way * way){
+    return way->id;
+}
+
+
+int way_size(struct Way * way){
+    return way->length;
+}
+

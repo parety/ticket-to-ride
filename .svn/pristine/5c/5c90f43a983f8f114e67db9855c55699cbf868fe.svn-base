@@ -1,0 +1,25 @@
+
+// Medium AI
+
+#include "AI_2.h"
+#include "player.h"
+
+
+struct Player AI_2;
+
+
+
+int AI_2_init_player(int id, int nb_player, int nb_towns, int nb_rails, struct Rail *rails, int nb_wagons, int nb_obj, struct Objective *objs);
+//cette fonction modifie AI_2 (juste au dessus)
+
+
+
+struct Action AI_2_play_turn(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards);
+
+
+
+int *AI_2_choose_objective(int nb, int *objs, int min);
+
+
+
+int AI_2_free_player();

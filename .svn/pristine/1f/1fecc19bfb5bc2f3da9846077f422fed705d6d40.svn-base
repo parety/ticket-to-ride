@@ -1,0 +1,112 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "interface.h"
+#include "server.h"
+
+
+struct Map_info get_map_info(char* file_name){
+  FILE * f = fopen(file_name, "r");
+  int nb_read = 0;
+  struct Map_info map_info;
+  while (nb_read < 4){
+    int i = 0;
+    char c = getc(f);
+    if (c == '%'){
+      while (c != '\n'){
+	c = getc(f);
+      }
+    }
+
+    else if (c != ' ' && c!= '\n'){
+      nb_read++;
+      while (c != ' ' && c!='\n'){ 
+	i = 10*i + atoi(&c);
+	c = getc(f);
+      }
+      if (nb_read == 1){
+	map_info.nb_towns = i;
+      }
+      else if (nb_read == 2){
+	map_info.nb_links = i;
+      }
+      else if (nb_read == 3){
+	map_info.nb_objs = i;
+      }
+      else if (nb_read == 4){
+	map_info.nb_w_player = i;	
+      }
+
+    }
+  }
+
+  return map_info;
+}
+
+
+void file2rails(struct Rail *rails, int size, char *filename){
+  FILE * f = fopen(file_name, "r");
+  c = getc(f);
+  int skiped_line1 = 0;
+  int nb_param = 0;
+  int id1, id2, length, color;
+  int n = 0;
+  int i = 0;
+  
+  while (c != EOF){
+
+    // skip all comments
+
+    if (c == '%'){ 
+      while (c != '\n'){
+	c = getc(f);
+      }
+    }
+
+    // skip the first line
+    
+    else if (!skiped_line1){
+      while (c != '\n'){
+	c = getc(f);
+      }
+      skiped_line1 = 1;
+    }
+
+    // test if the line is a rail and get the parameters:
+
+    else{
+      c = getc(f);
+      if (c == ' '){
+	n = 0;
+      }
+
+      else if (c != '\n'){
+	while (c != ' ' || c != '\n'){
+	  n = 10*n+atoi(c);
+	}
+	nb_param++;
+	if (nb_param == 1)
+	  id1 = n;
+	else if (nb_param == 2)
+	  id2 = n;
+	else if (nb_param == 3)
+	  length = n;
+	else if (nb_param == 4)
+	  color = n;
+	n = 0;
+	c = getc(f);
+      }
+      
+      else{
+	n = 0;
+	if (nb_param == 4){
+	  struct Rail rail;
+	  rail.town1 = id1;
+	  rail.town2 = id2;
+	  rail.length = length;
+	  rail.color = color;
+	  rails[n*sizeof(struct Rail)] = rail;
+	  i++;
+	}
+      }
+    }
+}

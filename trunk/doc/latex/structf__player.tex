@@ -1,0 +1,48 @@
+\hypertarget{structf__player}{\section{f\-\_\-player Struct Reference}
+\label{structf__player}\index{f\-\_\-player@{f\-\_\-player}}
+}
+
+
+{\ttfamily \#include $<$server.\-h$>$}
+
+
+
+Collaboration diagram for f\-\_\-player\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=148pt]{structf__player__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int($\ast$ \hyperlink{structf__player_ae803883f2825f7d13bbf12ad4c9b92ac}{init\-\_\-player} )(int id, int nb\-\_\-player, int nb\-\_\-towns, int nb\-\_\-rails, struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-wagons, int nb\-\_\-obj, struct \hyperlink{structObjective}{Objective} $\ast$objs)
+\item 
+struct \hyperlink{structAction}{Action}($\ast$ \hyperlink{structf__player_acbc97ea5cbb0c80c1a3ce98fea12c52e}{play\-\_\-turn} )(int $\ast$used\-\_\-wagons, int $\ast$cards\-\_\-in\-\_\-hand, int $\ast$objectives, int nb\-\_\-new\-\_\-rails, struct \hyperlink{structNew__rail}{New\-\_\-rail} $\ast$changes, int $\ast$new\-\_\-obj, int $\ast$cards)
+\item 
+int $\ast$($\ast$ \hyperlink{structf__player_a30b2a1a6dc61d60d60112b63199f72f6}{choose\-\_\-objective} )(int nb, int $\ast$objs, int min)
+\item 
+int($\ast$ \hyperlink{structf__player_ae47872a4531e4c79eb94348179812809}{free\-\_\-player} )()
+\end{DoxyCompactItemize}
+
+
+\subsection{Field Documentation}
+\hypertarget{structf__player_a30b2a1a6dc61d60d60112b63199f72f6}{\index{f\-\_\-player@{f\-\_\-player}!choose\-\_\-objective@{choose\-\_\-objective}}
+\index{choose\-\_\-objective@{choose\-\_\-objective}!f_player@{f\-\_\-player}}
+\subsubsection[{choose\-\_\-objective}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$($\ast$ choose\-\_\-objective)(int nb, int $\ast$objs, int min)}}\label{structf__player_a30b2a1a6dc61d60d60112b63199f72f6}
+\hypertarget{structf__player_ae47872a4531e4c79eb94348179812809}{\index{f\-\_\-player@{f\-\_\-player}!free\-\_\-player@{free\-\_\-player}}
+\index{free\-\_\-player@{free\-\_\-player}!f_player@{f\-\_\-player}}
+\subsubsection[{free\-\_\-player}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ free\-\_\-player)()}}\label{structf__player_ae47872a4531e4c79eb94348179812809}
+\hypertarget{structf__player_ae803883f2825f7d13bbf12ad4c9b92ac}{\index{f\-\_\-player@{f\-\_\-player}!init\-\_\-player@{init\-\_\-player}}
+\index{init\-\_\-player@{init\-\_\-player}!f_player@{f\-\_\-player}}
+\subsubsection[{init\-\_\-player}]{\setlength{\rightskip}{0pt plus 5cm}int($\ast$ init\-\_\-player)(int id, int nb\-\_\-player, int nb\-\_\-towns, int nb\-\_\-rails, struct {\bf Rail} $\ast$rails, int nb\-\_\-wagons, int nb\-\_\-obj, struct {\bf Objective} $\ast$objs)}}\label{structf__player_ae803883f2825f7d13bbf12ad4c9b92ac}
+\hypertarget{structf__player_acbc97ea5cbb0c80c1a3ce98fea12c52e}{\index{f\-\_\-player@{f\-\_\-player}!play\-\_\-turn@{play\-\_\-turn}}
+\index{play\-\_\-turn@{play\-\_\-turn}!f_player@{f\-\_\-player}}
+\subsubsection[{play\-\_\-turn}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Action}($\ast$ play\-\_\-turn)(int $\ast$used\-\_\-wagons, int $\ast$cards\-\_\-in\-\_\-hand, int $\ast$objectives, int nb\-\_\-new\-\_\-rails, struct {\bf New\-\_\-rail} $\ast$changes, int $\ast$new\-\_\-obj, int $\ast$cards)}}\label{structf__player_acbc97ea5cbb0c80c1a3ce98fea12c52e}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/\hyperlink{server_8h}{server.\-h}\end{DoxyCompactItemize}

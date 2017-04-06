@@ -1,0 +1,234 @@
+// RESTE PLAY TURN A FAIRE
+// intermediary AI (minimal point objective)
+
+#include "AI_1.h"
+#include "player.h"
+#include "interface.h"
+
+struct Player AI_1;
+
+
+
+int AI_1_init_player(int id, int nb_player, int nb_towns, int nb_rails, struct Rail *rails, int nb_wagons, int nb_obj, struct Objective *objs){
+    // Storage of all the informations
+    AI_1.id_player = id;
+    AI_1.points = 0;
+    AI_1.nb_players = nb_players;
+    AI_1.nb_towns = nb_towns;
+
+    AI_1.nb_remaining_wagons = malloc(nb_players*sizeof(int));
+    for(int i=0; i<nb_players; i++)
+      AI_1.nb_remaining_wagons[i] = nb_initial_wagons;
+
+
+    AI_1.nb_remaining_wagon_cards = malloc(nb_players*sizeof(int));
+    for(int i=0; i<nb_players; i++){
+      AI_1.nb_remaining_wagon_cards[i] = 0;
+    }
+
+
+    AI_1.nb_remaining_objective_cards = malloc(nb_players*sizeof(int));
+    for(int i=0; i<nb_players; i++){
+      AI_1.nb_remaining_objective_cards[i] = 0;
+    }
+
+
+    AI_1.nb_rails = nb_rails;
+    AI_1.rails = malloc(nb_rails*sizeof(struct Rail));
+    for(int i=0; i<nb_rails; i++){
+      AI_1.rails[i].town1 = rails[i].town1;
+      AI_1.rails[i].town2 = rails[i].town2;
+      AI_1.rails[i].length = rails[i].length;
+      AI_1.rails[i].color = rails[i].color;
+    }
+
+
+    AI_1.total_nb_obj = nb_obj;
+    AI_1.objs = malloc(nb_obj*sizeof(struct Objective));
+    for(int i=0; i<nb_obj; i++){
+      AI_1.objs[i].town1 = objs[i].town1;
+      AI_1.objs[i].town2 = objs[i].town2;
+      AI_1.objs[i].points = objs[i].points;
+    }
+
+
+    AI_1.nb_personal_objs = 0;
+    AI_1.nb_objs_completed = 0;
+    AI_1.personal_objs = malloc(nb_obj*sizeof(int));
+    for(int i=0; i<nb_obj; i++)
+      AI_1.personal_objs[i] = -1;
+    // AI_1.personal_objs a la taille du nombre total d'objs, mais ne contient que AI_1.nb_personal_objs
+
+
+    int *col = malloc(sizeof(int)); //col must be used in the function colors
+    AI_1.nb_colors = colors(AI_1.rails, AI_1.nb_rails, col);
+    free(col); //col not usefull so needs to be freed
+
+    AI_1.nb_personal_wagon_cards = 0;
+    AI_1.personal_wagon_cards = malloc(AI_1.nb_colors*sizeof(int));
+    for(int i=0; i<AI_1.nb_colors; i++)
+      AI_1.personal_wagon_cards[i] = 0;
+
+
+    AI_1.nb_objectives_chosen = 0;
+    AI_1.draw_chosen = 0;
+
+
+    // Initialisation of the personal matrix
+    AI_1_matrix = init_map(nb_towns, rails, nb_rails);
+
+    return 1;
+  }
+
+
+// calculate all way for a obj and return id_rail : the first stage uncompleted of the shortest way (lenght - lenght completed)
+int search_way(){
+    town1=AI_1.personal_objs[nb_objs_completed].town1;
+    town2=AI_1.personal_objs[nb_objs_completed].town2;
+
+    int way[AI_1.nb_rails+1];
+    for (int i=0;i<AI_1.nb_rails+1;i++){
+        way[i]=-1;
+    }
+
+    int wayint = calculate_way();
+    for (int i=0; wayint[i]!=-1;i++){
+        way[i]=wayint[i];
+    }
+
+
+    return way[0];
+}
+
+
+
+struct Action AI_1_play_turn(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards){
+    // Actualisation of the matrix with the tabular "changes"
+    for(int i=0; i<nb_new_rails; i++){
+      struct My_Rail *my_rail = give_my_rail(changes[i].rail, AI_1_matrix, AI_1.rails);
+      set_player_on_rail(my_rail, changes[i].player);
+    }
+
+
+    // Actualisation of all player's parameters
+    for(int i=0; i<AI_1.nb_players; i++){
+      AI_1.nb_remaining_wagons[i] -= used_wagons[i];
+      AI_1.nb_remaining_wagon_cards[i] += cards_in_hand[i];
+      AI_1.nb_remaining_objective_cards[i] += objectives[i];
+    }
+
+    // Actualisation of own objectives
+    for(int i=0; i<AI_1.nb_objectives_chosen; i++){
+      AI_1.nb_personal_objs++;
+      AI_1.personal_objs[AI_1.nb_personal_objs] = new_obj[i];
+    }
+
+    // Actualisation of own cards
+    if(AI_1.draw_chosen == 1){
+      for(int i=0; i<2; i++){
+        AI_1.nb_personal_wagon_cards++;
+        AI_1.personal_wagon_cards[AI_1.nb_personal_wagon_cards] = cards[i];
+      }
+    }
+
+    /*
+     * while objectives not completed, build a rail for objectives if can else take cards_wagons
+     * else choose maximal lenght rail and build if can else take cards_wagons
+    */
+
+    if(AI_1.nb_objs_completed != AI_1.nb_personal_objs){
+
+      // Construction of the ACM tabular
+      int size_accessible_rails = give_size_accessible_rails(AI_1.rails);
+      struct Rail tab[size_accessible_rails];
+      for(int i=0; i<size_accessible_rails; i++){
+	tab[i].town1 = accessible_rails(AI_1.rails)[i].town1;
+	tab[i].town2 = accessible_rails(AI_1.rails)[i].town2;
+	tab[i].length = accessible_rails(AI_1.rails)[i].length;
+	tab[i].color = accessible_rails(AI_1.rails)[i].color;
+      }
+      sort_length(tab, size_accessible_rails);
+      struct Rail ACM_tab[AI_1.nb_rails]; // ACM tab
+      int size_ACM_tab = 0;
+      for(int i=0; i<size_accessible_rails; i++){
+	if(acyclique(ACM_tab, tab[i])){
+	  ACM_tab[size_ACM_tab].town1 = tab[i].town1;
+	  ACM_tab[size_ACM_tab].town2 = tab[i].town2;
+	  ACM_tab[size_ACM_tab].length = tab[i].length;
+	  ACM_tab[size_ACM_tab].color = tab[i].color;
+	  size_ACM_tab++;
+	}
+      }
+
+      //Find a way in the ACM tabular to complete the objective
+      struct Objective current_objective;
+      current_objective.town1 = AI_1.personal_objs[AI_1.nb_objs_completed].town1;
+      current_objective.town2 = AI_1.personal_objs[AI_1.nb_objs_completed].town2;
+      current_objective.points = AI_1.personal_objs[AI_1.nb_objs_completed].points;
+      current_objective.drawn = AI_1.personal_objs[AI_1.nb_objs_completed].drawn;
+      
+      int check_tab[size_ACM_tab];
+      for(int i=0; i<size_ACM_tab; i++)
+	check_tab = NULL;
+      
+    }
+
+
+}
+
+
+
+
+
+
+
+/*!
+ * \brief min_point_objs
+ * \param nb
+ * \param objs
+ * \param tab
+ * return index of objective with minimal point and not have already taken
+ * \return
+ */
+int min_point_objs(int nb, int *objs, int *tab){
+    int i=0;
+    while (tab[i] == 1 && i<nb)
+        i++;
+    for (int k=i;k<nb;k++){
+        if (AI_1.objs[objs[k]].points < AI_1.objs[objs[i]].points && tab[k] == 0)
+            i=k;
+    }
+    return i;
+}
+
+
+int *AI_1_choose_objective(int nb, int *objs, int min){
+    int k=0;
+    int i=0;
+    int tab[nb];
+    for (i=0;i<nb;i++)
+        tab[i]=0;
+    while (k<min){
+        //choose minimal point objective
+        AI_1.nb_personal_objs++;
+        i = min_point_objs(nb, objs, tab);
+        tab[i] = 1;
+        k++;
+    }
+    AI_1.nb_objectives_chosen = min;
+    return tab;
+}
+
+
+
+int AI_1_free_player(){
+    free(AI_1.nb_remaining_wagons);
+    free(AI_1.nb_remaining_wagon_cards);
+    free(AI_1.nb_remaining_objective_cards);
+    free(AI_1.rails);
+    free(AI_1.objs);
+    free(AI_1.personal_objs);
+    free(AI_1.personal_wagon_cards);
+    return 1;
+}
+

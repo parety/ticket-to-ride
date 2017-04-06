@@ -1,0 +1,196 @@
+\hypertarget{init__info_8c}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/init\-\_\-info.c File Reference}
+\label{init__info_8c}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/init\-\_\-info.\-c@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/init\-\_\-info.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}server.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}link.\-h\char`\"{}}\\*
+Include dependency graph for init\-\_\-info.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init__info_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{init__info_8c_a0de9947110eecc050be071f5549dc25c}{init\-\_\-all\-\_\-objective\-\_\-conditions} (int $\ast$all\-\_\-objectives\-\_\-conditions, int nb\-\_\-objs)
+\begin{DoxyCompactList}\small\item\em init\-\_\-all\-\_\-objectives\-\_\-conditions initialise the condition of all objectives to not drawn \end{DoxyCompactList}\item 
+int \hyperlink{init__info_8c_ad7a67018b01e818a68662e3ecc7bce64}{max\-\_\-rail\-\_\-length} (struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-rails)
+\begin{DoxyCompactList}\small\item\em max\-\_\-rail\-\_\-length \end{DoxyCompactList}\item 
+void \hyperlink{init__info_8c_a9ee02bd78772fa104e7d455b9f97b279}{init\-\_\-wagons} (int $\ast$wagons\-\_\-remaining, int nb\-\_\-players, int nb\-\_\-w\-\_\-player)
+\begin{DoxyCompactList}\small\item\em init\-\_\-wagons initialisation of the number of wagons in possession of each player at the beginning of the game \end{DoxyCompactList}\item 
+void \hyperlink{init__info_8c_a34cae5918fa3688a1d31ccd185922830}{init\-\_\-turn\-\_\-informations} (int $\ast$used\-\_\-wagons, int $\ast$cards\-\_\-in\-\_\-hands, int $\ast$objectives, struct \hyperlink{structNew__rail}{New\-\_\-rail} $\ast$changes, int $\ast$new\-\_\-obj\mbox{[}$\,$\mbox{]}, int $\ast$cards\mbox{[}$\,$\mbox{]}, int nb\-\_\-players, int nb\-\_\-starting\-\_\-cards, int nb\-\_\-obj\-\_\-drawn\-\_\-max, int \hyperlink{server_8h_ad7a67018b01e818a68662e3ecc7bce64}{max\-\_\-rail\-\_\-length})
+\begin{DoxyCompactList}\small\item\em init\-\_\-turn\-\_\-informations initialisation of the different informations given to clients each turn \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{init__info_8c_a0de9947110eecc050be071f5549dc25c}{\index{init\-\_\-info.\-c@{init\-\_\-info.\-c}!init\-\_\-all\-\_\-objective\-\_\-conditions@{init\-\_\-all\-\_\-objective\-\_\-conditions}}
+\index{init\-\_\-all\-\_\-objective\-\_\-conditions@{init\-\_\-all\-\_\-objective\-\_\-conditions}!init_info.c@{init\-\_\-info.\-c}}
+\subsubsection[{init\-\_\-all\-\_\-objective\-\_\-conditions}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-all\-\_\-objective\-\_\-conditions (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{all\-\_\-objective\-\_\-conditions, }
+\item[{int}]{nb\-\_\-objs}
+\end{DoxyParamCaption}
+)}}\label{init__info_8c_a0de9947110eecc050be071f5549dc25c}
+
+
+init\-\_\-all\-\_\-objectives\-\_\-conditions initialise the condition of all objectives to not drawn 
+
+
+\begin{DoxyParams}{Parameters}
+{\em all\-\_\-objectives\-\_\-conditions} & array of the objective conditions ( 1 \-: drawn, 0 \-: not) \\
+\hline
+{\em nb\-\_\-objs} & the number of objectives \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{init__info_8c_a0de9947110eecc050be071f5549dc25c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{init__info_8c_a34cae5918fa3688a1d31ccd185922830}{\index{init\-\_\-info.\-c@{init\-\_\-info.\-c}!init\-\_\-turn\-\_\-informations@{init\-\_\-turn\-\_\-informations}}
+\index{init\-\_\-turn\-\_\-informations@{init\-\_\-turn\-\_\-informations}!init_info.c@{init\-\_\-info.\-c}}
+\subsubsection[{init\-\_\-turn\-\_\-informations}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-turn\-\_\-informations (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{used\-\_\-wagons, }
+\item[{int $\ast$}]{cards\-\_\-in\-\_\-hands, }
+\item[{int $\ast$}]{objectives, }
+\item[{struct {\bf New\-\_\-rail} $\ast$}]{changes, }
+\item[{int $\ast$}]{new\-\_\-obj\mbox{[}$\,$\mbox{]}, }
+\item[{int $\ast$}]{cards\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-starting\-\_\-cards, }
+\item[{int}]{nb\-\_\-obj\-\_\-drawn\-\_\-max, }
+\item[{int}]{max\-\_\-rail\-\_\-length}
+\end{DoxyParamCaption}
+)}}\label{init__info_8c_a34cae5918fa3688a1d31ccd185922830}
+
+
+init\-\_\-turn\-\_\-informations initialisation of the different informations given to clients each turn 
+
+
+\begin{DoxyParams}{Parameters}
+{\em used\-\_\-wagons} & array of the number of wagons used during the last turn \\
+\hline
+{\em cards\-\_\-in\-\_\-hands} & array of the variation of the number of wagon cards in each hands ($>$=0 if draw, $<$= if built) \\
+\hline
+{\em objectives} & array of the number of objective cards drawn during the last by each player \\
+\hline
+{\em changes} & array of the rails built during the last turn \\
+\hline
+{\em new\-\_\-obj} & array of the index of the objectives drawn by each player during the last turn \\
+\hline
+{\em cards} & array of the color of cards modified by each player during the last turn \\
+\hline
+{\em nb\-\_\-players} & the number of players \\
+\hline
+{\em nb\-\_\-starting\-\_\-cards} & the number of wagon cards given to players at the beginning of the game \\
+\hline
+{\em nb\-\_\-obj\-\_\-drawn\-\_\-max} & the number of objectives given to players when they draw objectives \\
+\hline
+{\em max\-\_\-rail\-\_\-length} & the length of the longuest rail of the map \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{init__info_8c_a34cae5918fa3688a1d31ccd185922830_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init__info_8c_a34cae5918fa3688a1d31ccd185922830_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{init__info_8c_a9ee02bd78772fa104e7d455b9f97b279}{\index{init\-\_\-info.\-c@{init\-\_\-info.\-c}!init\-\_\-wagons@{init\-\_\-wagons}}
+\index{init\-\_\-wagons@{init\-\_\-wagons}!init_info.c@{init\-\_\-info.\-c}}
+\subsubsection[{init\-\_\-wagons}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-wagons (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{wagons\-\_\-remaining, }
+\item[{int}]{nb\-\_\-player, }
+\item[{int}]{nb\-\_\-w\-\_\-player}
+\end{DoxyParamCaption}
+)}}\label{init__info_8c_a9ee02bd78772fa104e7d455b9f97b279}
+
+
+init\-\_\-wagons initialisation of the number of wagons in possession of each player at the beginning of the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wagons\-\_\-remaining} & array of the wagons remaining of each player \\
+\hline
+{\em nb\-\_\-player} & the number of players \\
+\hline
+{\em nb\-\_\-w\-\_\-player} & the number of wagons given to each players at the beginning of the game \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{init__info_8c_a9ee02bd78772fa104e7d455b9f97b279_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{init__info_8c_ad7a67018b01e818a68662e3ecc7bce64}{\index{init\-\_\-info.\-c@{init\-\_\-info.\-c}!max\-\_\-rail\-\_\-length@{max\-\_\-rail\-\_\-length}}
+\index{max\-\_\-rail\-\_\-length@{max\-\_\-rail\-\_\-length}!init_info.c@{init\-\_\-info.\-c}}
+\subsubsection[{max\-\_\-rail\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}int max\-\_\-rail\-\_\-length (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-rails}
+\end{DoxyParamCaption}
+)}}\label{init__info_8c_ad7a67018b01e818a68662e3ecc7bce64}
+
+
+max\-\_\-rail\-\_\-length 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rails} & Array with all the rails \\
+\hline
+{\em nb\-\_\-rails} & The number of rails = length of rails \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The length of the longest rail of the map 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init__info_8c_ad7a67018b01e818a68662e3ecc7bce64_icgraph}
+\end{center}
+\end{figure}
+
+

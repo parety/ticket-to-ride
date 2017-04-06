@@ -1,0 +1,937 @@
+\hypertarget{server_8h}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/server.h File Reference}
+\label{server_8h}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/server.\-h@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/server.\-h}}
+}
+{\ttfamily \#include \char`\"{}interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}player.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}link.\-h\char`\"{}}\\*
+Include dependency graph for server.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{server_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structf__player}{f\-\_\-player}
+\item 
+struct \hyperlink{structMap__info}{Map\-\_\-info}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structMap__info}{Map\-\_\-info} \hyperlink{server_8h_a58328afc943f169a939734e4f698718e}{get\-\_\-map\-\_\-info} (char $\ast$file\-\_\-name)
+\begin{DoxyCompactList}\small\item\em get\-\_\-map\-\_\-info \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_a9bddd065021bc892861112c69dc641df}{file2rails} (struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-rails, struct \hyperlink{structObjective}{Objective} $\ast$objs, int nb\-\_\-objs, char $\ast$file\-\_\-name)
+\begin{DoxyCompactList}\small\item\em file2rails \end{DoxyCompactList}\item 
+int \hyperlink{server_8h_a6476a83be99f343b2baff69567b03280}{colors} (struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-rails, int $\ast$$\ast$col)
+\begin{DoxyCompactList}\small\item\em colors Complete the array with the colors used in the game and return the number of colors \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_acd7d4a9ecc43468c3721e30e6514a584}{init\-\_\-card\-\_\-hands} (int nb\-\_\-players, int nb\-\_\-starting\-\_\-objs, int $\ast$$\ast$card\-\_\-hands, int $\ast$\hyperlink{server_8h_a6476a83be99f343b2baff69567b03280}{colors}, int nb\-\_\-colors)
+\begin{DoxyCompactList}\small\item\em init\-\_\-card\-\_\-hands initialisation of the cards in possession of each player at the beginning of the game \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_a853ab4c7465d14410a86426b44f5bc13}{init\-\_\-all\-\_\-objective\-\_\-conditions} (int $\ast$all\-\_\-objective\-\_\-conditions, int nb\-\_\-objs)
+\begin{DoxyCompactList}\small\item\em init\-\_\-all\-\_\-objectives\-\_\-conditions initialise the condition of all objectives to not drawn \end{DoxyCompactList}\item 
+int \hyperlink{server_8h_ad7a67018b01e818a68662e3ecc7bce64}{max\-\_\-rail\-\_\-length} (struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-rails)
+\begin{DoxyCompactList}\small\item\em max\-\_\-rail\-\_\-length \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_a5df900a96daf420d1dbef57d1385ab7f}{init\-\_\-wagons} (int $\ast$wagons\-\_\-remaining, int nb\-\_\-player, int nb\-\_\-w\-\_\-player)
+\begin{DoxyCompactList}\small\item\em init\-\_\-wagons initialisation of the number of wagons in possession of each player at the beginning of the game \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_a34cae5918fa3688a1d31ccd185922830}{init\-\_\-turn\-\_\-informations} (int $\ast$used\-\_\-wagons, int $\ast$cards\-\_\-in\-\_\-hands, int $\ast$objectives, struct \hyperlink{structNew__rail}{New\-\_\-rail} $\ast$changes, int $\ast$new\-\_\-obj\mbox{[}$\,$\mbox{]}, int $\ast$cards\mbox{[}$\,$\mbox{]}, int nb\-\_\-players, int nb\-\_\-starting\-\_\-cards, int nb\-\_\-obj\-\_\-drawn\-\_\-max, int \hyperlink{server_8h_ad7a67018b01e818a68662e3ecc7bce64}{max\-\_\-rail\-\_\-length})
+\begin{DoxyCompactList}\small\item\em init\-\_\-turn\-\_\-informations initialisation of the different informations given to clients each turn \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_a849bbef74d7b33ec6a1cebdbcafe299c}{init\-\_\-obj\-\_\-hands} (int nb\-\_\-players, int nb\-\_\-starting\-\_\-objs, int $\ast$$\ast$obj\-\_\-hands, struct \hyperlink{structObjective}{Objective} $\ast$all\-\_\-objectives, int nb\-\_\-objs, int $\ast$all\-\_\-objective\-\_\-conditions)
+\begin{DoxyCompactList}\small\item\em init\-\_\-obj\-\_\-hands \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_a87f6a92801d41d1ea98ee373cb4932b8}{init\-\_\-nb\-\_\-objs} (int nb\-\_\-players, int nb\-\_\-starting\-\_\-objs, int $\ast$nb\-\_\-objs)
+\begin{DoxyCompactList}\small\item\em init\-\_\-nb\-\_\-objs \end{DoxyCompactList}\item 
+int \hyperlink{server_8h_aaa888be4170e398de74e3b123d0c194b}{is\-\_\-last\-\_\-turn} (int $\ast$wagons\-\_\-remaining, int nb\-\_\-players)
+\begin{DoxyCompactList}\small\item\em game\-\_\-end \end{DoxyCompactList}\item 
+int \hyperlink{server_8h_a091e5087dae440aa98617aa831fecd28}{cheat} (struct \hyperlink{structAction}{Action} action, int nb\-\_\-players, int player, int nb\-\_\-objs\-\_\-tot, int $\ast$nb\-\_\-objs, struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-rails, int $\ast$wagons\-\_\-remaining, int $\ast$$\ast$card\-\_\-hands, int $\ast$nb\-\_\-cards, struct \hyperlink{structLink}{Link} $\ast$$\ast$map, int nb\-\_\-town)
+\begin{DoxyCompactList}\small\item\em cheat \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_ae10a4822c1af3a5c56da757123793d6c}{draw\-\_\-color\-\_\-card} (int player, int nb\-\_\-players, int $\ast$$\ast$card\-\_\-hand, int $\ast$nb\-\_\-cards, int $\ast$wagon\-\_\-cards\-\_\-modif, int $\ast$$\ast$cards, int nb\-\_\-colors, int $\ast$col, int colored\-\_\-game)
+\begin{DoxyCompactList}\small\item\em draw\-\_\-color\-\_\-card applies modif if the player draw color cards \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_a4c705b4f5a72b770def168b61e138c1e}{build\-\_\-rail} (int player, int nb\-\_\-players, int rail, int $\ast$$\ast$card\-\_\-hand, int $\ast$nb\-\_\-cards, int $\ast$wagon\-\_\-cards\-\_\-modif, int $\ast$$\ast$cards, struct \hyperlink{structLink}{Link} $\ast$$\ast$map, struct \hyperlink{structRail}{Rail} $\ast$rails, int $\ast$wagons\-\_\-remaining, int $\ast$used\-\_\-wagons)
+\begin{DoxyCompactList}\small\item\em build\-\_\-rail Applies modification in the map and the player when a player builds a rail \end{DoxyCompactList}\item 
+int \hyperlink{server_8h_aa51d57181d4ae1b13ba31dd55181f6eb}{are\-\_\-objs\-\_\-valid} (int $\ast$T\-\_\-chosen\-\_\-objs, int min\-\_\-objs\-\_\-to\-\_\-pick, int nb\-\_\-objs\-\_\-given)
+\begin{DoxyCompactList}\small\item\em are\-\_\-objs\-\_\-valid tests if the number of chosen objectives is between the minimum and the number of objectives initially given \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_a720d4a54fde8ac30d82ea055669dfc6c}{init\-\_\-first\-\_\-chosen\-\_\-objs} (int $\ast$T\-\_\-chosen\-\_\-objs, int nb\-\_\-objs\-\_\-given, int $\ast$all\-\_\-objective\-\_\-conditions, int all\-\_\-objs\-\_\-conditions\-\_\-size, int $\ast$obj\-\_\-player\-\_\-hand, int $\ast$nb\-\_\-objs, int $\ast$objectives, int $\ast$new\-\_\-obj, int player)
+\begin{DoxyCompactList}\small\item\em init\-\_\-first\-\_\-chosen\-\_\-objs modifies the initial hand of objectives of a player, the informations about objectives in function of his choice \end{DoxyCompactList}\item 
+void \hyperlink{server_8h_a87da09cde6e4fc0c6d8d8280bd4863d9}{draw\-\_\-objectives} (int player, int nb\-\_\-players, int $\ast$$\ast$obj\-\_\-hands, int nb\-\_\-objs\-\_\-total, int $\ast$objs\-\_\-cond, int $\ast$$\ast$new\-\_\-objs, int nb\-\_\-objs\-\_\-drawn\-\_\-max, int min\-\_\-objs\-\_\-to\-\_\-pick, struct \hyperlink{structf__player}{f\-\_\-player} $\ast$player\-\_\-fonctions, int $\ast$nb\-\_\-objs, int $\ast$nb\-\_\-new\-\_\-objs)
+\begin{DoxyCompactList}\small\item\em draw\-\_\-objectives Applies modification in the server and the player when a player draws objectives \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{server_8h_aa51d57181d4ae1b13ba31dd55181f6eb}{\index{server.\-h@{server.\-h}!are\-\_\-objs\-\_\-valid@{are\-\_\-objs\-\_\-valid}}
+\index{are\-\_\-objs\-\_\-valid@{are\-\_\-objs\-\_\-valid}!server.h@{server.\-h}}
+\subsubsection[{are\-\_\-objs\-\_\-valid}]{\setlength{\rightskip}{0pt plus 5cm}int are\-\_\-objs\-\_\-valid (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{T\-\_\-chosen\-\_\-objs, }
+\item[{int}]{min\-\_\-objs\-\_\-to\-\_\-pick, }
+\item[{int}]{nb\-\_\-objs\-\_\-given}
+\end{DoxyParamCaption}
+)}}\label{server_8h_aa51d57181d4ae1b13ba31dd55181f6eb}
+
+
+are\-\_\-objs\-\_\-valid tests if the number of chosen objectives is between the minimum and the number of objectives initially given 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\-\_\-chosen\-\_\-objs} & array of boolean representing the choice of the player for each objective (picked or not) \\
+\hline
+{\em min\-\_\-objs\-\_\-to\-\_\-pick} & minimum of objective the player has to pick \\
+\hline
+{\em nb\-\_\-objs\-\_\-given} & the number of objectives initially given to the player \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h_aa51d57181d4ae1b13ba31dd55181f6eb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a4c705b4f5a72b770def168b61e138c1e}{\index{server.\-h@{server.\-h}!build\-\_\-rail@{build\-\_\-rail}}
+\index{build\-\_\-rail@{build\-\_\-rail}!server.h@{server.\-h}}
+\subsubsection[{build\-\_\-rail}]{\setlength{\rightskip}{0pt plus 5cm}void build\-\_\-rail (
+\begin{DoxyParamCaption}
+\item[{int}]{player, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{rail, }
+\item[{int $\ast$$\ast$}]{card\-\_\-hand, }
+\item[{int $\ast$}]{nb\-\_\-cards, }
+\item[{int $\ast$}]{wagon\-\_\-cards\-\_\-modif, }
+\item[{int $\ast$$\ast$}]{cards, }
+\item[{struct {\bf Link} $\ast$$\ast$}]{map, }
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int $\ast$}]{wagons\-\_\-remaining, }
+\item[{int $\ast$}]{used\-\_\-wagons}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a4c705b4f5a72b770def168b61e138c1e}
+
+
+build\-\_\-rail Applies modification in the map and the player when a player builds a rail 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & id of the player who is playing \\
+\hline
+{\em nb\-\_\-players} & total number of player in the game \\
+\hline
+{\em rail} & id of the rail that the player want to build \\
+\hline
+{\em card\-\_\-hand} & colors of cards of each player \\
+\hline
+{\em nb\-\_\-cards} & array of number of color cards of each player \\
+\hline
+{\em wagon\-\_\-cards\-\_\-modif} & array of number of more (+) or less (-\/) cards of each player \\
+\hline
+{\em cards} & array of colors of changed cards of each player \\
+\hline
+{\em map} & \\
+\hline
+{\em rails} & Array with all the rails \\
+\hline
+{\em nb\-\_\-rails} & \\
+\hline
+{\em wagons\-\_\-remaining} & array of number of wagons remaining for each player \\
+\hline
+{\em used\-\_\-wagons} & array of number of wagons used during this turn \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{server_8h_a4c705b4f5a72b770def168b61e138c1e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a091e5087dae440aa98617aa831fecd28}{\index{server.\-h@{server.\-h}!cheat@{cheat}}
+\index{cheat@{cheat}!server.h@{server.\-h}}
+\subsubsection[{cheat}]{\setlength{\rightskip}{0pt plus 5cm}int cheat (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Action}}]{action, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{player, }
+\item[{int}]{nb\-\_\-objs\-\_\-tot, }
+\item[{int $\ast$}]{nb\-\_\-objs, }
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-rails, }
+\item[{int $\ast$}]{wagons\-\_\-remaining, }
+\item[{int $\ast$$\ast$}]{card\-\_\-hands, }
+\item[{int $\ast$}]{nb\-\_\-cards, }
+\item[{struct {\bf Link} $\ast$$\ast$}]{map, }
+\item[{int}]{nb\-\_\-town}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a091e5087dae440aa98617aa831fecd28}
+
+
+cheat 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & draw color cards = 0, build a rail = 1, draw objectives = 2 \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em player} & id of the player of is playing in this turn \\
+\hline
+{\em nb\-\_\-objs\-\_\-tot} & total number of objectives in the game \\
+\hline
+{\em nb\-\_\-objs} & array of numbers of objective of each player, index = player \\
+\hline
+{\em rails} & array of all the rails of the game \\
+\hline
+{\em nb\-\_\-rails} & \\
+\hline
+{\em wagons\-\_\-remaining} & array with nb\-\_\-players cases which correspond to the nb of wagon of each player \\
+\hline
+{\em card\-\_\-hands} & array of arrays with all color cards for each player \\
+\hline
+{\em nb\-\_\-cards} & array of number of color cards of each player \\
+\hline
+{\em map} & \\
+\hline
+{\em nb\-\_\-town} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 = the player is cheating, 0 = no problem 
+\end{DoxyReturn}
+apply apply in the server and for the players the modifications caused by the action of a player 
+\begin{DoxyParams}{Parameters}
+{\em player} & id of the player who is playing \\
+\hline
+{\em action} & action chose by the player \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em card\-\_\-hand} & \\
+\hline
+{\em nb\-\_\-cards} & \\
+\hline
+{\em wagon\-\_\-cards\-\_\-modif} & \\
+\hline
+{\em cards} & \\
+\hline
+{\em nb\-\_\-colors} & \\
+\hline
+{\em col} & \\
+\hline
+{\em map} & \\
+\hline
+{\em rails} & \\
+\hline
+{\em wagons\-\_\-remaining} & \\
+\hline
+{\em used\-\_\-wagons} & \\
+\hline
+{\em obj\-\_\-hands} & \\
+\hline
+{\em nb\-\_\-objs\-\_\-total} & \\
+\hline
+{\em objs\-\_\-cond} & \\
+\hline
+{\em new\-\_\-objs} & \\
+\hline
+{\em nb\-\_\-objs\-\_\-drawn\-\_\-max} & \\
+\hline
+{\em min\-\_\-objs\-\_\-to\-\_\-pick} & \\
+\hline
+{\em player\-\_\-fonctions} & \\
+\hline
+{\em nb\-\_\-objs} & \\
+\hline
+{\em nb\-\_\-new\-\_\-objs} & \\
+\hline
+{\em colored\-\_\-game} & \\
+\hline
+\end{DoxyParams}
+winner determined who is the winner (by counting rails points and objectives points) 
+\begin{DoxyParams}{Parameters}
+{\em map} & \\
+\hline
+{\em nb\-\_\-towns} & \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em all\-\_\-objectives} & \\
+\hline
+{\em obj\-\_\-hands} & \\
+\hline
+{\em nb\-\_\-objs} & \\
+\hline
+{\em nb\-\_\-rails} & \\
+\hline
+{\em rails} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the id of the winner
+\end{DoxyReturn}
+points\-\_\-rails add rails points of each player, in the array points 
+\begin{DoxyParams}{Parameters}
+{\em map} & \\
+\hline
+{\em nb\-\_\-towns} & \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em points} & \\
+\hline
+\end{DoxyParams}
+points\-\_\-objs add points of objectives which have been done points of each player, in the array points 
+\begin{DoxyParams}{Parameters}
+{\em map} & \\
+\hline
+{\em nb\-\_\-towns} & \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em all\-\_\-objectives} & \\
+\hline
+{\em obj\-\_\-hands} & \\
+\hline
+{\em nb\-\_\-objs} & \\
+\hline
+{\em points} & \\
+\hline
+{\em nb\-\_\-rails} & \\
+\hline
+{\em rails} & \\
+\hline
+\end{DoxyParams}
+free\-\_\-all free all the memory which have been used for the game 
+\begin{DoxyParams}{Parameters}
+{\em col} & \\
+\hline
+{\em nb\-\_\-towns} & \\
+\hline
+{\em map} & \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em card\-\_\-hands} & \\
+\hline
+{\em obj\-\_\-hands} & \\
+\hline
+{\em player\-\_\-functions} & \\
+\hline
+{\em new\-\_\-obj} & \\
+\hline
+{\em cards} & \\
+\hline
+{\em T\-\_\-chosen\-\_\-objs} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h_a091e5087dae440aa98617aa831fecd28_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a6476a83be99f343b2baff69567b03280}{\index{server.\-h@{server.\-h}!colors@{colors}}
+\index{colors@{colors}!server.h@{server.\-h}}
+\subsubsection[{colors}]{\setlength{\rightskip}{0pt plus 5cm}int colors (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-rails, }
+\item[{int $\ast$$\ast$}]{col}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a6476a83be99f343b2baff69567b03280}
+
+
+colors Complete the array with the colors used in the game and return the number of colors 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rails} & Array with all the rails, where there are the colors \\
+\hline
+{\em nb\-\_\-rails} & The number of rails, length of rails \\
+\hline
+{\em col} & Array to be completed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of colors in the game = length of colors 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{server_8h_a6476a83be99f343b2baff69567b03280_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_ae10a4822c1af3a5c56da757123793d6c}{\index{server.\-h@{server.\-h}!draw\-\_\-color\-\_\-card@{draw\-\_\-color\-\_\-card}}
+\index{draw\-\_\-color\-\_\-card@{draw\-\_\-color\-\_\-card}!server.h@{server.\-h}}
+\subsubsection[{draw\-\_\-color\-\_\-card}]{\setlength{\rightskip}{0pt plus 5cm}void draw\-\_\-color\-\_\-card (
+\begin{DoxyParamCaption}
+\item[{int}]{player, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int $\ast$$\ast$}]{card\-\_\-hand, }
+\item[{int $\ast$}]{nb\-\_\-cards, }
+\item[{int $\ast$}]{wagon\-\_\-cards\-\_\-modif, }
+\item[{int $\ast$$\ast$}]{cards, }
+\item[{int}]{nb\-\_\-colors, }
+\item[{int $\ast$}]{col, }
+\item[{int}]{colored\-\_\-game}
+\end{DoxyParamCaption}
+)}}\label{server_8h_ae10a4822c1af3a5c56da757123793d6c}
+
+
+draw\-\_\-color\-\_\-card applies modif if the player draw color cards 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & player who is playing \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em card\-\_\-hand} & colors of cards of each player \\
+\hline
+{\em nb\-\_\-cards} & array of number of color cards of each player \\
+\hline
+{\em wagon\-\_\-cards\-\_\-modif} & array of number of more (+) or less (-\/) cards of each player \\
+\hline
+{\em cards} & array of colors of changed cards of each player \\
+\hline
+{\em nb\-\_\-colors} & nb of different colors in the game \\
+\hline
+{\em col} & array of all the colors in the game \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h_ae10a4822c1af3a5c56da757123793d6c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a87da09cde6e4fc0c6d8d8280bd4863d9}{\index{server.\-h@{server.\-h}!draw\-\_\-objectives@{draw\-\_\-objectives}}
+\index{draw\-\_\-objectives@{draw\-\_\-objectives}!server.h@{server.\-h}}
+\subsubsection[{draw\-\_\-objectives}]{\setlength{\rightskip}{0pt plus 5cm}void draw\-\_\-objectives (
+\begin{DoxyParamCaption}
+\item[{int}]{player, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int $\ast$$\ast$}]{obj\-\_\-hands, }
+\item[{int}]{nb\-\_\-objs\-\_\-total, }
+\item[{int $\ast$}]{objs\-\_\-cond, }
+\item[{int $\ast$$\ast$}]{new\-\_\-objs, }
+\item[{int}]{nb\-\_\-objs\-\_\-drawn\-\_\-max, }
+\item[{int}]{min\-\_\-objs\-\_\-to\-\_\-pick, }
+\item[{struct {\bf f\-\_\-player} $\ast$}]{player\-\_\-fonctions, }
+\item[{int $\ast$}]{nb\-\_\-objs, }
+\item[{int $\ast$}]{nb\-\_\-new\-\_\-objs}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a87da09cde6e4fc0c6d8d8280bd4863d9}
+
+
+draw\-\_\-objectives Applies modification in the server and the player when a player draws objectives 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & id of the player who is playing \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+{\em obj\-\_\-hands} & matrix whith all objs of each player \\
+\hline
+{\em nb\-\_\-objs\-\_\-total} & number of total objectives in the game \\
+\hline
+{\em objs\-\_\-cond} & array of boleans 1=player draws this onjective, 0=he doesn't \\
+\hline
+{\em new\-\_\-objs} & array of new objs for each player \\
+\hline
+{\em nb\-\_\-objs\-\_\-drawn\-\_\-max} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{server_8h_a87da09cde6e4fc0c6d8d8280bd4863d9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=322pt]{server_8h_a87da09cde6e4fc0c6d8d8280bd4863d9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a9bddd065021bc892861112c69dc641df}{\index{server.\-h@{server.\-h}!file2rails@{file2rails}}
+\index{file2rails@{file2rails}!server.h@{server.\-h}}
+\subsubsection[{file2rails}]{\setlength{\rightskip}{0pt plus 5cm}void file2rails (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-rails, }
+\item[{struct {\bf Objective} $\ast$}]{objs, }
+\item[{int}]{nb\-\_\-objs, }
+\item[{char $\ast$}]{file\-\_\-name}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a9bddd065021bc892861112c69dc641df}
+
+
+file2rails 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rails} & empty table of rails to be completed \\
+\hline
+{\em size} & the nb of links \\
+\hline
+{\em file\-\_\-name} & file\-\_\-name file which contains the game info\\
+\hline
+\end{DoxyParams}
+Completes the table rails with all the rail of the map 
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h_a9bddd065021bc892861112c69dc641df_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a58328afc943f169a939734e4f698718e}{\index{server.\-h@{server.\-h}!get\-\_\-map\-\_\-info@{get\-\_\-map\-\_\-info}}
+\index{get\-\_\-map\-\_\-info@{get\-\_\-map\-\_\-info}!server.h@{server.\-h}}
+\subsubsection[{get\-\_\-map\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Map\-\_\-info} get\-\_\-map\-\_\-info (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file\-\_\-name}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a58328afc943f169a939734e4f698718e}
+
+
+get\-\_\-map\-\_\-info 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\-\_\-name} & file which contains the game info \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nb of towns, nb of links, nb of objectves and nb of wagon per player 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h_a58328afc943f169a939734e4f698718e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a853ab4c7465d14410a86426b44f5bc13}{\index{server.\-h@{server.\-h}!init\-\_\-all\-\_\-objective\-\_\-conditions@{init\-\_\-all\-\_\-objective\-\_\-conditions}}
+\index{init\-\_\-all\-\_\-objective\-\_\-conditions@{init\-\_\-all\-\_\-objective\-\_\-conditions}!server.h@{server.\-h}}
+\subsubsection[{init\-\_\-all\-\_\-objective\-\_\-conditions}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-all\-\_\-objective\-\_\-conditions (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{all\-\_\-objective\-\_\-conditions, }
+\item[{int}]{nb\-\_\-objs}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a853ab4c7465d14410a86426b44f5bc13}
+
+
+init\-\_\-all\-\_\-objectives\-\_\-conditions initialise the condition of all objectives to not drawn 
+
+
+\begin{DoxyParams}{Parameters}
+{\em all\-\_\-objectives\-\_\-conditions} & array of the objective conditions ( 1 \-: drawn, 0 \-: not) \\
+\hline
+{\em nb\-\_\-objs} & the number of objectives \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{server_8h_a853ab4c7465d14410a86426b44f5bc13_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_acd7d4a9ecc43468c3721e30e6514a584}{\index{server.\-h@{server.\-h}!init\-\_\-card\-\_\-hands@{init\-\_\-card\-\_\-hands}}
+\index{init\-\_\-card\-\_\-hands@{init\-\_\-card\-\_\-hands}!server.h@{server.\-h}}
+\subsubsection[{init\-\_\-card\-\_\-hands}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-card\-\_\-hands (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-starting\-\_\-objs, }
+\item[{int $\ast$$\ast$}]{card\-\_\-hands, }
+\item[{int $\ast$}]{colors, }
+\item[{int}]{nb\-\_\-colors}
+\end{DoxyParamCaption}
+)}}\label{server_8h_acd7d4a9ecc43468c3721e30e6514a584}
+
+
+init\-\_\-card\-\_\-hands initialisation of the cards in possession of each player at the beginning of the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em card\-\_\-hands} & array to be completed \\
+\hline
+{\em colors} & array of all colors \\
+\hline
+{\em nb\-\_\-colors} & nomber of colors = length of color \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h_acd7d4a9ecc43468c3721e30e6514a584_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a720d4a54fde8ac30d82ea055669dfc6c}{\index{server.\-h@{server.\-h}!init\-\_\-first\-\_\-chosen\-\_\-objs@{init\-\_\-first\-\_\-chosen\-\_\-objs}}
+\index{init\-\_\-first\-\_\-chosen\-\_\-objs@{init\-\_\-first\-\_\-chosen\-\_\-objs}!server.h@{server.\-h}}
+\subsubsection[{init\-\_\-first\-\_\-chosen\-\_\-objs}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-first\-\_\-chosen\-\_\-objs (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{T\-\_\-chosen\-\_\-objs, }
+\item[{int}]{nb\-\_\-objs\-\_\-given, }
+\item[{int $\ast$}]{all\-\_\-objective\-\_\-conditions, }
+\item[{int}]{all\-\_\-objs\-\_\-conditions\-\_\-size, }
+\item[{int $\ast$}]{obj\-\_\-player\-\_\-hand, }
+\item[{int $\ast$}]{nb\-\_\-objs, }
+\item[{int $\ast$}]{objectives, }
+\item[{int $\ast$}]{new\-\_\-obj, }
+\item[{int}]{player}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a720d4a54fde8ac30d82ea055669dfc6c}
+
+
+init\-\_\-first\-\_\-chosen\-\_\-objs modifies the initial hand of objectives of a player, the informations about objectives in function of his choice 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T\-\_\-chosen\-\_\-objs} & array of boolean representing the choice of the player for each objective (picked or not) \\
+\hline
+{\em nb\-\_\-objs\-\_\-given} & the number of objectives initially given to the player \\
+\hline
+{\em all\-\_\-objective\-\_\-conditions} & array of the objective conditions (1 \-: drawn and 0 \-: not) \\
+\hline
+{\em all\-\_\-objs\-\_\-size} & size of the array all\-\_\-objective\-\_\-conditions \\
+\hline
+{\em obj\-\_\-player\-\_\-hand} & array of the index of the objectives the player has \\
+\hline
+{\em nb\-\_\-\-\_\-player\-\_\-objs} & array the number of objectives of each player \\
+\hline
+{\em objectives} & array of the number of objectives drawn last turn by each player \\
+\hline
+{\em new\-\_\-obj} & array of the index of the objectives drawn last turn by the player \\
+\hline
+{\em player} & the number of the player \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h_a720d4a54fde8ac30d82ea055669dfc6c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a87f6a92801d41d1ea98ee373cb4932b8}{\index{server.\-h@{server.\-h}!init\-\_\-nb\-\_\-objs@{init\-\_\-nb\-\_\-objs}}
+\index{init\-\_\-nb\-\_\-objs@{init\-\_\-nb\-\_\-objs}!server.h@{server.\-h}}
+\subsubsection[{init\-\_\-nb\-\_\-objs}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-nb\-\_\-objs (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-starting\-\_\-objs, }
+\item[{int $\ast$}]{nb\-\_\-objs}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a87f6a92801d41d1ea98ee373cb4932b8}
+
+
+init\-\_\-nb\-\_\-objs 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\-\_\-players} & \\
+\hline
+{\em nb\-\_\-starting\-\_\-objs} & \\
+\hline
+{\em nb\-\_\-objs} & array with nb\-\_\-players cases which correspond to the nb of objs of each player \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{server_8h_a87f6a92801d41d1ea98ee373cb4932b8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a849bbef74d7b33ec6a1cebdbcafe299c}{\index{server.\-h@{server.\-h}!init\-\_\-obj\-\_\-hands@{init\-\_\-obj\-\_\-hands}}
+\index{init\-\_\-obj\-\_\-hands@{init\-\_\-obj\-\_\-hands}!server.h@{server.\-h}}
+\subsubsection[{init\-\_\-obj\-\_\-hands}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-obj\-\_\-hands (
+\begin{DoxyParamCaption}
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-starting\-\_\-objs, }
+\item[{int $\ast$$\ast$}]{obj\-\_\-hands, }
+\item[{struct {\bf Objective} $\ast$}]{all\-\_\-objectives, }
+\item[{int}]{nb\-\_\-objs, }
+\item[{int $\ast$}]{all\-\_\-objective\-\_\-conditions}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a849bbef74d7b33ec6a1cebdbcafe299c}
+
+
+init\-\_\-obj\-\_\-hands 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\-\_\-players} & number of players toatal in the game \\
+\hline
+{\em nb\-\_\-starting\-\_\-objs} & number of objectives in the hand of each player in the beginning of the game \\
+\hline
+{\em obj\-\_\-hands} & array to be completed, each case is an array for each player of size nb\-\_\-starting objs, the int is the index in the array objectives \\
+\hline
+{\em all\-\_\-objectives} & array of all the objectives of the game \\
+\hline
+{\em nb\-\_\-objs} & number total of objectives in the game \\
+\hline
+{\em all\-\_\-objectives\-\_\-conditions} & array of booleans \-: 0 = free 1 = already drawn \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{server_8h_a849bbef74d7b33ec6a1cebdbcafe299c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a34cae5918fa3688a1d31ccd185922830}{\index{server.\-h@{server.\-h}!init\-\_\-turn\-\_\-informations@{init\-\_\-turn\-\_\-informations}}
+\index{init\-\_\-turn\-\_\-informations@{init\-\_\-turn\-\_\-informations}!server.h@{server.\-h}}
+\subsubsection[{init\-\_\-turn\-\_\-informations}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-turn\-\_\-informations (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{used\-\_\-wagons, }
+\item[{int $\ast$}]{cards\-\_\-in\-\_\-hands, }
+\item[{int $\ast$}]{objectives, }
+\item[{struct {\bf New\-\_\-rail} $\ast$}]{changes, }
+\item[{int $\ast$}]{new\-\_\-obj\mbox{[}$\,$\mbox{]}, }
+\item[{int $\ast$}]{cards\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-starting\-\_\-cards, }
+\item[{int}]{nb\-\_\-obj\-\_\-drawn\-\_\-max, }
+\item[{int}]{max\-\_\-rail\-\_\-length}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a34cae5918fa3688a1d31ccd185922830}
+
+
+init\-\_\-turn\-\_\-informations initialisation of the different informations given to clients each turn 
+
+
+\begin{DoxyParams}{Parameters}
+{\em used\-\_\-wagons} & array of the number of wagons used during the last turn \\
+\hline
+{\em cards\-\_\-in\-\_\-hands} & array of the variation of the number of wagon cards in each hands ($>$=0 if draw, $<$= if built) \\
+\hline
+{\em objectives} & array of the number of objective cards drawn during the last by each player \\
+\hline
+{\em changes} & array of the rails built during the last turn \\
+\hline
+{\em new\-\_\-obj} & array of the index of the objectives drawn by each player during the last turn \\
+\hline
+{\em cards} & array of the color of cards modified by each player during the last turn \\
+\hline
+{\em nb\-\_\-players} & the number of players \\
+\hline
+{\em nb\-\_\-starting\-\_\-cards} & the number of wagon cards given to players at the beginning of the game \\
+\hline
+{\em nb\-\_\-obj\-\_\-drawn\-\_\-max} & the number of objectives given to players when they draw objectives \\
+\hline
+{\em max\-\_\-rail\-\_\-length} & the length of the longuest rail of the map \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{server_8h_a34cae5918fa3688a1d31ccd185922830_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h_a34cae5918fa3688a1d31ccd185922830_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_a5df900a96daf420d1dbef57d1385ab7f}{\index{server.\-h@{server.\-h}!init\-\_\-wagons@{init\-\_\-wagons}}
+\index{init\-\_\-wagons@{init\-\_\-wagons}!server.h@{server.\-h}}
+\subsubsection[{init\-\_\-wagons}]{\setlength{\rightskip}{0pt plus 5cm}void init\-\_\-wagons (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{wagons\-\_\-remaining, }
+\item[{int}]{nb\-\_\-player, }
+\item[{int}]{nb\-\_\-w\-\_\-player}
+\end{DoxyParamCaption}
+)}}\label{server_8h_a5df900a96daf420d1dbef57d1385ab7f}
+
+
+init\-\_\-wagons initialisation of the number of wagons in possession of each player at the beginning of the game 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wagons\-\_\-remaining} & array of the wagons remaining of each player \\
+\hline
+{\em nb\-\_\-player} & the number of players \\
+\hline
+{\em nb\-\_\-w\-\_\-player} & the number of wagons given to each players at the beginning of the game \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{server_8h_a5df900a96daf420d1dbef57d1385ab7f_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_aaa888be4170e398de74e3b123d0c194b}{\index{server.\-h@{server.\-h}!is\-\_\-last\-\_\-turn@{is\-\_\-last\-\_\-turn}}
+\index{is\-\_\-last\-\_\-turn@{is\-\_\-last\-\_\-turn}!server.h@{server.\-h}}
+\subsubsection[{is\-\_\-last\-\_\-turn}]{\setlength{\rightskip}{0pt plus 5cm}int is\-\_\-last\-\_\-turn (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{wagons\-\_\-remaining, }
+\item[{int}]{nb\-\_\-players}
+\end{DoxyParamCaption}
+)}}\label{server_8h_aaa888be4170e398de74e3b123d0c194b}
+
+
+game\-\_\-end 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wagons\-\_\-remaining} & array with nb\-\_\-players cases which correspond to the nb of wagon of each player \\
+\hline
+{\em nb\-\_\-players} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if all players have more than 2 wagons and the show must go on ! else 1 this this the last turn 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{server_8h_aaa888be4170e398de74e3b123d0c194b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{server_8h_ad7a67018b01e818a68662e3ecc7bce64}{\index{server.\-h@{server.\-h}!max\-\_\-rail\-\_\-length@{max\-\_\-rail\-\_\-length}}
+\index{max\-\_\-rail\-\_\-length@{max\-\_\-rail\-\_\-length}!server.h@{server.\-h}}
+\subsubsection[{max\-\_\-rail\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}int max\-\_\-rail\-\_\-length (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-rails}
+\end{DoxyParamCaption}
+)}}\label{server_8h_ad7a67018b01e818a68662e3ecc7bce64}
+
+
+max\-\_\-rail\-\_\-length 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rails} & Array with all the rails \\
+\hline
+{\em nb\-\_\-rails} & The number of rails = length of rails \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The length of the longest rail of the map 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{server_8h_ad7a67018b01e818a68662e3ecc7bce64_icgraph}
+\end{center}
+\end{figure}
+
+

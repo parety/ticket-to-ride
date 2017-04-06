@@ -1,0 +1,5 @@
+<map id="test_player_on_rail" name="test_player_on_rail">
+<area shape="rect" id="node2" href="$test__link_8c.html#a820c16896e02539e3d77d196cc08d10a" title="init_rail" alt="" coords="217,5,279,32"/>
+<area shape="rect" id="node3" href="$test__link_8c.html#ac56e56156e9cba110ad95c2f9cc0283b" title="init_my_rail" alt="" coords="204,56,292,83"/>
+<area shape="rect" id="node4" href="$link_8c.html#af9b110cbe33aa6495ae1315f48392a57" title="set_player_on_rail " alt="" coords="185,107,311,133"/>
+</map>

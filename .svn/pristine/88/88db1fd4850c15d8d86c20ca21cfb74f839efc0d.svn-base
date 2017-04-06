@@ -1,0 +1,118 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "interface.h"
+#include "server.h"
+#include "link.h"
+#include <time.h>
+
+
+int colors(struct Rail *rails, int nb_rails, int *col){
+  int nb_colors = 0;
+  size_t max_colors = 1;
+  int is_in_colors = 0;
+  for (int ind_rail = 0; ind_rail < nb_rails; ind_rail++){
+    for (int ind_color = 0; ind_color < nb_colors; ind_color++){
+      if (rails[ind_rail].color == col[ind_color]){
+	is_in_colors = 1;
+	break;
+      }
+    }
+    if (!is_in_colors){
+      if (nb_colors >= max_colors){
+	col = realloc(col, 2*max_colors);
+	max_colors*=2;
+      }
+      col[nb_colors] = rails[ind_rail].color;
+      nb_colors++;
+    }
+    is_in_colors = 0;
+  }
+  return nb_colors;
+}
+
+
+
+
+
+void init_card_hands(int nb_players, int nb_starting_cards, int **card_hands, int *colors, int nb_colors){ 
+  int color;
+  
+  for (int player = 0; player < nb_players; player++){
+    card_hands[player] = realloc(card_hands[player],nb_starting_cards*sizeof(int));
+    for (int card = 0; card < nb_starting_cards; card++){
+      color = rand() % nb_colors;
+      card_hands[player][card]= colors[color];
+    }
+  }
+}
+
+
+
+
+
+void init_obj_hands(int nb_players, int nb_starting_objs, int  ** obj_hands, struct Objective *objectives,int nb_objs){
+  
+  int index;
+  
+
+  if (nb_players*nb_starting_objs > nb_objs)
+    printf("There are not enougth objectives");
+
+  else{
+
+    for (int player = 0; player < nb_players; player++){
+      printf("player %d\n",player);
+      obj_hands[player] = realloc(obj_hands[player],nb_starting_objs*sizeof(int));
+      for (int obj = 0; obj < nb_starting_objs; obj++){
+	printf("obj %d\n",obj);
+	index = rand() % nb_objs;
+	printf("index : %d\n", index);
+	while (objectives[index].drawn != 1){
+	  index = rand() % nb_objs;
+	  printf("index : %d\n", index);
+	  printf("drawn : %d\n", objectives[index].drawn);
+	}
+	objectives[index].drawn = 0;
+	obj_hands[player][obj] = index;
+      }
+    }
+  }
+}
+
+
+
+
+
+void init_nb_objs(int nb_players, int nb_starting_objs, int *nb_objs){
+
+  for (int i = 0; i < nb_players; i++)
+    nb_objs[i] = nb_starting_objs;
+
+}
+
+
+
+
+
+
+void draw_wagon_cards(int player, int nb_players, int **card_hands, int *wagon_cards_modif){
+
+
+}
+
+
+void draw_color_card(int player, int nb_players, int **card_hand, 
+		     int *nb_cards, int *wagon_cards_modif, int **cards, 
+		     int nb_colors, int *colors){
+  
+  // apply modifs in server
+  card_hand[player] = realloc(card_hand[player], (nb_cards[player]+2)*sizeof(int));
+  card_hand[player][nb_cards[player]+1] = colors[rand() % nb_colors];
+  card_hand[player][nb_cards[player]+2] = colors[rand() % nb_colors];
+  nb_cards[player]+=2;
+
+  // give changes to players
+  wagon_cards_modif[player] = 2;
+  cards[player][0] = card_hand[player][nb_cards[player]-1];
+  cards[player][1] = card_hand[player][nb_cards[player]];
+}

@@ -1,0 +1,68 @@
+
+// Simple AI
+
+#include "AI_0.h"
+#include "player.h"
+#include "link.h"
+
+
+struct Player AI_0;
+struct Link **AI_0_matrix;
+
+
+int AI_0_init_player(int id, int nb_players, int nb_towns, int nb_rails, struct Rail *rails, int nb_initial_wagons, int nb_obj, struct Objective *objs){
+
+  //cette fonction modifie AI_0 (juste au dessus)
+  AI_0.id_player = id;
+  AI_0.points = 0;
+
+  AI_0.nb_players = nb_players;
+  AI_0.nb_remaining_wagons = malloc(nb_players*sizeof(int)); 
+  for(int i=0; i<nb_players; i++)
+    AI_0.nb_remaining_wagons[i] = nb_initial_wagons;
+
+  AI_0.nb_towns = nb_towns;
+  AI_0.nb_rails = nb_rails;
+  AI_0.rails = malloc(nb_rails*sizeof(struct Rail));
+  for(int i=0; i<nb_rails; i++){
+    AI_0.rails[i].town1 = rails[i].town1;
+    AI_0.rails[i].town2 = rails[i].town2;
+    AI_0.rails[i].length = rails[i].length; 
+    AI_0.rails[i].color = rails[i].color;
+  }
+
+  AI_0.total_nb_obj = nb_obj;
+  AI_0.objs = malloc(nb_obj*sizeof(struct Objective));
+  for(int i=0; i<nb_objs; i++){
+    AI_0.objs[i].town1 = objs[i].town1;
+    AI_0.objs[i].town2 = objs[i].town2;
+    AI_0.objs[i].points = objs[i].points;
+  }
+
+  AI_0.nb_personal_objs = 0;
+  AI_0.personal_objs = malloc(nb_obj*sizeof(int));
+  // AI_0.personal_objs a la taille du nombre total d'objs, mais ne contient que AI_0.nb_personal_objs
+
+  AI_0_matrix = init_map(nb_towns, rails, nb_rails);
+  return
+}
+
+struct Action AI_0_play_turn(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards);
+
+/*
+used_wagons = nbr wagons joués par chacun au dernier tour
+cards = couleurs que t'as pioché au tour d'avant
+new_obj = objectifs que t'as pioché au dernier tour
+cards in hand = nbr cartes en plus ou en moins pr chaque joueur
+objectives = nbr objectifs piochés par chaque joueur au dernier tour
+changes = tab des rails posés
+nb new rails = longueur du tab changes
+*/
+
+
+int *AI_0_choose_objective(int nb, int *objs, int min);
+
+
+
+int AI_0_free_player();
+

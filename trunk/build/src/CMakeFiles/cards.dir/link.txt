@@ -1,0 +1,2 @@
+/usr/bin/ar cr libcards.a  CMakeFiles/cards.dir/cards_gestion.c.o
+/usr/bin/ranlib libcards.a

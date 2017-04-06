@@ -1,0 +1,110 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "../src/interface.h"
+#include "../src/server.h"
+
+
+
+int test_colors(){
+  struct Map_info map_info = get_map_info("tests_file.txt");
+  //struct Rails *rails;
+  //struct Objective *objs;
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"tests_file.txt");
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,col);
+  
+  if (nb_colors == 1 && col[0] == 42)
+    return 1;
+  else
+    return 0;
+}
+
+
+int test_init_card_hands(){
+
+   struct Map_info map_info = get_map_info("tests_file.txt");
+   struct Rail rails[map_info.nb_links];
+   struct Objective objectives[map_info.nb_objs];
+   file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"tests_file.txt");
+
+  int * col = malloc(sizeof(int));
+  int nb_colors = colors(rails,map_info.nb_links,col);
+
+
+  int ** card_hands = malloc(NB_PLAYERS*sizeof(int *));
+  int nb_players = 3;
+  int nb_starting_cards = 5;
+  init_card_hands(nb_players, nb_starting_cards,card_hands, col, nb_colors);
+
+  return 1;
+}
+
+
+
+
+int test_init_obj_hands(){
+  
+  struct Map_info map_info = get_map_info("France.txt");
+  struct Rail rails[map_info.nb_links];
+  struct Objective objectives[map_info.nb_objs];
+  file2rails(rails,map_info.nb_links,objectives,map_info.nb_objs,"France.txt");
+  
+  int ** obj_hands = malloc(NB_PLAYERS*sizeof(int *));
+  int nb_players = 3;
+  int nb_starting_objs = 3;
+  
+  init_obj_hands(nb_players,nb_starting_objs, obj_hands,objectives,map_info.nb_objs);
+  int verif[nb_players*nb_starting_objs];
+  for (int player = 0; player < nb_players; player++){
+    for (int obj = 0; obj < nb_starting_objs; obj++){
+      if (obj_hands[player][obj] < 0 || obj_hands[player][obj] > map_info.nb_objs)
+	return 0;
+      verif[player*nb_starting_objs + obj] = obj_hands[player][obj];
+    }
+  }
+  
+  for (int i = 0; i < nb_players*nb_starting_objs; i++){
+    for (int j = i+1; j < nb_players*nb_starting_objs; j++){
+      if (verif[i] == verif[j])
+	return 0;
+    }
+  }
+  									     
+  return 1;
+}
+
+
+
+
+
+int main(){
+  
+  printf("Test of colors ... ");
+  if (test_colors())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+
+  
+  
+  printf("Test of init_card_hands ... ");
+  if (test_init_card_hands())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+  
+  
+  /*
+
+  printf("Test of init_obj_hands ...");
+  if (test_init_obj_hands())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+  */
+
+  return 0;
+
+}

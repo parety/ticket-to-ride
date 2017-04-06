@@ -1,0 +1,771 @@
+\hypertarget{AI__1_8c}{\section{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/\-A\-I\-\_\-1.c File Reference}
+\label{AI__1_8c}\index{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/\-A\-I\-\_\-1.\-c@{/net/malt/i/sbrouard/\-Documents/projets6/s6-\/rails-\/1992/trunk/src/\-A\-I\-\_\-1.\-c}}
+}
+{\ttfamily \#include \char`\"{}player.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}link.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}interface.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}server.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+Include dependency graph for A\-I\-\_\-1.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{AI__1_8c_a1795878e593a98deac75d49b176d5591}{give\-\_\-size\-\_\-accessible\-\_\-rails} (struct \hyperlink{structRail}{Rail} $\ast$tab, int size, int id)
+\begin{DoxyCompactList}\small\item\em give\-\_\-size\-\_\-accessible\-\_\-rails \end{DoxyCompactList}\item 
+void \hyperlink{AI__1_8c_ac8b1940d56dd92a1ec206747bd3846c6}{accessible\-\_\-rails} (struct \hyperlink{structRail}{Rail} $\ast$tab, int $\ast$tab\-\_\-indices, int size, int id)
+\begin{DoxyCompactList}\small\item\em accessible\-\_\-rails \end{DoxyCompactList}\item 
+void \hyperlink{AI__1_8c_ac3468cbfd5d55ca81b2d1f65c77263c3}{sort\-\_\-length} (struct \hyperlink{structRail}{Rail} $\ast$tab, int $\ast$tab\-\_\-indices, int size)
+\begin{DoxyCompactList}\small\item\em sort\-\_\-length \end{DoxyCompactList}\item 
+void \hyperlink{AI__1_8c_a059af6cb848a8b0392218ef6d97a0a87}{A\-I\-\_\-1\-\_\-fill\-\_\-tab\-\_\-accessible} (int $\ast$tab\-\_\-to\-\_\-fill, int current\-\_\-town, int id)
+\begin{DoxyCompactList}\small\item\em A\-I\-\_\-1\-\_\-fill\-\_\-tab\-\_\-accessible (auxiliary function of the function \char`\"{}objective\-\_\-realised\char`\"{}) \end{DoxyCompactList}\item 
+int \hyperlink{AI__1_8c_ad92748bc33ab88fa6ea22a4da3ac71fc}{A\-I\-\_\-1\-\_\-objective\-\_\-realised} (int town1, int town2, int id)
+\begin{DoxyCompactList}\small\item\em A\-I\-\_\-1\-\_\-objective\-\_\-realised. \end{DoxyCompactList}\item 
+void \hyperlink{AI__1_8c_a44afa06d0ad3e478f1046db37fffb663}{actualise\-\_\-all\-\_\-parameters\-\_\-received} (int $\ast$used\-\_\-wagons, int $\ast$cards\-\_\-in\-\_\-hand, int $\ast$objectives, int nb\-\_\-new\-\_\-rails, struct \hyperlink{structNew__rail}{New\-\_\-rail} $\ast$changes, int $\ast$new\-\_\-obj, int $\ast$cards)
+\begin{DoxyCompactList}\small\item\em actualise\-\_\-all\-\_\-parameters\-\_\-received Actualises all the changes that occured since the last time the player was called. \end{DoxyCompactList}\item 
+void \hyperlink{AI__1_8c_a72603999060857e266eeb57fe4651028}{fill\-\_\-tab\-\_\-acyclic} (struct \hyperlink{structRail}{Rail} $\ast$tab, int size, int $\ast$tab\-\_\-to\-\_\-fill, int current\-\_\-town)
+\begin{DoxyCompactList}\small\item\em fill\-\_\-tab\-\_\-acyclic Is a recursive function which fills the tabular \char`\"{}tab\-\_\-to\-\_\-fill\char`\"{} (set the indice \char`\"{}i\char`\"{} at 1 if the town \char`\"{}i\char`\"{} is accessible from the town \char`\"{}current\-\_\-town\char`\"{} by using rails of the tabular \char`\"{}tab\char`\"{}, 0 otherwise). \end{DoxyCompactList}\item 
+int \hyperlink{AI__1_8c_a44c081878b0293e9b15eca36357a9731}{acyclic} (struct \hyperlink{structRail}{Rail} $\ast$tab, int size, struct \hyperlink{structRail}{Rail} rail)
+\begin{DoxyCompactList}\small\item\em acyclic \end{DoxyCompactList}\item 
+int \hyperlink{AI__1_8c_a570906173de0ecea152cada5a76f8a44}{fill\-\_\-tab\-\_\-rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M} (struct \hyperlink{structRail}{Rail} $\ast$tab, int $\ast$acm\-\_\-tab\-\_\-indices, int size, int $\ast$tab\-\_\-towns\-\_\-to\-\_\-fill, int $\ast$tab\-\_\-rails\-\_\-to\-\_\-fill, int current\-\_\-town, int town\-\_\-to\-\_\-reach)
+\begin{DoxyCompactList}\small\item\em fill\-\_\-tab\-\_\-rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M \end{DoxyCompactList}\item 
+int \hyperlink{AI__1_8c_ab12b4fcf8835504e67cc690b905a6e3c}{rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M} (struct \hyperlink{structRail}{Rail} $\ast$acm, int $\ast$acm\-\_\-tab\-\_\-indices, int size, int town1, int town2)
+\begin{DoxyCompactList}\small\item\em rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M \end{DoxyCompactList}\item 
+int \hyperlink{AI__1_8c_a4b129a9daa97da56708afe7568021aa1}{A\-I\-\_\-1\-\_\-init\-\_\-player} (int id, int nb\-\_\-players, int nb\-\_\-towns, int nb\-\_\-rails, struct \hyperlink{structRail}{Rail} $\ast$rails, int nb\-\_\-initial\-\_\-wagons, int nb\-\_\-obj, struct \hyperlink{structObjective}{Objective} $\ast$objs)
+\begin{DoxyCompactList}\small\item\em A\-I\-\_\-0\-\_\-init\-\_\-player Initialises all the parameters of a struct \hyperlink{structPlayer}{Player} (composed of the general game parameters, and his own informations about the game). \end{DoxyCompactList}\item 
+struct \hyperlink{structAction}{Action} \hyperlink{AI__1_8c_a8f776e760f32f938ce3203363f807f35}{A\-I\-\_\-1\-\_\-play\-\_\-turn} (int $\ast$used\-\_\-wagons, int $\ast$cards\-\_\-in\-\_\-hand, int $\ast$objectives, int nb\-\_\-new\-\_\-rails, struct \hyperlink{structNew__rail}{New\-\_\-rail} $\ast$changes, int $\ast$new\-\_\-obj, int $\ast$cards)
+\begin{DoxyCompactList}\small\item\em A\-I\-\_\-0\-\_\-play\-\_\-turn Calls the player, actualises all the changes that occured since the last time the player was called, and asks the player which action he wants. \end{DoxyCompactList}\item 
+int \hyperlink{AI__1_8c_aa14010606b2c569bd491a7101a020023}{min\-\_\-point\-\_\-objs} (int nb, int $\ast$objs, int $\ast$tab)
+\begin{DoxyCompactList}\small\item\em min\-\_\-point\-\_\-objs \end{DoxyCompactList}\item 
+int $\ast$ \hyperlink{AI__1_8c_a48809ba554faa1bf2ef2118392330ae2}{A\-I\-\_\-1\-\_\-choose\-\_\-objective} (int nb, int $\ast$objs, int min)
+\begin{DoxyCompactList}\small\item\em A\-I\-\_\-0\-\_\-choose\-\_\-objective. \end{DoxyCompactList}\item 
+int \hyperlink{AI__1_8c_a064e38e8072edd14b0bef80985ddd412}{A\-I\-\_\-1\-\_\-free\-\_\-player} ()
+\begin{DoxyCompactList}\small\item\em A\-I\-\_\-0\-\_\-free\-\_\-player Frees the struct \hyperlink{structPlayer}{Player} of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structPlayer}{Player} \hyperlink{AI__1_8c_a47a2d030ed3cc6ecfbb6afd9a65b7869}{A\-I\-\_\-1}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{AI__1_8c_ac8b1940d56dd92a1ec206747bd3846c6}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!accessible\-\_\-rails@{accessible\-\_\-rails}}
+\index{accessible\-\_\-rails@{accessible\-\_\-rails}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{accessible\-\_\-rails}]{\setlength{\rightskip}{0pt plus 5cm}void accessible\-\_\-rails (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{tab, }
+\item[{int $\ast$}]{tab\-\_\-indices, }
+\item[{int}]{size, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_ac8b1940d56dd92a1ec206747bd3846c6}
+
+
+accessible\-\_\-rails 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & is the tabular of struct Rails from which the function is going to keep the still accessible rails and the rails already owned by the given player. \\
+\hline
+{\em tab\-\_\-indices} & is the tabular that the function is going to fill (if struct \hyperlink{structRail}{Rail} at indice \char`\"{}i\char`\"{} is kept, tab\-\_\-indices\mbox{[}i\mbox{]}=1, 0 otherwise). \\
+\hline
+{\em size} & is the length of the tabular \char`\"{}tab\char`\"{}. \\
+\hline
+{\em id} & is the identifier of a given player. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{AI__1_8c_ac8b1940d56dd92a1ec206747bd3846c6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=284pt]{AI__1_8c_ac8b1940d56dd92a1ec206747bd3846c6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a44afa06d0ad3e478f1046db37fffb663}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!actualise\-\_\-all\-\_\-parameters\-\_\-received@{actualise\-\_\-all\-\_\-parameters\-\_\-received}}
+\index{actualise\-\_\-all\-\_\-parameters\-\_\-received@{actualise\-\_\-all\-\_\-parameters\-\_\-received}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{actualise\-\_\-all\-\_\-parameters\-\_\-received}]{\setlength{\rightskip}{0pt plus 5cm}void actualise\-\_\-all\-\_\-parameters\-\_\-received (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{used\-\_\-wagons, }
+\item[{int $\ast$}]{cards\-\_\-in\-\_\-hand, }
+\item[{int $\ast$}]{objectives, }
+\item[{int}]{nb\-\_\-new\-\_\-rails, }
+\item[{struct {\bf New\-\_\-rail} $\ast$}]{changes, }
+\item[{int $\ast$}]{new\-\_\-obj, }
+\item[{int $\ast$}]{cards}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a44afa06d0ad3e478f1046db37fffb663}
+
+
+actualise\-\_\-all\-\_\-parameters\-\_\-received Actualises all the changes that occured since the last time the player was called. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em used\-\_\-wagons} & is a tabular which length is the number of players (for a given player, the tabular's value is the number of wagons he has set during the last round). \\
+\hline
+{\em cards\-\_\-in\-\_\-hand} & is a tabular which length is the number of players (for a given player, the tabular's value is the number of cards that the player has won or lost during the last round). \\
+\hline
+{\em objectives} & is a tabular composed of the number of objectives drawned by each player. \\
+\hline
+{\em nb\-\_\-new\-\_\-rails} & is the length of the tabular changes (= the number of rails that the current player has set during the last round). \\
+\hline
+{\em changes} & is the tabular of all the rails that the current player has set during the last round. \\
+\hline
+{\em new\-\_\-obj} & is the tabular of the objectives that the current player has drawned during the last round. \\
+\hline
+{\em cards} & If the action chosen in the last round was \char`\"{}draw\char`\"{}\-: \char`\"{}cards\char`\"{} is the tabuler of all the colors (= wagon-\/cards) drawned. If the action chosen was \char`\"{}build\char`\"{}\-: \char`\"{}cards\char`\"{} is the tabular of all the colors lost (because set). \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_a44afa06d0ad3e478f1046db37fffb663_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{AI__1_8c_a44afa06d0ad3e478f1046db37fffb663_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a44c081878b0293e9b15eca36357a9731}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!acyclic@{acyclic}}
+\index{acyclic@{acyclic}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{acyclic}]{\setlength{\rightskip}{0pt plus 5cm}int acyclic (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{tab, }
+\item[{int}]{size, }
+\item[{struct {\bf Rail}}]{rail}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a44c081878b0293e9b15eca36357a9731}
+
+
+acyclic 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & is a tabular of struct Rails which correspond to a certain number of rails which represent an acyclic graph. \\
+\hline
+{\em size} & is the length of the tabular \char`\"{}tab\char`\"{}. \\
+\hline
+{\em rail} & is a rail which is not already in the tabular \char`\"{}tab\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 1 if all the rails of the tabular \char`\"{}tab\char`\"{} plus the rail \char`\"{}rail\char`\"{} represent an acyclic graph. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{AI__1_8c_a44c081878b0293e9b15eca36357a9731_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{AI__1_8c_a44c081878b0293e9b15eca36357a9731_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a48809ba554faa1bf2ef2118392330ae2}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!A\-I\-\_\-1\-\_\-choose\-\_\-objective@{A\-I\-\_\-1\-\_\-choose\-\_\-objective}}
+\index{A\-I\-\_\-1\-\_\-choose\-\_\-objective@{A\-I\-\_\-1\-\_\-choose\-\_\-objective}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{A\-I\-\_\-1\-\_\-choose\-\_\-objective}]{\setlength{\rightskip}{0pt plus 5cm}int $\ast$ A\-I\-\_\-1\-\_\-choose\-\_\-objective (
+\begin{DoxyParamCaption}
+\item[{int}]{nb, }
+\item[{int $\ast$}]{objs, }
+\item[{int}]{min}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a48809ba554faa1bf2ef2118392330ae2}
+
+
+A\-I\-\_\-0\-\_\-choose\-\_\-objective. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb} & is the number of objectives proposed to the player. \\
+\hline
+{\em objs} & is the tabular of the objectives proposed to the player. \\
+\hline
+{\em min} & is the minimum number of objectives that the player has to chose in the tabular \char`\"{}objs\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a tabular (in the stack, but instantly registered by the server) indicating which objectives have been chosen. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=316pt]{AI__1_8c_a48809ba554faa1bf2ef2118392330ae2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{AI__1_8c_a48809ba554faa1bf2ef2118392330ae2_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a059af6cb848a8b0392218ef6d97a0a87}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!A\-I\-\_\-1\-\_\-fill\-\_\-tab\-\_\-accessible@{A\-I\-\_\-1\-\_\-fill\-\_\-tab\-\_\-accessible}}
+\index{A\-I\-\_\-1\-\_\-fill\-\_\-tab\-\_\-accessible@{A\-I\-\_\-1\-\_\-fill\-\_\-tab\-\_\-accessible}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{A\-I\-\_\-1\-\_\-fill\-\_\-tab\-\_\-accessible}]{\setlength{\rightskip}{0pt plus 5cm}void A\-I\-\_\-1\-\_\-fill\-\_\-tab\-\_\-accessible (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{tab\-\_\-to\-\_\-fill, }
+\item[{int}]{current\-\_\-town, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a059af6cb848a8b0392218ef6d97a0a87}
+
+
+A\-I\-\_\-1\-\_\-fill\-\_\-tab\-\_\-accessible (auxiliary function of the function \char`\"{}objective\-\_\-realised\char`\"{}) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab\-\_\-to\-\_\-fill} & is a tabular of size the total number of towns; the function is going to set tab\-\_\-to\-\_\-fill\mbox{[}i\mbox{]} at 1 if the town \char`\"{}i\char`\"{} is accessible by the player from the town \char`\"{}current\-\_\-town\char`\"{}. \\
+\hline
+{\em current\-\_\-town} & is the town from which the function is going to search all towns accessible by the player (if he has set a rails from this town); at the begining\-: current\-\_\-town=town1 or town2 of the objective \\
+\hline
+{\em id} & is the identifier of the player. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{AI__1_8c_a059af6cb848a8b0392218ef6d97a0a87_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_a059af6cb848a8b0392218ef6d97a0a87_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a064e38e8072edd14b0bef80985ddd412}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!A\-I\-\_\-1\-\_\-free\-\_\-player@{A\-I\-\_\-1\-\_\-free\-\_\-player}}
+\index{A\-I\-\_\-1\-\_\-free\-\_\-player@{A\-I\-\_\-1\-\_\-free\-\_\-player}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{A\-I\-\_\-1\-\_\-free\-\_\-player}]{\setlength{\rightskip}{0pt plus 5cm}int A\-I\-\_\-1\-\_\-free\-\_\-player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a064e38e8072edd14b0bef80985ddd412}
+
+
+A\-I\-\_\-0\-\_\-free\-\_\-player Frees the struct \hyperlink{structPlayer}{Player} of the player. 
+
+\begin{DoxyReturn}{Returns}
+Returns 1 if the player has been freed well. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{AI__1_8c_a064e38e8072edd14b0bef80985ddd412_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a4b129a9daa97da56708afe7568021aa1}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!A\-I\-\_\-1\-\_\-init\-\_\-player@{A\-I\-\_\-1\-\_\-init\-\_\-player}}
+\index{A\-I\-\_\-1\-\_\-init\-\_\-player@{A\-I\-\_\-1\-\_\-init\-\_\-player}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{A\-I\-\_\-1\-\_\-init\-\_\-player}]{\setlength{\rightskip}{0pt plus 5cm}int A\-I\-\_\-1\-\_\-init\-\_\-player (
+\begin{DoxyParamCaption}
+\item[{int}]{id, }
+\item[{int}]{nb\-\_\-players, }
+\item[{int}]{nb\-\_\-towns, }
+\item[{int}]{nb\-\_\-rails, }
+\item[{struct {\bf Rail} $\ast$}]{rails, }
+\item[{int}]{nb\-\_\-initial\-\_\-wagons, }
+\item[{int}]{nb\-\_\-obj, }
+\item[{struct {\bf Objective} $\ast$}]{objs}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a4b129a9daa97da56708afe7568021aa1}
+
+
+A\-I\-\_\-0\-\_\-init\-\_\-player Initialises all the parameters of a struct \hyperlink{structPlayer}{Player} (composed of the general game parameters, and his own informations about the game). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & is the identifier of the player. \\
+\hline
+{\em nb\-\_\-players} & is the total number of players in the game. \\
+\hline
+{\em nb\-\_\-towns} & is the total number of towns in the game. \\
+\hline
+{\em nb\-\_\-rails} & is the total number of rails in the game. \\
+\hline
+{\em rails} & is the tabular composed of all the rails of the game. \\
+\hline
+{\em nb\-\_\-initial\-\_\-wagons} & is the number of wagons that each player has at the begining of the game. \\
+\hline
+{\em nb\-\_\-obj} & is the total number of objective-\/cards of the game. \\
+\hline
+{\em objs} & is the tabular composed of all the objective-\/cards of the game. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 1 if the initialisation went well; 0 otherwise. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_a4b129a9daa97da56708afe7568021aa1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{AI__1_8c_a4b129a9daa97da56708afe7568021aa1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_ad92748bc33ab88fa6ea22a4da3ac71fc}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!A\-I\-\_\-1\-\_\-objective\-\_\-realised@{A\-I\-\_\-1\-\_\-objective\-\_\-realised}}
+\index{A\-I\-\_\-1\-\_\-objective\-\_\-realised@{A\-I\-\_\-1\-\_\-objective\-\_\-realised}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{A\-I\-\_\-1\-\_\-objective\-\_\-realised}]{\setlength{\rightskip}{0pt plus 5cm}int A\-I\-\_\-1\-\_\-objective\-\_\-realised (
+\begin{DoxyParamCaption}
+\item[{int}]{town1, }
+\item[{int}]{town2, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_ad92748bc33ab88fa6ea22a4da3ac71fc}
+
+
+A\-I\-\_\-1\-\_\-objective\-\_\-realised. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em town1} & is the town1 of the objective. \\
+\hline
+{\em town2} & is the town2 of the objective. \\
+\hline
+{\em id} & is the identifier of a given player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 1 if the objective has been realised by the player. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_ad92748bc33ab88fa6ea22a4da3ac71fc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_ad92748bc33ab88fa6ea22a4da3ac71fc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a8f776e760f32f938ce3203363f807f35}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!A\-I\-\_\-1\-\_\-play\-\_\-turn@{A\-I\-\_\-1\-\_\-play\-\_\-turn}}
+\index{A\-I\-\_\-1\-\_\-play\-\_\-turn@{A\-I\-\_\-1\-\_\-play\-\_\-turn}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{A\-I\-\_\-1\-\_\-play\-\_\-turn}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Action} A\-I\-\_\-1\-\_\-play\-\_\-turn (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{used\-\_\-wagons, }
+\item[{int $\ast$}]{cards\-\_\-in\-\_\-hand, }
+\item[{int $\ast$}]{objectives, }
+\item[{int}]{nb\-\_\-new\-\_\-rails, }
+\item[{struct {\bf New\-\_\-rail} $\ast$}]{changes, }
+\item[{int $\ast$}]{new\-\_\-obj, }
+\item[{int $\ast$}]{cards}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a8f776e760f32f938ce3203363f807f35}
+
+
+A\-I\-\_\-0\-\_\-play\-\_\-turn Calls the player, actualises all the changes that occured since the last time the player was called, and asks the player which action he wants. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em used\-\_\-wagons} & is a tabular which length is the number of players (for a given player, the tabular's value is the number of wagons he has set during the last round). \\
+\hline
+{\em cards\-\_\-in\-\_\-hand} & is a tabular which length is the number of players (for a given player, the tabular's value is the number of cards that the player has won or lost during the last round). \\
+\hline
+{\em objectives} & is a tabular composed of the number of objectives drawned by each player. \\
+\hline
+{\em nb\-\_\-new\-\_\-rails} & is the length of the tabular changes (= the number of rails that the current player has set during the last round). \\
+\hline
+{\em changes} & is the tabular of all the rails that the current player has set during the last round. \\
+\hline
+{\em new\-\_\-obj} & is the tabular of the objectives that the current player has drawned during the last round. \\
+\hline
+{\em cards} & If the action chosen in the last round was \char`\"{}draw\char`\"{}\-: \char`\"{}cards\char`\"{} is the tabuler of all the colors (= wagon-\/cards) drawned. If the action chosen was \char`\"{}build\char`\"{}\-: \char`\"{}cards\char`\"{} is the tabular of all the colors lost (because set). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the struct \hyperlink{structAction}{Action} chosen and completed by the player according to his strategy. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_a8f776e760f32f938ce3203363f807f35_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a72603999060857e266eeb57fe4651028}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!fill\-\_\-tab\-\_\-acyclic@{fill\-\_\-tab\-\_\-acyclic}}
+\index{fill\-\_\-tab\-\_\-acyclic@{fill\-\_\-tab\-\_\-acyclic}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{fill\-\_\-tab\-\_\-acyclic}]{\setlength{\rightskip}{0pt plus 5cm}void fill\-\_\-tab\-\_\-acyclic (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{tab, }
+\item[{int}]{size, }
+\item[{int $\ast$}]{tab\-\_\-to\-\_\-fill, }
+\item[{int}]{current\-\_\-town}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a72603999060857e266eeb57fe4651028}
+
+
+fill\-\_\-tab\-\_\-acyclic Is a recursive function which fills the tabular \char`\"{}tab\-\_\-to\-\_\-fill\char`\"{} (set the indice \char`\"{}i\char`\"{} at 1 if the town \char`\"{}i\char`\"{} is accessible from the town \char`\"{}current\-\_\-town\char`\"{} by using rails of the tabular \char`\"{}tab\char`\"{}, 0 otherwise). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & is a tabular of struct Rails which is going to be analysed by the function. \\
+\hline
+{\em size} & is the length of the tabular \char`\"{}tab\char`\"{}. \\
+\hline
+{\em tab\-\_\-to\-\_\-fill} & is the tabular which is going to be filled (the indice \char`\"{}i\char`\"{} is set at 1 if the town \char`\"{}i\char`\"{} is accessible from the town \char`\"{}current\-\_\-town\char`\"{} by using rails of the tabular \char`\"{}tab\char`\"{}, 0 otherwise). \\
+\hline
+{\em current\-\_\-town} & is a town accessible from the first town analysed (= the first value of \char`\"{}current\-\_\-town\char`\"{}), and from which all the rails still accessible are going to be analysed. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_a72603999060857e266eeb57fe4651028_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a570906173de0ecea152cada5a76f8a44}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!fill\-\_\-tab\-\_\-rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M@{fill\-\_\-tab\-\_\-rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M}}
+\index{fill\-\_\-tab\-\_\-rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M@{fill\-\_\-tab\-\_\-rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{fill\-\_\-tab\-\_\-rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M}]{\setlength{\rightskip}{0pt plus 5cm}int fill\-\_\-tab\-\_\-rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{tab, }
+\item[{int $\ast$}]{acm\-\_\-tab\-\_\-indices, }
+\item[{int}]{size, }
+\item[{int $\ast$}]{tab\-\_\-towns\-\_\-to\-\_\-fill, }
+\item[{int $\ast$}]{tab\-\_\-rails\-\_\-to\-\_\-fill, }
+\item[{int}]{current\-\_\-town, }
+\item[{int}]{town\-\_\-to\-\_\-reach}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a570906173de0ecea152cada5a76f8a44}
+
+
+fill\-\_\-tab\-\_\-rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & is the A\-C\-M tabular. \\
+\hline
+{\em acm\-\_\-tab\-\_\-indices} & is the tabular of the indices of the rails in \char`\"{}tab\char`\"{}. \\
+\hline
+{\em size} & is the length of the tabulars \char`\"{}tab\char`\"{} and \char`\"{}acm\-\_\-tab\-\_\-indices\char`\"{}. \\
+\hline
+{\em tab\-\_\-towns\-\_\-to\-\_\-fill} & is a boolean tab which indicates which towns are accessible by town1 or town2 of an objective. \\
+\hline
+{\em tab\-\_\-rails\-\_\-to\-\_\-fill} & is a boolean tab which indicates which rails are accessible by town1 or town2 of an objective. \\
+\hline
+{\em current\-\_\-town} & is called at the begining with town1 or town2 of an objective owned by the player; the function is going to set at 1 \char`\"{}tab\-\_\-towns\-\_\-to\-\_\-fill\mbox{[}i\mbox{]}\char`\"{} and \char`\"{}tab\-\_\-rails\-\_\-to\-\_\-fill\mbox{[}j\mbox{]}\char`\"{} if the town \char`\"{}i\char`\"{} and the rail \char`\"{}j\char`\"{} are accessible by the player from the town2. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{AI__1_8c_a570906173de0ecea152cada5a76f8a44_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_a570906173de0ecea152cada5a76f8a44_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_a1795878e593a98deac75d49b176d5591}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!give\-\_\-size\-\_\-accessible\-\_\-rails@{give\-\_\-size\-\_\-accessible\-\_\-rails}}
+\index{give\-\_\-size\-\_\-accessible\-\_\-rails@{give\-\_\-size\-\_\-accessible\-\_\-rails}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{give\-\_\-size\-\_\-accessible\-\_\-rails}]{\setlength{\rightskip}{0pt plus 5cm}int give\-\_\-size\-\_\-accessible\-\_\-rails (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{tab, }
+\item[{int}]{size, }
+\item[{int}]{id}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_a1795878e593a98deac75d49b176d5591}
+
+
+give\-\_\-size\-\_\-accessible\-\_\-rails 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & is the tabular of struct \hyperlink{structRail}{Rail} of which the function is going to count the non-\/occupied rails and the rails occupied by a given player. \\
+\hline
+{\em size} & is the size of the tabular \char`\"{}tab\char`\"{}. \\
+\hline
+{\em id} & is the identifier of a given player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns a tabular of the rails from the tabular \char`\"{}tab\char`\"{} not already occupied by other players. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{AI__1_8c_a1795878e593a98deac75d49b176d5591_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{AI__1_8c_a1795878e593a98deac75d49b176d5591_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_aa14010606b2c569bd491a7101a020023}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!min\-\_\-point\-\_\-objs@{min\-\_\-point\-\_\-objs}}
+\index{min\-\_\-point\-\_\-objs@{min\-\_\-point\-\_\-objs}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{min\-\_\-point\-\_\-objs}]{\setlength{\rightskip}{0pt plus 5cm}int min\-\_\-point\-\_\-objs (
+\begin{DoxyParamCaption}
+\item[{int}]{nb, }
+\item[{int $\ast$}]{objs, }
+\item[{int $\ast$}]{tab}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_aa14010606b2c569bd491a7101a020023}
+
+
+min\-\_\-point\-\_\-objs 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb} & is the length of the tabular \char`\"{}objs\char`\"{}. \\
+\hline
+{\em objs} & is a tabular of objectives proposed to the player (it is the tabular of the indices of the objectives). \\
+\hline
+{\em tab} & is a tabular indicating which objectives have already been chosen (tab\mbox{[}i\mbox{]}=1 if the objective \char`\"{}i\char`\"{} has already been chosen, 0 otherwise). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the objective (not already chosen by the player) which has the minimal number of points in the tabular \char`\"{}objs\char`\"{}. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_aa14010606b2c569bd491a7101a020023_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_ab12b4fcf8835504e67cc690b905a6e3c}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M@{rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M}}
+\index{rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M@{rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M}]{\setlength{\rightskip}{0pt plus 5cm}int rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{acm, }
+\item[{int $\ast$}]{acm\-\_\-tab\-\_\-indices, }
+\item[{int}]{size, }
+\item[{int}]{town1, }
+\item[{int}]{town2}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_ab12b4fcf8835504e67cc690b905a6e3c}
+
+
+rail\-\_\-free\-\_\-in\-\_\-\-A\-C\-M 
+
+
+\begin{DoxyParams}{Parameters}
+{\em acm} & is the tabular in which the function is going to search for a free rail between town1 and town2 if the all way between the two towns is free. \\
+\hline
+{\em acm\-\_\-tab\-\_\-indices} & is the tabular of the indices of the rails in the tabular \char`\"{}acm\char`\"{}. \\
+\hline
+{\em size} & is the length of the tabulars \char`\"{}acm\char`\"{} and \char`\"{}acm\-\_\-tab\-\_\-indices\char`\"{}. \\
+\hline
+{\em town1} & is the town1 of a given objective. \\
+\hline
+{\em town2} & is the town2 of of a given objective. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the indice of a free rail between the two towns of the objective given if the all way is still free or partially owned by the player and if the player has enough wagons and wagon-\/cards to build this rail; returns -\/1 otherwise. 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{AI__1_8c_ab12b4fcf8835504e67cc690b905a6e3c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{AI__1_8c_ab12b4fcf8835504e67cc690b905a6e3c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{AI__1_8c_ac3468cbfd5d55ca81b2d1f65c77263c3}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!sort\-\_\-length@{sort\-\_\-length}}
+\index{sort\-\_\-length@{sort\-\_\-length}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{sort\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}void sort\-\_\-length (
+\begin{DoxyParamCaption}
+\item[{struct {\bf Rail} $\ast$}]{tab, }
+\item[{int $\ast$}]{tab\-\_\-indices, }
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{AI__1_8c_ac3468cbfd5d55ca81b2d1f65c77263c3}
+
+
+sort\-\_\-length 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tab} & is the tabular of struc Rails which is going to be sorted by the function (from the shortest rail to the longest). \\
+\hline
+{\em tab\-\_\-indices} & is the tabular of indices of rails which is going to be sorted (from the shortest rail to the longest). \\
+\hline
+{\em size} & is the size of the tabulars \char`\"{}tab\char`\"{} and \char`\"{}tab\-\_\-indices\char`\"{}. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{AI__1_8c_ac3468cbfd5d55ca81b2d1f65c77263c3_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{AI__1_8c_a47a2d030ed3cc6ecfbb6afd9a65b7869}{\index{A\-I\-\_\-1.\-c@{A\-I\-\_\-1.\-c}!A\-I\-\_\-1@{A\-I\-\_\-1}}
+\index{A\-I\-\_\-1@{A\-I\-\_\-1}!AI_1.c@{A\-I\-\_\-1.\-c}}
+\subsubsection[{A\-I\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Player} A\-I\-\_\-1}}\label{AI__1_8c_a47a2d030ed3cc6ecfbb6afd9a65b7869}

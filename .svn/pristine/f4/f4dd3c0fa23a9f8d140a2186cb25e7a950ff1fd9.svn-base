@@ -1,0 +1,42 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "interface.h"
+
+
+
+struct Map_info get_map_info(char* file_name){
+  FILE * f fopen(file_name, "r");
+  int nb_read = 0;
+  struct Map_info map_info;
+  while (nb_read < 4){
+    int i = 0;
+    char c = getc(f);
+    if (c == '%'){
+      while (c != '\n')
+	c = getc(f);
+    }
+
+    if (c != ' '){
+      nb_read++;
+      while (c != ' '){ 
+	i = 10*i + atoi(c);
+	c = getc(f);
+      }
+      if (nb_read == 1){
+	map_info.nb_towns = i;
+      }
+      else if (nb_read == 2){
+	map_info.nb_links = i;
+      }
+      else if (nb_read == 3){
+	map_info.nb_objs = i;
+      }
+      else if (nb_read == 4){
+	map_info.nb_w_players = i;	
+      }
+
+    }
+  }
+
+  return map_info;
+}

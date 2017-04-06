@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "interface.h"
+#include "server.h"
+#include "link.h"
+
+
+
+
+int winner(struct Link **map, int nb_towns, int nb_players,struct Objective * all_objectives, int **obj_hands, int *nb_objs){
+
+  int *points = malloc(nb_players*sizeof(int));
+  for (int player = 0; player < nb_players; player++){
+    points[player] = 0;
+  }
+
+  points_rails(map, nb_towns, nb_players,points);
+
+  points_objs(map, nb_towns, nb_players,all_objectives,obj_hands,nb_objs,points);
+
+
+  // The winner is 
+
+  int max_points = 0;
+  int winner = -1;
+  for (int player = 0; player < nb_players; player++){
+    if (points[player] > max_points){
+      winner = player;
+      max_points = points[player];
+    }
+  }
+  return winner;
+}
+
+
+void points_rails(struct Link **map, int nb_towns, int nb_players,int *points){
+  for (int j = 0; j <nb_towns; j++){
+    for (int i = 0; i < j; i++){
+      for (int way = 0 ; way < map[i][j].nbr_way ; way++){
+	if (map[i][j].tab_rails[way].id_player > -1){
+	    int n =map[i][j].tab_rails[way].rail->length;
+	    points[map[i][j].tab_rails[way].id_player] += 1 + (n*(n-1))/2;
+	}
+      }
+    }
+  }
+}
+
+
+void points_objs(struct Link **map, int nb_towns, int nb_players,struct Objective * all_objectives, int **obj_hands, int *nb_objs,int *points){
+
+  // -> done by Maëva !!
+
+}

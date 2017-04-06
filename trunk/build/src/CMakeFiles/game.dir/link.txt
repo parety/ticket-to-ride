@@ -1,0 +1,1 @@
+/usr/bin/cc  -std=c99 -fPIC -O0 -g    CMakeFiles/game.dir/server.c.o  -o game -rdynamic liblink.a libinterface.a libinit.a libplay.a libcards.a libinit_info.a libwinner.a libfree_all.a libAI_0.a libAI_1.a 

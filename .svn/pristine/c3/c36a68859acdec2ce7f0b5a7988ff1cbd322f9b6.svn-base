@@ -1,0 +1,37 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include "../src/interface.h"
+#include "../src/server.h"
+
+
+
+int test_is_last_turn(){
+
+  int nb_players = 4;
+  int wagons_remaining[4];
+  for (int i = 0; i < nb_players; i++)
+    wagons_remaining[i] = 5;
+
+  if (is_last_turn(wagons_remaining,nb_players))
+    return 0;
+  
+  wagons_remaining[3] = 2;
+  if (!is_last_turn(wagons_remaining,nb_players))
+    return 0;
+
+  return 1;
+}
+
+
+
+int main(){
+
+  printf("Test of is_last_turn ...");
+  if (test_is_last_turn())
+    printf("PASSED\n");
+  else
+    printf("FAILED\n");
+
+
+  return 0;
+}

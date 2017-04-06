@@ -1,0 +1,174 @@
+#include "../src/link.h"
+#include "../src/interface.h"
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct My_Rail init_my_rail(int id_player, int id_rail, struct Rail const * rail){
+    struct My_Rail rails;
+    rails.id_player = id_player;
+    rails.id_rail = id_rail;
+    rails.rail = rail;
+    return rails;
+}
+
+struct Rail init_rail(int town1, int town2, int color, int length){
+    struct Rail rail;
+    rail.town1 = town1;
+    rail.town2 = town2;
+    rail.color = color;
+    rail.length = length;
+    return rail;
+}
+
+
+
+void test_rail_size(){
+
+    struct Rail const rail1 = init_rail(1,2,1,3);
+    struct My_Rail rails1 = init_my_rail(0,-1,&rail1);
+
+    struct Rail const rail2 = init_rail(2,1,0,1);
+    struct My_Rail rails2 = init_my_rail(1,-1,&rail2);
+
+    printf("test of rail_size:  ");
+    assert(rail_size(&rails1) == 3);
+    assert(rail_size(&rails2) == 1);
+
+    printf("ok\n");
+
+}
+
+
+void test_player_on_rail(){
+
+    struct Rail rail1 = init_rail(1,2,1,3);
+    struct My_Rail rails1 = init_my_rail(0,-1,&rail1);
+
+    struct Rail rail2 = init_rail(2,1,0,1);
+    struct My_Rail rails2 = init_my_rail(1,-1,&rail2);
+
+    printf("test of set_player_on_rail:  ");
+    set_player_on_rail(&rails1,0);
+    assert(rails1.id_player==0);
+    set_player_on_rail(&rails2,1);
+    assert(rails2.id_player==1);
+    set_player_on_rail(&rails1,1);
+    assert(rails1.id_player==1);
+    set_player_on_rail(&rails2,0);
+    assert(rails2.id_player==0);
+
+    printf("ok\n");
+
+}
+
+
+void test_rail_free(){
+
+    struct Rail const rail1 = init_rail(1,2,1,3);
+    struct My_Rail rails1 = init_my_rail(0,-1,&rail1);
+
+    struct Rail const rail2 = init_rail(2,1,0,1);
+    struct My_Rail rails2 = init_my_rail(1,-1,&rail2);
+
+    printf("test of is_rail_free:  ");
+    assert(is_rail_free(&rails1));
+    assert(!is_rail_free(&rails2));
+
+    printf("ok\n");
+
+}
+
+
+void test_who_on_rail(){
+
+    struct Rail const rail1 = init_rail(1,2,1,3);
+    struct My_Rail rails1 = init_my_rail(0,-1,&rail1);
+
+    struct Rail const rail2 = init_rail(2,1,0,1);
+    struct My_Rail rails2 = init_my_rail(1,-1,&rail2);
+
+    printf("test of who_on_rail:  ");
+    assert(who_on_rail(&rails1) == 0);
+    assert(who_on_rail(&rails2) == 1);
+
+    printf("ok\n");
+
+}
+
+
+void test_init_link(){
+    printf("test of init and free struct link: use valgrind\n");
+    //printf("%d\n",sizeof(struct My_Rail));
+    //printf("%d\n",sizeof(struct Rail));
+    struct Link * link = init_link();
+    struct Link * link2 = init_link();
+    printf("        initialisation:    ");
+
+    assert(link->tab_rails->rail->town1 == -1);
+    assert(link->tab_rails->rail->town2 == -1);
+    assert(link->tab_rails->rail->length == -1);
+    assert(link->tab_rails->rail->color == -1);
+    printf("ok\n");
+    printf("        not free\n");
+    free_link(link);
+    free_link(link2);
+    printf("        free\n");
+}
+
+void test_init_map(){
+    printf("test of init and free map:  use valgrind\n");
+    struct Rail railTest[2];
+    railTest[0].color=0;
+    railTest[0].length=2;
+    railTest[0].town1=1; // Attention !! Town1=1 et non 0!
+    railTest[0].town2=2;
+    railTest[1].color=4;
+    railTest[1].length=1;
+    railTest[1].town1=1;
+    railTest[1].town2=2;
+
+    struct Link ** tab = init_map(2,railTest,2);
+    printf("        initialisation:    ");
+    assert(tab[0][1].nbr_way == 2);
+    assert(tab[0][1].tab_rails[1].rail->color == 4);
+    assert(tab[0][1].tab_rails[1].rail->length == 1);
+    assert(tab[0][1].tab_rails[1].rail->town1 == 1);
+    assert(tab[0][1].tab_rails[1].rail->town2 == 2);
+    assert(tab[0][1].tab_rails[1].id_player == 0);
+    assert(tab[0][1].tab_rails[1].id_rail == 1);
+    printf("ok\n");
+    printf("        test give_my_rail:    ");
+    struct My_Rail * res = give_my_rail(1,tab,railTest);
+    assert(res->rail->color == tab[0][1].tab_rails[1].rail->color);
+    assert(res->rail->length == tab[0][1].tab_rails[1].rail->length);
+    assert(res->rail->town1 == tab[0][1].tab_rails[1].rail->town1);
+    assert(res->rail->town2 == tab[0][1].tab_rails[1].rail->town2);
+    assert(res->id_player == tab[0][1].tab_rails[1].id_player);
+    assert(res->id_rail == tab[0][1].tab_rails[1].id_rail);
+    printf("ok\n");
+
+
+    printf("        not free\n");
+
+    free_map(tab, 2);
+
+    printf("        free\n");
+
+}
+
+
+int main(){
+
+   test_rail_size();
+   test_player_on_rail();
+   test_rail_free();
+   test_who_on_rail();
+
+   test_init_link();
+   test_init_map();
+   return 0;
+
+}
+
+

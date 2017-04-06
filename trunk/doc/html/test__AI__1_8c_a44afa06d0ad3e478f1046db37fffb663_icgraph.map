@@ -1,0 +1,8 @@
+<map id="actualise_all_parameters_received" name="actualise_all_parameters_received">
+<area shape="rect" id="node2" href="$test__AI__1_8c.html#a8f776e760f32f938ce3203363f807f35" title="AI_0_play_turn Calls the player, actualises all the changes that occured since the last time the play..." alt="" coords="221,111,331,137"/>
+<area shape="rect" id="node3" href="$test__AI__1_8c.html#a498000655653e4aecdb8b93ce6152fc6" title="test_game_actualisation\l_case_objective" alt="" coords="379,5,541,46"/>
+<area shape="rect" id="node5" href="$test__AI__1_8c.html#ab07668eb63fa739f6e899c68e098dde1" title="test_game_actualisation\l_case_build" alt="" coords="379,70,541,111"/>
+<area shape="rect" id="node6" href="$test__AI__1_8c.html#aeb0e31ce728fa40bb0f774fe9f97620d" title="test_game_actualisation\l_case_draw" alt="" coords="379,135,541,177"/>
+<area shape="rect" id="node7" href="$test__AI__1_8c.html#a276fb482d84a86075c77931ed6692b9c" title="test_actualise_nb_objs\l_completed" alt="" coords="383,201,537,242"/>
+<area shape="rect" id="node4" href="$test__AI__1_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="589,111,640,137"/>
+</map>

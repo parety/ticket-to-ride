@@ -1,0 +1,11 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$test__init__info_8c.html#a91d6d35acc59d643cb712f990e0a75a9" title="test_max_rail_length" alt="" coords="121,81,263,108"/>
+<area shape="rect" id="node6" href="$test__init__info_8c.html#a7cedca7ada11244fea4943366b0f8312" title="test_init_wagons" alt="" coords="132,157,252,184"/>
+<area shape="rect" id="node8" href="$test__init__info_8c.html#a8a29375fdc11e6ec67f74b2fcdb8fc87" title="test_init_turn_informations" alt="" coords="105,233,279,260"/>
+<area shape="rect" id="node3" href="$init_8c.html#a58328afc943f169a939734e4f698718e" title="get_map_info " alt="" coords="355,5,455,32"/>
+<area shape="rect" id="node4" href="$init_8c.html#a9bddd065021bc892861112c69dc641df" title="file2rails " alt="" coords="370,56,441,83"/>
+<area shape="rect" id="node5" href="$init__info_8c.html#ad7a67018b01e818a68662e3ecc7bce64" title="max_rail_length " alt="" coords="531,208,645,235"/>
+<area shape="rect" id="node7" href="$init__info_8c.html#a9ee02bd78772fa104e7d455b9f97b279" title="init_wagons initialisation of the number of wagons in possession of each player at the beginning of t..." alt="" coords="360,157,451,184"/>
+<area shape="rect" id="node9" href="$init__info_8c.html#a34cae5918fa3688a1d31ccd185922830" title="init_turn_informations initialisation of the different informations given to clients each turn ..." alt="" coords="332,259,479,285"/>
+<area shape="rect" id="node10" href="$test__init__info_8c.html#ab56f600a164a6686651f65c3092728f8" title="test_init_turn_info_free" alt="" coords="328,309,483,336"/>
+</map>

@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "interface.h"
+#include "server.h"
+
+
+
+
+void build_rail(int player, int nb_players, int rail,int **card_hand,
+		int *nb_cards, int *wagon_cards_modif, int **cards, 
+		struct Link **map, struct Rail *rails, int nb_rails,
+		int *wagons_remaining, int *used_wagons){
+
+  int town1 = rails[rail].town1 - 1;
+  int town2 = rails[rail].town2 - 1;
+  int length = rails[rail].length;
+
+  if (town1 > town2){ // map is a triangular matrix (sup)
+    int tmp = town1;
+    town1 = town2;
+    town2 = tmp;
+  }
+
+  // indicate in the map that the rail is not free anymore
+
+  int set = 0;
+  int nb_way = map[town1][town2].nbr_way;
+  for (int i = 0; !set && i < nb_way; i++){
+    if (map[town1][town2].tab_rails[i].id_rail == rail){
+      set = 1;
+      if (map[town1][town2].tab_rails[i].id_player == -1){
+	map[town1][town2].tab_rails[i].id_player = player;
+      }
+    }
+  }
+
+  // make lose the color cards to the plyer
+
+  nb_cards[player] -= length;
+
+  wagon_cards_modif[player] = -length;
+  cards[player][0] = rails[rail].color;
+  cards[player][1] = rails[rail].color;
+
+  // make lose the wagons to the player
+
+  wagons_remaining[player] -= length;
+  used_wagons[player] = length;
+
+}

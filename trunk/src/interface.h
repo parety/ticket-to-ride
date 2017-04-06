@@ -1,0 +1,112 @@
+#ifndef RAIL_H
+#define RAIL_H
+
+
+
+
+// Structure declaration
+/*!
+ * \brief The Rail struct
+ */
+struct Rail{
+  int town1;
+  int town2;
+  int length;
+  int color; // 0 = neutral
+};
+
+
+
+/*!
+ * \brief The Objective struct
+ */
+struct Objective{
+  int town1;
+  int town2;
+  int points;
+};
+
+/*!
+ * \brief The New_rail struct
+ */
+struct New_rail{
+  int rail;
+  int player;
+};
+
+/*!
+ * \brief The Action struct
+ */
+struct Action{
+  enum type{DRAW = 0, BUILD, OBJECTIVE} type; //draw = piocher carte rail
+  int rail; // if BUILD
+  int color; // if DRAW // 0 = multicolor a quoi ca sert ???
+  int color2; // if DRAW a quoi ca sert ???
+
+};
+
+
+
+
+//
+/*!
+ * \brief init_player
+ * Communication functions (between the server and the clients)
+ *
+ * objs=tabular of all the objectives existing
+ * indices of each element in the tabular "objs" are the identifiers of each objective
+ * rails=tabular of all the rails existing
+ * indices of each element in the tabuler "rails" are the identifiers of each rail
+ * \param id
+ * \param nb_player
+ * \param nb_towns
+ * \param nb_rails
+ * \param rails
+ * \param nb_wagons
+ * \param nb_obj
+ * \param objs
+ * \return
+ */
+int init_player(int id, int nb_player, int nb_towns, int nb_rails, struct Rail *rails, int nb_wagons, int nb_obj, struct Objective *objs);
+
+/*!
+ * \brief play_turn
+ *
+ * used_wagons>=0 ; cards_in_hand>=0 if DRAW, <=0 if BUILD ; objectives>=0 ; cards pointing to the array of colors
+ * \param used_wagons
+ * \param cards_in_hand
+ * \param objectives
+ * \param nb_new_rails
+ * \param changes
+ * \param new_obj
+ * \param cards
+ * \return
+ */
+struct Action play_turn(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards);
+
+/*!
+ * \brief choose_objective
+ *
+ * min=minimum number of objectives that a player has to keep at the beginning; nb=number of objectives proposed; objs=tabular of "nb" objectives
+ * if the player doesn't choose at least "min" objectives, the server gives him all the objectives of the tabular "objs"
+ * \param nb
+ * \param objs
+ * \param min
+ * Returns a boolean tab of size nb (to say which objectives are chosen in the tabular "objs")
+ * \return
+ */
+int *choose_objective(int nb, int *objs, int min);
+//
+//
+//
+
+/*!
+ * \brief free_player
+ * \return
+ */
+int free_player();
+
+
+// LES 4 FONCTIONS SONT A SUPPRIMER DES QU'ON A FINI D'IMPLEMENTER LES IA, CAR ELLES NE SERVENT PLUS A RIEN
+
+#endif

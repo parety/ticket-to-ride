@@ -1,0 +1,4 @@
+<map id="Link" name="Link">
+<area shape="rect" id="node2" href="$structMy__Rail.html" title="The My_Rail struct is a structure composed of a pointer to a rail, the identifier of the player in th..." alt="" coords="5,96,75,123"/>
+<area shape="rect" id="node3" href="$structRail.html" title="The Rail struct. " alt="" coords="17,5,63,32"/>
+</map>

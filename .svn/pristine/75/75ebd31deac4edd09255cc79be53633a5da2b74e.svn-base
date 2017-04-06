@@ -1,0 +1,213 @@
+// Naive AI (random choice)
+
+#include <stdlib.h>
+#include <stdio.h>
+#include "player.h"
+#include "link.h"
+#include "server.h"
+#include <time.h>
+
+
+static struct Player AI_0;
+static struct Link **AI_0_matrix;
+
+
+// Returns 1 if the initialisation worked
+int AI_0_init_player(int id, int nb_players, int nb_towns, int nb_rails, struct Rail *rails, int nb_initial_wagons, int nb_obj, struct Objective *objs){
+
+  // Storage of all the informations
+  AI_0.id_player = id;
+  AI_0.points = 0;
+  AI_0.nb_players = nb_players;
+  AI_0.nb_towns = nb_towns;
+
+  AI_0.nb_remaining_wagons = malloc(nb_players*sizeof(int)); 
+  for(int i=0; i<nb_players; i++)
+    AI_0.nb_remaining_wagons[i] = nb_initial_wagons;
+
+
+  AI_0.nb_remaining_wagon_cards = malloc(nb_players*sizeof(int));
+  for(int i=0; i<nb_players; i++){
+    AI_0.nb_remaining_wagon_cards[i] = 0;
+  }
+  
+
+  AI_0.nb_remaining_objective_cards = malloc(nb_players*sizeof(int));
+  for(int i=0; i<nb_players; i++){
+    AI_0.nb_remaining_objective_cards[i] = 0;
+  }
+
+
+  AI_0.nb_rails = nb_rails;
+  AI_0.rails = malloc(nb_rails*sizeof(struct Rail));
+  for(int i=0; i<nb_rails; i++){
+    AI_0.rails[i].town1 = rails[i].town1;
+    AI_0.rails[i].town2 = rails[i].town2;
+    AI_0.rails[i].length = rails[i].length; 
+    AI_0.rails[i].color = rails[i].color;
+  }
+
+
+  AI_0.total_nb_obj = nb_obj;
+  AI_0.objs = malloc(nb_obj*sizeof(struct Objective));
+  for(int i=0; i<nb_obj; i++){
+    AI_0.objs[i].town1 = objs[i].town1;
+    AI_0.objs[i].town2 = objs[i].town2;
+    AI_0.objs[i].points = objs[i].points;
+  }
+
+
+  AI_0.nb_personal_objs = 0;
+  AI_0.personal_objs = malloc(nb_obj*sizeof(int));
+  for(int i=0; i<nb_obj; i++)
+    AI_0.personal_objs[i] = -1;
+  // AI_0.personal_objs a la taille du nombre total d'objs, mais ne contient que AI_0.nb_personal_objs
+
+
+  int *col = malloc(sizeof(int)); //col must be used in the function colors
+  AI_0.nb_colors = colors(AI_0.rails, AI_0.nb_rails, col);
+  free(col); //col not usefull so needs to be freed
+
+  AI_0.nb_personal_wagon_cards = 0;
+  AI_0.personal_wagon_cards = malloc(AI_0.nb_colors*sizeof(int));
+  for(int i=0; i<AI_0.nb_colors; i++)
+    AI_0.personal_wagon_cards[i] = 0;
+
+
+  AI_0.nb_objectives_chosen = 0;
+  AI_0.draw_chosen = 0;
+
+
+  // Initialisation of the personal matrix
+  AI_0_matrix = init_map(nb_towns, rails, nb_rails);
+
+  return 1;
+}
+
+
+
+
+
+
+/*
+used_wagons = nbr wagons joués par chacun au dernier tour
+cards in hand = nbr cartes en plus ou en moins pr chaque joueur
+objectives = nbr objectifs piochés par chaque joueur au dernier tour
+nb new rails = longueur du tab changes
+changes = tab des rails posés
+new_obj = objectifs que t'as pioché au dernier tour
+cards = couleurs que t'as pioché au tour d'avant
+*/
+struct Action AI_0_play_turn(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards){
+
+
+  // Actualisation of the matrix with the tabular "changes"
+  for(int i=0; i<nb_new_rails; i++){
+    struct My_Rail *my_rail = give_my_rail(changes[i].rail, AI_0_matrix, AI_0.rails);
+    set_player_on_rail(my_rail, changes[i].player);
+  }
+
+
+  // Actualisation of all player's parameters
+  for(int i=0; i<AI_0.nb_players; i++){
+    AI_0.nb_remaining_wagons[i] -= used_wagons[i];
+    AI_0.nb_remaining_wagon_cards[i] += cards_in_hand[i];
+    AI_0.nb_remaining_objective_cards[i] += objectives[i];
+  }
+
+  // Actualisation of own objectives
+  for(int i=0; i<AI_0.nb_objectives_chosen; i++){
+    AI_0.nb_personal_objs++;
+    AI_0.personal_objs[AI_0.nb_personal_objs] = new_obj[i];
+  }
+
+  // Actualisation of own cards
+  if(AI_0.draw_chosen == 1){
+    for(int i=0; i<2; i++){
+      AI_0.nb_personal_wagon_cards++;
+      AI_0.personal_wagon_cards[AI_0.nb_personal_wagon_cards] = cards[i];
+    }
+  }
+    
+
+
+  // Choose a random action
+  struct Action res_action;
+  srand(time(NULL));
+  int nb_aleat = rand();
+  nb_aleat = nb_aleat%3;
+
+
+  // Completion of the struct Action (in relation of the action chosen)
+  if(nb_aleat==0){
+    res_action.type = DRAW; 
+    res_action.rail = 0;
+    int color_aleat_1 = rand();
+    int color_aleat_2 = rand();
+
+    res_action.color = (color_aleat_1)%(AI_0.nb_colors);
+    res_action.color2 = (color_aleat_2)%(AI_0.nb_colors);  
+
+    AI_0.nb_objectives_chosen = 0;
+    AI_0.draw_chosen = 1;
+  }
+  if(nb_aleat==1){
+    res_action.type = BUILD; 
+    int rail_aleat = rand();
+    res_action.rail = (rail_aleat)%(AI_0.nb_rails);
+    res_action.color = 0;
+    res_action.color2 = 0;
+    
+    AI_0.nb_objectives_chosen = 0;
+    AI_0.draw_chosen = 0;
+  }
+  if(nb_aleat==2){
+    res_action.type = OBJECTIVE;
+    res_action.rail = 0;
+    res_action.color = 0;
+    res_action.color2 = 0;
+
+    AI_0.draw_chosen = 0;
+    // AI_0.nb_objectives_chosen set in the function AI_O_choose_objective
+  }
+
+  return res_action;
+}
+
+
+
+
+
+
+int *AI_0_choose_objective(int nb, int *objs, int min){
+
+  // Creation of the tabular of choice (to be returned)
+  // Picks the first min objectives proposed 
+  int tab[nb];
+  for(int i=0; i<nb; i++){
+    if (i<min)
+      tab[i]=1;
+    else
+      tab[i]=0;
+  }
+
+  AI_0.nb_objectives_chosen = min;
+  return tab;
+}
+
+
+
+
+
+
+int AI_0_free_player(){
+  free(AI_0.nb_remaining_wagons);
+  free(AI_0.nb_remaining_wagon_cards);
+  free(AI_0.nb_remaining_objective_cards);
+  free(AI_0.rails);
+  free(AI_0.objs);
+  free(AI_0.personal_objs);
+  free(AI_0.personal_wagon_cards);
+  return 1;
+}
+

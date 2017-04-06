@@ -1,0 +1,504 @@
+// intermediary AI (minimal point objective + ACM)
+
+#include "player.h"
+#include "link.h"
+#include "interface.h"
+#include "cards_gestion.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Player AI_1;
+static struct Link **AI_1_matrix;
+
+
+
+// AUXILIARY FUNCTIONS
+
+int give_size_accessible_rails(struct Rail *tab, int size, int id){
+  int k = 0;
+  struct My_Rail *my_rail;
+  for(int i=0; i<size; i++){
+    my_rail = give_my_rail(i, AI_1_matrix, tab);
+    if(my_rail->id_player==-1 || my_rail->id_player==id)
+      k++;
+  }
+  return k;
+}
+
+int find(int town_to_find, struct Rail *tab, int start, int end){
+  for(int i=start; i<end; i++){
+    if(tab[i].town1==town_to_find || tab[i].town2==town_to_find)
+      return i;
+  }
+  return -1;
+}
+
+struct Rail *accessible_rails(struct Rail *tab, int *tab_indices, int size, int id){
+  int k = give_size_accessible_rails(tab, size, id);
+  int pos = 0;
+  struct Rail res[k];
+  struct My_Rail *my_rail;
+  for(int i=0; i<size; i++){
+    my_rail = give_my_rail(i, AI_1_matrix, tab);
+    if(my_rail->id_player==-1 || my_rail->id_player==id){
+      res[pos].town1 = my_rail->rail->town1;
+      res[pos].town2 = my_rail->rail->town2; 
+      res[pos].length = my_rail->rail->length;
+      res[pos].color = my_rail->rail->color;
+      tab_indices[i] = 1;
+      pos++;
+    }
+  }
+  return res;
+}
+
+void sort_length(struct Rail *tab, int *tab_indices, int size){
+  for(int i=0; i<size; i++){
+    int min = tab[i].length;
+    int ind_min = i;
+    for(int j=i; j<size; j++){
+      if(tab[j].length<min){
+	min = tab[j].length;
+	ind_min = j;
+      }
+    }
+    struct Rail rail = {tab[i].town1, tab[i].town2, tab[i].length, tab[i].color};
+    int k = tab_indices[i];
+    tab[i].town1 = tab[ind_min].town1;
+    tab[i].town2 = tab[ind_min].town2;
+    tab[i].length = tab[ind_min].length;
+    tab[i].color = tab[ind_min].color;
+    tab_indices[i] = tab_indices[ind_min];
+    tab[ind_min].town1 = rail.town1;
+    tab[ind_min].town2 = rail.town2;
+    tab[ind_min].length = rail.length;
+    tab[ind_min].color = rail.color;
+    tab_indices[ind_min] = k;
+  }
+}
+
+int actualise_nb_objs_completed(int end, int current, int *already_visited){
+  if(current==end)
+    return 1;
+  else{
+    already_visited[current] = 1;
+    for(int i=0; i<AI_1.nb_towns; i++){
+      if(i>current && already_visited[i]==0){
+	for(int j=0; j<AI_1_matrix[current][i].nbr_way; j++){
+	  if(who_on_rail(&(AI_1_matrix[current][i].tab_rails[j])) == AI_1.id_player)
+	    actualise_nb_objs_completed(end,i,already_visited);
+	}
+      }
+      if(i<current && already_visited[i]==0){
+	for(int j=0; j<AI_1_matrix[i][current].nbr_way; j++){
+	  if(who_on_rail(&(AI_1_matrix[i][current].tab_rails[j])) == AI_1.id_player)
+	    actualise_nb_objs_completed(end,i,already_visited);
+	}
+      }
+    }
+    return 0;
+  }
+}
+
+
+
+void actualise_all_parameters_received(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards){
+    // Actualisation of the matrix with the tabular "changes"
+    for(int i=0; i<nb_new_rails; i++){
+      struct My_Rail *my_rail = give_my_rail(changes[i].rail, AI_1_matrix, AI_1.rails);
+      set_player_on_rail(my_rail, changes[i].player);
+    }
+
+
+    // Actualisation of all player's parameters
+    for(int i=0; i<AI_1.nb_players; i++){
+      AI_1.nb_remaining_wagons[i] -= used_wagons[i];
+      AI_1.nb_remaining_wagon_cards[i] += cards_in_hand[i];
+      AI_1.nb_remaining_objective_cards[i] += objectives[i];
+    }
+
+    // Actualisation of own objectives
+    for(int i=0; i<AI_1.nb_objectives_chosen; i++){
+      AI_1.nb_personal_objs++;
+      AI_1.personal_objs[AI_1.nb_personal_objs] = new_obj[i];
+    }
+
+    // Actualisation of own cards
+    if(AI_1.draw_chosen == 1){ // case draw
+      for(int i=0; i<cards_in_hand[AI_1.id_player]; i++){
+	AI_1.nb_personal_wagon_cards++;
+	for(int j=0; j<AI_1.nb_colors; j++){
+	  if(cards[i]==j)
+	    AI_1.personal_wagon_cards[j]++;
+	}
+      }
+    }
+    if(cards_in_hand[AI_1.id_player]<0){ // case build
+      for(int i=0; i<(-cards_in_hand[AI_1.id_player]); i++){
+	for(int j=0; j<AI_1.nb_colors; j++){
+	  if(cards[i]==j)
+	    AI_1.personal_wagon_cards[j]--;
+	}
+      }
+    }
+    
+    // Actualisation of number of own objectives completed
+    int start_town = AI_1.objs[AI_1.personal_objs[AI_1.nb_objs_completed]].town1;
+    int end_town = AI_1.objs[AI_1.personal_objs[AI_1.nb_objs_completed]].town2;
+    int already_visited[AI_1.nb_towns];
+    for(int i=0; i<AI_1.nb_towns; i++)
+      already_visited[i] = 0;
+    int obj_completed = actualise_nb_objs_completed(end_town, start_town, already_visited);
+    if(obj_completed>0)
+      AI_1.nb_objs_completed++;
+}
+
+void fill_tab_acyclic(struct Rail *tab, int size, int *tab_to_fill, int current_town){
+  tab_to_fill[current_town] = 1;
+  for(int i=0; i<size; i++){
+    if(tab[i].town1==current_town && tab_to_fill[tab[i].town2]==0)
+      fill_tab_acyclic(tab,size,tab_to_fill,tab[i].town2);
+    if(tab[i].town2==current_town && tab_to_fill[tab[i].town1]==0)
+      fill_tab_acyclic(tab,size,tab_to_fill,tab[i].town1);
+  }
+}
+
+int acyclic(struct Rail *tab, int size, struct Rail rail){
+  int towns_visited_left[AI_1.nb_towns];
+  int towns_visited_right[AI_1.nb_towns];
+  for(int i=0; i<AI_1.nb_towns; i++){
+      towns_visited_left[i] = 0;
+      towns_visited_right[i] = 0;
+  }
+  fill_tab_acyclic(tab,size,towns_visited_left,rail.town1);
+  fill_tab_acyclic(tab,size,towns_visited_right,rail.town2);
+  int acyclic = 1;
+  for(int i=0; i<AI_1.nb_towns; i++){
+    if(towns_visited_left[i]==1 && towns_visited_right[i]==1)
+      acyclic = 0;
+  } 
+  return acyclic;
+} 
+
+int find_indice(int indice, int *tab, int size){ 
+  for(int i=0; i<size; i++){
+    if(tab[i]==indice)
+      return i;
+  }
+  return -1;
+}
+
+int not_all_read(int *tab, int size){
+  int k = 0;
+  for(int i=0; i<size; i++){
+    if(tab[i]==-1)
+      k++;
+  }
+  return(k!=0);
+}
+
+
+
+
+
+
+
+
+
+
+// MAIN FUNCTIONS
+
+int AI_1_init_player(int id, int nb_players, int nb_towns, int nb_rails, struct Rail *rails, int nb_initial_wagons, int nb_obj, struct Objective *objs){
+    // Storage of all the informations
+    AI_1.id_player = id;
+    AI_1.points = 0;
+    AI_1.nb_players = nb_players;
+    AI_1.nb_towns = nb_towns;
+
+    AI_1.nb_remaining_wagons = malloc(nb_players*sizeof(int));
+    for(int i=0; i<nb_players; i++)
+      AI_1.nb_remaining_wagons[i] = nb_initial_wagons;
+
+
+    AI_1.nb_remaining_wagon_cards = malloc(nb_players*sizeof(int));
+    for(int i=0; i<nb_players; i++){
+      AI_1.nb_remaining_wagon_cards[i] = 0;
+    }
+
+
+    AI_1.nb_remaining_objective_cards = malloc(nb_players*sizeof(int));
+    for(int i=0; i<nb_players; i++){
+      AI_1.nb_remaining_objective_cards[i] = 0;
+    }
+
+
+    AI_1.nb_rails = nb_rails;
+    AI_1.rails = malloc(nb_rails*sizeof(struct Rail));
+    for(int i=0; i<nb_rails; i++){
+      AI_1.rails[i].town1 = rails[i].town1;
+      AI_1.rails[i].town2 = rails[i].town2;
+      AI_1.rails[i].length = rails[i].length;
+      AI_1.rails[i].color = rails[i].color;
+    }
+
+
+    AI_1.total_nb_obj = nb_obj;
+    AI_1.objs = malloc(nb_obj*sizeof(struct Objective));
+    for(int i=0; i<nb_obj; i++){
+      AI_1.objs[i].town1 = objs[i].town1;
+      AI_1.objs[i].town2 = objs[i].town2;
+      AI_1.objs[i].points = objs[i].points;
+    }
+
+
+    AI_1.nb_personal_objs = 0;
+    AI_1.nb_objs_completed = 0;
+    AI_1.personal_objs = malloc(nb_obj*sizeof(int));
+    for(int i=0; i<nb_obj; i++)
+      AI_1.personal_objs[i] = -1;
+  // size of AI_0.personal_objs = total number of objs
+  // but has only AI_0.nb_personal_objs
+
+
+    int *col = malloc(sizeof(int)); //col must be used in the function colors
+    AI_1.nb_colors = colors(AI_1.rails, AI_1.nb_rails, col);
+    free(col); //col not usefull so needs to be freed
+
+    AI_1.nb_personal_wagon_cards = 0;
+    AI_1.personal_wagon_cards = malloc(AI_1.nb_colors*sizeof(int));
+    for(int i=0; i<AI_1.nb_colors; i++)
+      AI_1.personal_wagon_cards[i] = 0;
+
+
+    AI_1.nb_objectives_chosen = 0;
+    AI_1.draw_chosen = 0;
+
+
+    // Initialisation of the personal matrix
+    AI_1_matrix = init_map(nb_towns, rails, nb_rails);
+
+    return 1;
+}
+
+
+
+
+
+
+struct Action AI_1_play_turn(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards){
+
+  actualise_all_parameters_received(used_wagons, cards_in_hand, objectives, nb_new_rails, changes, new_obj, cards);
+  
+  
+  /*
+   * while objectives not completed: build a rail for objectives if can, else take cards_wagons 
+   * else (objectives all completed): choose maximal length rail and build if can, else take cards_wagons
+   */
+  struct Action action;
+  
+  if(AI_1.nb_objs_completed != AI_1.nb_personal_objs){ // if objectives not completed
+    
+    // Construction of the ACM tabular
+    int size_accessible_rails = give_size_accessible_rails(AI_1.rails, AI_1.nb_rails, AI_1.id_player);
+    int kept_indices[AI_1.nb_rails]; 
+    for(int i=0; i<AI_1.nb_rails; i++)
+      kept_indices[i] = 0;
+    struct Rail tab[size_accessible_rails];
+    for(int i=0; i<size_accessible_rails; i++){
+      tab[i].town1 = accessible_rails(AI_1.rails, kept_indices, AI_1.nb_rails, AI_1.id_player)[i].town1;
+      tab[i].town2 = accessible_rails(AI_1.rails, kept_indices, AI_1.nb_rails, AI_1.id_player)[i].town2;
+      tab[i].length = accessible_rails(AI_1.rails, kept_indices, AI_1.nb_rails, AI_1.id_player)[i].length;
+      tab[i].color = accessible_rails(AI_1.rails, kept_indices, AI_1.nb_rails, AI_1.id_player)[i].color;
+    }
+    
+    int tab_indices[size_accessible_rails];
+    int k=0;
+    for(int i=0; i<AI_1.nb_rails; i++){
+      if(kept_indices[i]==1){
+	tab_indices[k] = i;
+	k++;
+      }
+    }
+    
+    sort_length(tab, tab_indices, size_accessible_rails);
+    struct Rail ACM_tab[AI_1.nb_rails]; // ACM tab
+    int ACM_tab_indices[AI_1.nb_rails]; // ACM tab indices
+    int size_ACM_tab = 0;
+    for(int i=0; i<size_accessible_rails; i++){
+      if(acyclic(ACM_tab, size_ACM_tab, tab[i])){
+	ACM_tab[size_ACM_tab].town1 = tab[i].town1;
+	ACM_tab[size_ACM_tab].town2 = tab[i].town2;
+	ACM_tab[size_ACM_tab].length = tab[i].length;
+	ACM_tab[size_ACM_tab].color = tab[i].color;
+	ACM_tab_indices[size_ACM_tab] = tab_indices[i];
+	size_ACM_tab++;
+      }
+    }
+    
+    
+
+    
+    //Find a way in the ACM tabular to complete the objective
+    int check_tab[size_ACM_tab];
+    for(int i=0; i<size_ACM_tab; i++)
+      check_tab[i] = -1;
+
+    int start_town = (AI_1.objs[AI_1.personal_objs[AI_1.nb_objs_completed]]).town1;
+    int end_town = (AI_1.objs[AI_1.personal_objs[AI_1.nb_objs_completed]]).town2;
+    int found_where_to_place = 0;
+    int indice_of_rail_wanted = -1;
+    
+    
+    for(int i=0; i<size_ACM_tab; i++){
+      int last_indice = 0;
+      int j=-1;
+      j = find(start_town, ACM_tab, i, size_ACM_tab); //find starting from i
+      if(j!=-1){
+	check_tab[j] = last_indice;
+	int next_town_to_visit = 0;
+	int last_town_visited = start_town;
+	if(ACM_tab[j].town1 == start_town)
+	  next_town_to_visit = ACM_tab[j].town2;
+	else
+	  next_town_to_visit = ACM_tab[j].town1;
+	int next = find(next_town_to_visit,ACM_tab, 0, size_ACM_tab);
+	while((last_town_visited!=end_town) && (next!=-1) && (not_all_read(check_tab, size_ACM_tab))){
+	  last_indice++;
+	  check_tab[next] = last_indice;
+	  last_town_visited = next_town_to_visit;
+	  if(ACM_tab[next].town1 == next_town_to_visit)
+	    next_town_to_visit = ACM_tab[j].town2;
+	  else
+	    next_town_to_visit = ACM_tab[j].town1;
+	  next = find(next_town_to_visit,ACM_tab, 0, size_ACM_tab);
+	}
+	if(ACM_tab[last_indice].town1==end_town || ACM_tab[last_indice].town2==end_town){
+	  int current_indice = 0;
+	  struct My_Rail *my_rail;
+	  while(current_indice<last_indice && !(found_where_to_place)){
+	    int where_in_tab = find_indice(current_indice, check_tab, size_ACM_tab);
+	    my_rail = give_my_rail(ACM_tab_indices[where_in_tab], AI_1_matrix, AI_1.rails);
+	    if(my_rail->rail->color !=0){
+	      if(is_rail_free(my_rail) && (my_rail->rail->length)<=(AI_1.nb_remaining_wagons[AI_1.id_player]) && (my_rail->rail->length)<=(AI_1.personal_wagon_cards[my_rail->rail->length] + AI_1.personal_wagon_cards[0])){
+		indice_of_rail_wanted = ACM_tab_indices[current_indice];
+		found_where_to_place = 1;
+	      }
+	    }
+	    else{
+	      if(is_rail_free(my_rail) && (my_rail->rail->length)<=(AI_1.nb_remaining_wagons[AI_1.id_player]) && (my_rail->rail->length)<=(AI_1.personal_wagon_cards[0])){
+		indice_of_rail_wanted = ACM_tab_indices[current_indice];
+		found_where_to_place = 1;
+	      }
+	    }
+	    current_indice++;
+	  }
+	}
+	if(found_where_to_place){
+	  action.type = BUILD;
+	  action.rail = indice_of_rail_wanted;
+	  action.color = -1; // unuseful item but still initialised
+	  action.color2 = -1; // unuseful item but still initialised
+	  AI_1.nb_objectives_chosen = 0; // completed in the funtion choose_objective
+	  AI_1.draw_chosen = 0;
+	}
+	else{
+	  action.type = DRAW;
+	  action.rail = -1; // unuseful item but still initialised
+	  action.color = AI_1.rails[indice_of_rail_wanted].color;
+	  action.color2 = AI_1.rails[indice_of_rail_wanted].color;
+	  AI_1.nb_objectives_chosen = 0;
+	  AI_1.draw_chosen = 1;
+	}
+      }
+      // Re-init check_tab
+      for(int i=0; i<size_ACM_tab; i++)
+	check_tab[i] = -1;
+    }
+  }
+  else{ // if objectives all completed: choose maximal length rail and build if can, else take cards_wagons
+    int maximal_length_town = 0;
+    int maximal_length = AI_1.rails[0].length;
+    int color = 0;
+    for(int i=0; i<AI_1.nb_towns; i++){
+      struct My_Rail *my_rail = give_my_rail(i, AI_1_matrix, AI_1.rails);
+      if(is_rail_free(my_rail) && my_rail->rail->length > maximal_length){
+	maximal_length_town = i;
+	maximal_length = my_rail->rail->length;
+	color = my_rail->rail->color;
+      }
+    }
+    if(AI_1.nb_personal_wagon_cards >= maximal_length && color!=0 && (AI_1.personal_wagon_cards[color]+AI_1.personal_wagon_cards[0])>=maximal_length){
+      action.type = BUILD;
+      action.rail = maximal_length_town;
+      action.color = -1; // unuseful item but still initialised
+      action.color2 = -1; // unuseful item but still initialised
+      AI_1.nb_objectives_chosen = 0;
+      AI_1.draw_chosen = 0;
+    }
+    if(AI_1.nb_personal_wagon_cards >= maximal_length && color==0 && AI_1.personal_wagon_cards[0]>=maximal_length){
+      action.type = BUILD;
+      action.rail = maximal_length_town;
+      action.color = -1; // unuseful item but still initialised
+      action.color2 = -1; // unuseful item but still initialised
+      AI_1.nb_objectives_chosen = 0;
+      AI_1.draw_chosen = 0;
+    }
+    else{
+      action.type = DRAW;
+      action.rail = -1; // unuseful item but still initialised
+      action.color = color; 
+      action.color2 = color;
+      AI_1.nb_objectives_chosen = 0;
+      AI_1.draw_chosen = 1;
+    }
+  }
+  return action;
+}
+
+
+
+
+
+int min_point_objs(int nb, int *objs, int *tab){
+    int i=0;
+    while (tab[i] == 1 && i<nb)
+        i++;
+    for (int k=i;k<nb;k++){
+        if (AI_1.objs[objs[k]].points < AI_1.objs[objs[i]].points && tab[k] == 0)
+            i=k;
+    }
+    return i;
+}
+
+
+int *AI_1_choose_objective(int nb, int *objs, int min){
+    int k=0;
+    int i=0;
+    int tab[nb];
+    for (i=0;i<nb;i++)
+        tab[i]=0;
+    while (k<min){
+        //chooses minimal point objective
+        AI_1.nb_personal_objs++;
+        i = min_point_objs(nb, objs, tab);
+        tab[i] = 1;
+        k++;
+    }
+    AI_1.nb_objectives_chosen = min;
+    return tab;
+}
+
+
+
+int AI_1_free_player(){
+    free(AI_1.nb_remaining_wagons);
+    free(AI_1.nb_remaining_wagon_cards);
+    free(AI_1.nb_remaining_objective_cards);
+    free(AI_1.rails);
+    free(AI_1.objs);
+    free(AI_1.personal_objs);
+    free(AI_1.personal_wagon_cards);
+    return 1;
+}
+

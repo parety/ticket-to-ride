@@ -1,0 +1,88 @@
+#ifndef LIAISON_H
+#define LIAISON_H
+#include "interface.h"
+
+
+
+/*!
+ * \brief The My_Rail struct
+ */
+struct My_Rail{
+  struct Rail const * rail;
+  int id;
+};
+
+/*!
+ * \brief The Link struct
+ */
+struct Link{
+  int nbr_way;
+  struct My_Rail *tab_rails;
+};
+
+/*!
+ * \brief way_size
+ * \param way
+ * \return
+ */
+int rail_size(struct My_Rail *rail);
+
+/*!
+ * \brief set_player_on_way
+ * \param way
+ * \param id
+ */
+void set_player_on_rail(struct My_Rail *rail, int id);
+
+/*!
+ * \brief is_way_free
+ * \param way
+ * \return
+ */
+int is_rail_free(struct My_Rail *rail);
+
+/*!
+ * \brief who_on_way
+ * \param way
+ * \return
+ */
+int who_on_rail(struct My_Rail *rail); 
+
+/*!
+ * \brief init_link
+ * \param rail
+ * \return
+ */
+struct Link *init_link(struct Rail *rail);
+
+/*!
+ * \brief modify_link
+ * \param link
+ * \param rail
+ * \return
+ */
+struct Link *modify_link(struct Link *link, struct Rail *rail); 
+
+/*!
+ * \brief free_my_rail
+ * \param link
+ */
+void free_my_rail(struct Link *link);
+
+/*!
+ * \brief init_map
+ * \param nbr_lines
+ * \param nbr_columns
+ * \return
+ */
+struct Link **init_map(int nbr_lines, int nbr_columns);
+
+/*!
+ * \brief free_map
+ * \param matrix
+ */
+void free_map(struct Link ** matrix, int ,int);
+
+
+
+#endif 

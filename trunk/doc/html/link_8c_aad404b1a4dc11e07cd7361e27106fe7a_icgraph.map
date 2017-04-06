@@ -1,0 +1,7 @@
+<map id="who_on_rail" name="who_on_rail">
+<area shape="rect" id="node2" href="$AI__1_8c.html#a570906173de0ecea152cada5a76f8a44" title="fill_tab_rail_free_in_ACM " alt="" coords="147,5,261,46"/>
+<area shape="rect" id="node5" href="$test__link_8c.html#a60e118c3ad6c5320ae2db462c08826ec" title="test_who_on_rail" alt="" coords="144,71,264,97"/>
+<area shape="rect" id="node3" href="$AI__1_8c.html#ab12b4fcf8835504e67cc690b905a6e3c" title="rail_free_in_ACM " alt="" coords="312,12,435,39"/>
+<area shape="rect" id="node4" href="$AI__1_8c.html#a8f776e760f32f938ce3203363f807f35" title="AI_0_play_turn Calls the player, actualises all the changes that occured since the last time the play..." alt="" coords="483,12,592,39"/>
+<area shape="rect" id="node6" href="$test__link_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="348,71,399,97"/>
+</map>

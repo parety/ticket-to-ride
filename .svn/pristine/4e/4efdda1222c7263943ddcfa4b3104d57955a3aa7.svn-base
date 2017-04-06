@@ -1,0 +1,111 @@
+#include <stdlib.h>
+#include "link.h"
+#include "interface.h"
+
+/*!
+ * \brief init_link
+ * \param rail
+ * \return
+ */
+struct Link * init_link(struct Rail * rail){
+  struct Link *res;
+  res->nbr_way = 1;
+  res->tab_rails = malloc(sizeof(struct My_Rail));
+  res->tab_rails[0].rail = rail;
+  res->tab_rails[0].id = 0;
+  return res;
+}
+
+/*!
+ * \brief modify_link
+ * \param link
+ * \param rail
+ * \return
+ */
+struct Link * modify_link(struct Link * link, struct Rail * rail){
+  link->nbr_way++;
+  link->tab_rails = realloc(link->tab_rails,link->nbr_way * sizeof(struct My_Rail));
+  link->tab_rails[link->nbr_way - 1].rail = rail;
+  link->tab_rails[link->nbr_way - 1].id = 0;
+}
+
+/*!
+ * \brief free_my_rail
+ * \param link
+ */
+void free_my_rail(struct Link * link){
+  free(link->tab_rails);
+  link->tab_rails = NULL;
+}
+
+
+// A FINIR !!!
+/*
+struct Link ** init_map(int nbr_lines, int nbr_columns, struct Rail *tab_rails, int taille_tab_rails){
+  struct Link ** matrix = malloc(nbr_lines * sizeof(struct Link *));
+  for(i=0; i<nbr_lignes; i++)
+    matrix[i] = malloc(nbr_columns * sizeof(struct Link));
+  
+  
+
+
+  return matrix;
+}
+*/
+
+/*!
+ * \brief free_map
+ * \param matrix
+ * \param nbr_lines
+ * \param nbr_columns
+ */
+void free_map(struct Link ** matrix, int nbr_lines, int nbr_columns){
+  for(int i=0; i<nbr_lines; i++){
+    for(int j=0;j<nbr_columns; j++)
+      free_my_rail(&matrix[i][j]);
+    free(matrix[i]);
+  } 
+  free(matrix);
+}
+
+
+
+/*!
+ * \brief set_player_on_rail
+ * \param rail
+ * \param id
+ */
+void set_player_on_rail(struct My_Rail * rail, int id){
+    rail->id = id;
+}
+
+
+/*!
+ * \brief is_rail_free
+ * \param rail
+ * \return
+ */
+int is_rail_free(struct My_Rail * rail){
+    return rail->id==0;
+}
+
+
+/*!
+ * \brief who_on_rail
+ * \param rail
+ * \return
+ */
+int who_on_rail(struct My_Rail * rail){
+    return rail->id;
+}
+
+
+/*!
+ * \brief rail_size
+ * \param rail
+ * \return
+ */
+int rail_size(struct My_Rail * rail){
+    return rail->rail->length;
+}
+

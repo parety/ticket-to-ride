@@ -1,0 +1,6 @@
+<map id="AI_0_play_turn" name="AI_0_play_turn">
+<area shape="rect" id="node2" href="$link_8c.html#a6ccd449d6f68b97d9b90fd006bdd6108" title="give_my_rail " alt="" coords="582,14,677,41"/>
+<area shape="rect" id="node3" href="$link_8c.html#af9b110cbe33aa6495ae1315f48392a57" title="set_player_on_rail " alt="" coords="179,26,306,53"/>
+<area shape="rect" id="node4" href="$test__AI__0_8c.html#aca091cff3a4de4b7399735d192d204fc" title="AI_0_objective_realised" alt="" coords="163,77,323,104"/>
+<area shape="rect" id="node5" href="$test__AI__0_8c.html#ae6a5a9fb92d4c61bff427f6d8964b1ce" title="AI_0_fill_tab_accessible" alt="" coords="371,52,533,78"/>
+</map>

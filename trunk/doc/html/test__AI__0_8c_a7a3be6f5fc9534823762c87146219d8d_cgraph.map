@@ -1,0 +1,7 @@
+<map id="test_initialisation" name="test_initialisation">
+<area shape="rect" id="node2" href="$test__AI__0_8c.html#a4ed15e4ae5472f5bf9b586526318fcf3" title="AI_0_init_player" alt="" coords="173,31,288,57"/>
+<area shape="rect" id="node3" href="$cards__gestion_8c.html#a6476a83be99f343b2baff69567b03280" title="colors Complete the array with the colors used in the game and return the number of colors ..." alt="" coords="343,5,401,32"/>
+<area shape="rect" id="node4" href="$link_8c.html#aa356dd1a6ef6b845619ba56fa563d0f5" title="init_map Initialises the matrix of all the Link(s) composed of all the My_Rail(s) corresponding to al..." alt="" coords="337,56,407,83"/>
+<area shape="rect" id="node5" href="$link_8c.html#a425217f6f8098b1637ec3f27d905830c" title="init_link " alt="" coords="467,31,533,57"/>
+<area shape="rect" id="node6" href="$link_8c.html#aca0a177bc91fb070f332b263da3b0153" title="modify_link " alt="" coords="456,81,544,108"/>
+</map>

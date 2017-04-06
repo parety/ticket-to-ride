@@ -1,0 +1,37 @@
+#ifndef SERVER_H
+#define SERVER_H
+
+#include "interface.h"
+#include "player.h"
+#include "AI_1.h"
+#include "AI_2.h"
+#include "AI_3.h"
+
+struct f_player{
+  int (*init_player)(int id, int nb_player, int nb_towns, int nb_rails, struct Rail *rails, int nb_wagons, int nb_obj, struct Objective *objs);
+
+  struct Action (*play_turn)(int *used_wagons, int *cards_in_hand, int *objectives, int nb_new_rails, struct New_rail *changes, int *new_obj, int *cards);
+
+  int* (*choose_objective)(int nb, int *objs, int min);
+  int (*free_player)();
+}; // tab de struct f_player dans server.h
+
+
+
+enum Town_name;
+
+struct Map_info{
+  int nb_towns;
+  int nb_links;
+  int nb_objs;
+  int nb_w_player;
+
+};
+  
+struct Map_info get_map_info(char* file_name);
+void file2rails(struct Rail *rails,int nb_rails,struct Objective* objs ,int nb_objs, char *file_name);  
+
+
+
+
+#endif
