@@ -1,3 +1,33 @@
+Ticket to ride 
+===============
+
+Compilation
+-------------
+
+Go in trunk/build et run the command `make` <br/>
+To add options, like gdb or valgrind do the command `.. -DCMAKE_BUILD_TYPE=DEBUG` then compile with `make`
+
+Execution
+-----------
+Run the command `./src/game ../tests/France.txt` fromtrunk/build
+
+Tests
+-------
+
+Run the ecommand `make test` from trunk/build <br/>
+Run the executable files in the folder trunk/tests: <br>
+  `./test_init`<br/>
+  `./test_winner`<br/>
+  `./test_play-turn` <br/>
+
+
+
+
+
+
+
+---------------------------------------------------------
+
 Les casaniers du rail
 =====================
 
