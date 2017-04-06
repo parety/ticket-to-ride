@@ -4,25 +4,28 @@ Ticket to ride
 Compilation
 -------------
 
-Go in trunk/build et run the command `make` <br/>
+Go in trunk/build and run the command `make` <br/>
 To add options, like gdb or valgrind do the command `.. -DCMAKE_BUILD_TYPE=DEBUG` then compile with `make`
 
 Execution
 -----------
-Run the command `./src/game ../tests/France.txt` fromtrunk/build
+Run the command `./src/game ../tests/France.txt` from trunk/build
 
 Tests
 -------
 
-Run the ecommand `make test` from trunk/build <br/>
+Run the command `make test` from trunk/build <br/>
 Run the executable files in the folder trunk/tests: <br>
   `./test_init`<br/>
   `./test_winner`<br/>
   `./test_play-turn` <br/>
 
+Documentation
+--------------
 
-
-
+To produce the doc, go in trunk/doc and run th e command `doxygen`<br/>
+To display the doc, open the file index.html in a browser<br/>
+This can be found in the folder html generated in trunk/doc
 
 
 
